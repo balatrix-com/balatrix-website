@@ -34,7 +34,7 @@ const Privacy = () => {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
                 <p className="text-gray-600">
-                  This Privacy Policy describes how <strong>Kamat Techservices Private Limited</strong> (“we”, “our”, “us”), operating under the brand
+                  This Privacy Policy describes how <strong>A2 Cloud Solutions</strong> ("we", "our", "us"), operating under the brand
                   <strong> Balatrix</strong>, collects, uses, and protects personal information of users who access our website or use our VoIP and PBX services.
                 </p>
               </div>
@@ -145,7 +145,7 @@ const Privacy = () => {
                   For any questions, requests, or concerns about this Privacy Policy, please contact:<br />
                   📧 <a href="mailto:privacy@balatrix.com" className="text-blue-600 hover:text-blue-700">privacy@balatrix.com</a><br />
                   🌐 <a href="https://www.balatrix.com" className="text-blue-600 hover:text-blue-700">www.balatrix.com</a><br />
-                  📍 Registered Office: Kamat Techservices Pvt. Ltd., Karnataka, India.
+                  📍 Registered Office: A2 Cloud Solutions, Brampton, ON L7A 0B6, Canada.
                 </p>
               </div>
 

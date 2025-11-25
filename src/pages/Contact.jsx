@@ -104,12 +104,12 @@ const Contact = () => {
 
   const officeLocations = [
     {
-      city: 'Mumbai',
-      country: 'INDIA',
-      address: '538, MasterMind 1, Royal Palms, Goregaon East, Mumbai 400065',
+      city: 'Brampton',
+      country: 'Canada',
+      address: '38 Keppel Cir, Brampton, ON L7A 0B6, Canada',
       phone: '+1 (415) 555-0123',
       type: 'Headquarters',
-      flag: '🇺🇸'
+      flag: '🇨🇦'
     },
     {
       city: 'London',

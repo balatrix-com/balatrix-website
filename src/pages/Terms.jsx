@@ -35,7 +35,7 @@ const Terms = () => {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
                 <p className="text-gray-600">
                   By accessing or using the <strong>Balatrix</strong> platform and services, operated by
-                  <strong> Kamat Techservices Private Limited</strong>, you agree to comply with and be bound by these
+                  <strong> A2 Cloud Solutions</strong>, you agree to comply with and be bound by these
                   Terms of Service and all applicable laws and regulations. If you do not agree, please discontinue
                   use of our services immediately.
                 </p>
@@ -125,7 +125,7 @@ const Terms = () => {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Limitation of Liability</h2>
                 <p className="text-gray-600">
-                  Balatrix and its parent company, <strong>Kamat Techservices Pvt. Ltd.</strong>, shall not be liable for any
+                  Balatrix and its parent company, <strong>A2 Cloud Solutions</strong>, shall not be liable for any
                   indirect, incidental, or consequential damages, including loss of profits, data, or business interruption,
                   arising from the use or inability to use our services.
                 </p>

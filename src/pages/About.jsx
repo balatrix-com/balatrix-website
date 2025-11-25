@@ -266,8 +266,8 @@ const About = () => {
                   communication solutions with the same reliability they expected from other services.
                 </p>
                  <p>
-                  Balatrix is registered as Kamat Techservices Private Limited, through ROC MUMBAI.
-                  Balatrix is a Registered Trademark Owned by Kamat Techservices Private Limited.
+                  Balatrix is registered as A2 Cloud Solutions, through ROC MUMBAI.
+                  Balatrix is a Registered Trademark Owned by A2 Cloud Solutions.
                 </p>
                 <p>
                   What started as a mission to simplify toll-free number provisioning has evolved into 
