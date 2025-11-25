@@ -86,7 +86,7 @@ const Contact = () => {
       icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
       title: 'Sales & Support',
       description: 'Talk to our toll-free number experts',
-      contact: '+1 (800) BALATRIX',
+      contact: '+1 (844) 225-2435',
       subtext: 'Mon-Fri 8AM-8PM EST, 24/7 for existing customers',
       gradient: 'from-blue-500 to-cyan-500',
       action: 'Call Now'
@@ -465,7 +465,7 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleInputChange}
                           className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base placeholder-gray-400 hover:bg-white/90"
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="+1 (844) 225-2435"
                         />
                       </div>
                     </div>
@@ -542,10 +542,9 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Main Office</h4>
                     <p className="text-gray-600 leading-relaxed">
-                      538 Master Mind 1, <br />
-                      Royal Palms Goregaon (East)<br />
-                      Mumbai 400065<br />
-                      INDIA
+                      38 Keppel Cir<br />
+                      Brampton, ON L7A 0B6<br />
+                      Canada
                     </p>
                   </div>
 
@@ -567,7 +566,7 @@ const Contact = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
                         </div>
-                        <span className="text-gray-700">+91 9-604-604-179</span>
+                        <span className="text-gray-700">+1 (844) 225-2435</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">

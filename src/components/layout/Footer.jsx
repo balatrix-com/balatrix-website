@@ -87,7 +87,7 @@ const Footer = () => {
                   </svg>
                 </div>
                 <div>
-                  <div className="font-semibold text-white text-xs sm:text-base">+1 (800) TOLL-FREE</div>
+                  <div className="font-semibold text-white text-xs sm:text-base">+1 (844) 225-2435</div>
                   <div className="text-xs text-gray-400 hidden sm:block">Sales & Support</div>
                 </div>
               </div>

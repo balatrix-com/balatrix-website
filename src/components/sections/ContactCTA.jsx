@@ -43,7 +43,7 @@ const ContactCTA = () => {
       icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
       title: "Sales & Support",
       subtitle: "Talk to our toll-free experts",
-      contact: "+1 (800) BALATRIX",
+      contact: "+1 (844) 225-2435",
       description: "Get instant quotes and setup assistance",
       action: "Call Now",
       gradient: "from-blue-500 to-cyan-500"
@@ -150,7 +150,7 @@ const ContactCTA = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+1 (844) 225-2435"
                     />
                   </div>
                 </div>
