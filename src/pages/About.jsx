@@ -209,7 +209,7 @@ const About = () => {
               <div className="relative h-80 xl:h-96 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-5xl xl:text-6xl font-bold text-blue-600 mb-2">2015</div>
-                  <div className="text-base xl:text-lg text-gray-900 font-semibold mb-4">Founded in Mumbai</div>
+                  <div className="text-base xl:text-lg text-gray-900 font-semibold mb-4">Founded in Brampton, Canada</div>
                   <div className="text-sm xl:text-base text-gray-600 max-w-xs">
                     With a vision to transform business telecommunications through 
                     affordability, reliability, and exceptional customer service.
@@ -265,8 +265,8 @@ const About = () => {
                   that businesses needed a partner who could deliver affordable toll-free 
                   communication solutions with the same reliability they expected from other services.
                 </p>
-                 <p>
-                  Balatrix is registered as A2 Cloud Solutions, through ROC MUMBAI.
+                <p>
+                  Balatrix is registered as A2 Cloud Solutions, proudly headquartered in Brampton, Canada.
                   Balatrix is a Registered Trademark Owned by A2 Cloud Solutions.
                 </p>
                 <p>
@@ -285,7 +285,7 @@ const About = () => {
             <div className="bg-gray-100 rounded-2xl p-8">
               <div className="text-center">
                 <div className="text-6xl font-bold text-blue-600 mb-2">2015</div>
-                <div className="text-lg text-gray-900 font-semibold mb-4">Founded in Mumbai</div>
+                <div className="text-lg text-gray-900 font-semibold mb-4">Founded in Brampton, Canada</div>
                 <div className="text-gray-600">
                   With a vision to transform business telecommunications through 
                   reliability, innovation, and exceptional customer service.
