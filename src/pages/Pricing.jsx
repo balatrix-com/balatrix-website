@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState('monthly');
@@ -8,7 +8,7 @@ const Pricing = () => {
   const scrollToPricingPlans = () => {
     const pricingPlans = document.getElementById('pricing-plans');
     if (pricingPlans) {
-      pricingPlans.scrollIntoView({ 
+      pricingPlans.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -23,9 +23,10 @@ const Pricing = () => {
       yearlyPrice: 3348, // 20% discount: 349 * 12 * 0.8
       savings: '20%',
       features: [
-        'Toll-Free Number (TFN): 1',
-        'Free Credit: ₹199',
-        'Extensions: 1',
+        '1 Toll-Free Number & 1 Extension',
+        'Visual Call Routing & Basic IVR',
+        'Real-Time Analytics Dashboard',
+        'Automated Billing & Digital Wallet',
         'Per Minute Charge: ₹1.99'
       ],
       limitations: [],
@@ -39,9 +40,10 @@ const Pricing = () => {
       yearlyPrice: 9590, // 20% discount: 999 * 12 * 0.8
       savings: '20%',
       features: [
-        'Toll-Free Numbers (TFN): 2',
-        'Free Credit: ₹700',
-        'Extensions: 2',
+        '2 Toll-Free Numbers & 5 Extensions',
+        'Advanced Routing & Ring Groups',
+        'Real-Time Analytics & CDR Logs',
+        'Team Collaboration Features',
         'Per Minute Charge: ₹1.60'
       ],
       limitations: [],
@@ -49,16 +51,17 @@ const Pricing = () => {
       color: 'blue'
     },
     {
-      name: 'Call Center Plan',
-      description: 'For call centers and large organizations',
+      name: 'Enterprise Plan',
+      description: 'For call centers and large organizations requiring scale',
       monthlyPrice: 4999,
       yearlyPrice: 47990, // 20% discount: 4999 * 12 * 0.8
       savings: '20%',
       features: [
-        'Toll-Free Numbers (TFN): 5',
-        'Free Credit: ₹3500',
-        'Extensions: 10',
-        'Per Minute Charge: ₹1.45'
+        '5+ Toll-Free Numbers & Unlimited Exts',
+        'Enterprise-Grade Call Routing',
+        'Complete Analytics & QA Metrics',
+        'Advanced Queue & Agent Management',
+        'Full RBAC, Audit Logs & Multi-Tenancy'
       ],
       limitations: [],
       popular: false,
@@ -140,115 +143,73 @@ const Pricing = () => {
             {/* Content Section */}
             <div className="space-y-6 sm:space-y-8 w-full overflow-hidden">
               {/* Small intro */}
-              <div className="text-sm font-medium text-gray-500 opacity-0 animate-fade-in-up" style={{ fontFamily: 'Inter, sans-serif', animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-                Pricing Plans 💰
+              <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+                Pricing Plans
               </div>
 
               {/* Main Headline */}
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-[1.2] sm:leading-[1.1] tracking-[-0.02em] opacity-0 animate-fade-in-up break-words"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.3s',
-                  animationFillMode: 'forwards',
-                  wordWrap: 'break-word',
-                  overflowWrap: 'break-word'
-                }}
-              >
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight opacity-0 animate-fade-in-up break-words" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
                 Simple,<br />Transparent<br />
-                <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">Pricing</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#032B93] to-blue-500">Pricing</span>
               </h1>
 
               {/* Supporting subtext */}
-              <p 
-                className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-full lg:max-w-lg opacity-0 animate-fade-in-up break-words"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.5s',
-                  animationFillMode: 'forwards',
-                  wordWrap: 'break-word',
-                  overflowWrap: 'break-word'
-                }}
-              >
-                Choose the perfect plan for your business. All plans include our core features 
+              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-full lg:max-w-xl opacity-0 animate-fade-in-up break-words" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+                Choose the perfect plan for your business. All plans include our core features
                 with 99.9% uptime guarantee and expert support. Pay annually and get 20% discount.
               </p>
 
               {/* Billing Toggle */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <span className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-gray-900' : 'text-gray-500'}`}>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
+                <div className="flex items-center gap-4 bg-slate-50 border border-slate-200 p-2 rounded-2xl w-fit">
+                  <span className={`text-sm font-bold px-4 py-2 rounded-xl transition-all cursor-pointer ${billingCycle === 'monthly' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`} onClick={() => setBillingCycle('monthly')}>
                     Monthly
                   </span>
-                  <button
-                    onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-                    className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform shadow-sm ${
-                        billingCycle === 'yearly' ? 'translate-x-6 bg-blue-600' : 'translate-x-1'
-                      }`}
-                    />
-                  </button>
-                  <span className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-gray-900' : 'text-gray-500'}`}>
+                  <span className={`text-sm font-bold px-4 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-2 ${billingCycle === 'yearly' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`} onClick={() => setBillingCycle('yearly')}>
                     Annual
+                    <span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider">Save 20%</span>
                   </span>
                 </div>
-                {billingCycle === 'yearly' && (
-                  <span className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium w-fit">
-                    Save 20%
-                  </span>
-                )}
               </div>
 
               {/* Quarterly Payment Option */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.65s', animationFillMode: 'forwards' }}>
+              <div className="bg-[#032B93]/5 border border-[#032B93]/10 rounded-2xl p-4 w-fit opacity-0 animate-fade-in-up" style={{ animationDelay: '0.65s', animationFillMode: 'forwards' }}>
                 <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-5 h-5 bg-[#032B93] rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-blue-900 mb-1">🔄 Quarterly Payment Option</h4>
-                    <p className="text-sm text-blue-800">Pay quarterly and skip one-time setup charges</p>
+                    <h4 className="text-sm font-bold text-slate-900 mb-1">Quarterly Payment Option</h4>
+                    <p className="text-sm text-slate-500 font-medium">Pay quarterly and skip one-time setup charges</p>
                   </div>
                 </div>
               </div>
 
               {/* CTA Group */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-                <Link 
-                  to="/contact#contact-form"
-                  className="bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-0.5 hover:shadow-xl text-sm sm:text-base inline-block text-center"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+                <Link to="/contact#contact-form" className="btn btn-primary text-lg px-8 py-4 w-full sm:w-auto shadow-[0_8px_20px_rgba(3,43,147,0.25)] hover:shadow-[0_12px_25px_rgba(3,43,147,0.35)]">
                   Start Free Trial
                 </Link>
-                <button 
-                  onClick={scrollToPricingPlans}
-                  className="border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-px text-sm sm:text-base"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
+                <button onClick={scrollToPricingPlans} className="btn btn-secondary text-lg px-8 py-4 w-full sm:w-auto font-semibold">
                   Compare Plans
                 </button>
               </div>
 
               {/* Trust indicators */}
-              <div className="pt-6 sm:pt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-                <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 text-xs sm:text-sm font-medium text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div className="pt-8 border-t border-slate-200/60 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
+                <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">₹349</span>
+                    <span className="text-lg font-bold text-slate-800">₹349</span>
                     <span>Starting Price</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">No</span>
+                    <span className="text-lg font-bold text-slate-800">No</span>
                     <span>Setup Fees</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">Cancel</span>
+                    <span className="text-lg font-bold text-slate-800">Cancel</span>
                     <span>Anytime</span>
                   </div>
                 </div>
@@ -258,14 +219,15 @@ const Pricing = () => {
             {/* Visual Element */}
             <div className="hidden lg:block opacity-0 animate-fade-in-right" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
               <div className="relative h-80 xl:h-96 flex items-center justify-center">
-                <div className="text-center space-y-4 lg:space-y-6">
-                  <div className="text-5xl xl:text-6xl font-bold text-green-600">₹349</div>
-                  <div className="text-base xl:text-lg text-gray-900 font-semibold">Starting from</div>
-                  <div className="text-sm xl:text-base text-gray-600 max-w-xs">
+                <div className="bg-white rounded-3xl p-12 shadow-[0_20px_50px_rgba(3,43,147,0.12)] border border-slate-200/60 max-w-sm w-full text-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#032B93]/5 rounded-bl-full -z-10"></div>
+                  <div className="text-6xl font-extrabold text-[#032B93] mb-4">₹349</div>
+                  <div className="text-lg text-slate-900 font-bold mb-3">Starting from</div>
+                  <div className="text-sm text-slate-500 mb-8 font-medium">
                     Professional toll-free numbers with all essential features included
                   </div>
-                  <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-                    <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex items-center justify-center gap-2 text-sm text-slate-600 font-bold bg-slate-50 py-3 rounded-xl border border-slate-100">
+                    <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>No hidden fees</span>
@@ -273,17 +235,17 @@ const Pricing = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Mobile Visual Element */}
-            <div className="lg:hidden mt-6 sm:mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
-              <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-gray-200 shadow-sm text-center mx-4">
-                <div className="text-4xl sm:text-5xl font-bold text-green-600 mb-2">₹349</div>
-                <div className="text-sm sm:text-base text-gray-900 font-semibold mb-2">Starting from</div>
-                <div className="text-xs sm:text-sm text-gray-600 mb-3">
+            <div className="lg:hidden mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
+              <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-[0_10px_30px_rgba(3,43,147,0.1)] text-center">
+                <div className="text-5xl font-extrabold text-[#032B93] mb-3">₹349</div>
+                <div className="text-base text-slate-900 font-bold mb-3">Starting from</div>
+                <div className="text-sm text-slate-500 mb-6 font-medium">
                   Professional toll-free numbers with all essential features included
                 </div>
-                <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-500">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center justify-center gap-2 text-sm text-slate-600 font-bold bg-slate-50 py-3 rounded-xl border border-slate-100">
+                  <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span>No hidden fees</span>
@@ -295,16 +257,16 @@ const Pricing = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section id="pricing-plans" className="py-24 bg-gray-50">
+      <section id="pricing-plans" className="py-24 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-sm font-medium text-blue-600 mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
               CHOOSE YOUR PLAN
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <h2 className="heading-section text-slate-900 mb-6">
               Find the Perfect Plan
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="subheading max-w-2xl mx-auto">
               All plans include our core features with 99.9% uptime guarantee
             </p>
           </div>
@@ -313,86 +275,91 @@ const Pricing = () => {
             {pricingTiers.map((tier, index) => (
               <div
                 key={index}
-                className={`group relative bg-white rounded-3xl border-2 p-8 transition-all duration-300 hover:shadow-2xl hover:transform hover:-translate-y-2 ${
-                  tier.popular
-                    ? 'border-blue-500 shadow-xl ring-4 ring-blue-100'
-                    : 'border-gray-200 shadow-lg hover:border-blue-300'
-                }`}
+                className={`group relative bg-white rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full ${tier.popular
+                  ? 'border-[#032B93] shadow-[0_20px_40px_rgba(3,43,147,0.12)] ring-4 ring-[#032B93]/5'
+                  : 'border-slate-200 shadow-md hover:shadow-xl hover:border-slate-300'
+                  }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-[#032B93] text-white px-6 py-1.5 rounded-full text-xs font-bold shadow-md tracking-wider uppercase">
                       Most Popular
                     </span>
                   </div>
                 )}
 
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>{tier.name}</h3>
-                  <p className="text-gray-600 mb-8 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>{tier.description}</p>
-                  
-                  <div className="mb-6">
+                <div className="text-center mb-8 relative">
+                  {tier.popular && <div className="absolute -inset-4 bg-gradient-to-b from-[#032B93]/5 to-transparent rounded-2xl -z-10"></div>}
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3">{tier.name}</h3>
+                  <p className="text-slate-500 mb-8 font-medium h-12 leading-relaxed">{tier.description}</p>
+
+                  <div className="mb-6 flex flex-col items-center justify-center min-h-[96px]">
                     {typeof tier.monthlyPrice === 'string' ? (
                       <div>
-                        <span className="text-4xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        <span className="text-4xl font-extrabold text-slate-900">
                           {tier.monthlyPrice}
                         </span>
-                        <div className="text-sm text-gray-500 mt-2">{tier.savings}</div>
+                        <div className="text-sm font-medium text-slate-500 mt-2">{tier.savings}</div>
                       </div>
                     ) : (
-                      <div>
-                        <span className="text-5xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                      <div className="flex items-baseline justify-center">
+                        <span className="text-5xl font-black text-[#032B93]">
                           ₹{billingCycle === 'monthly' ? tier.monthlyPrice : Math.floor(tier.yearlyPrice / 12)}
                         </span>
-                        <span className="text-gray-600 ml-2 text-lg" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <span className="text-slate-500 ml-2 text-lg font-medium">
                           /{billingCycle === 'monthly' ? 'month' : 'month'}
                         </span>
                       </div>
                     )}
                   </div>
-                  
+
                   {billingCycle === 'yearly' && typeof tier.monthlyPrice !== 'string' && (
-                    <div className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full inline-block font-medium mb-6">
+                    <div className="text-xs tracking-wide uppercase bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full inline-block font-bold border border-emerald-100">
                       Save {tier.savings} with annual billing
                     </div>
                   )}
+
+                  {billingCycle === 'monthly' && typeof tier.monthlyPrice !== 'string' && (
+                    <div className="h-7"></div>
+                  )}
                 </div>
 
-                <div className="mb-8">
-                  <h4 className="font-bold text-gray-900 mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>Everything included:</h4>
+                <div className="mb-8 flex-grow">
+                  <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Everything included:</h4>
                   <ul className="space-y-4">
                     {tier.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start">
-                        <div className="w-5 h-5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      <li key={featureIndex} className="flex items-start text-sm font-medium text-slate-700">
+                        <div className="w-5 h-5 bg-[#032B93]/10 text-[#032B93] rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
-                        <span className="text-gray-700" style={{ fontFamily: 'Inter, sans-serif' }}>{feature}</span>
+                        <span className="leading-snug">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {tier.name === 'Enterprise' ? (
-                  <Link
-                    to="/contact#contact-form"
-                    className="w-full py-3 px-6 rounded-lg font-semibold transition-colors bg-gray-100 text-gray-900 hover:bg-gray-200 inline-block text-center"
-                  >
-                    Contact Sales
-                  </Link>
-                ) : (
-                  <Link
-                    to="/contact#contact-form"
-                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors inline-block text-center ${
-                      tier.popular
-                        ? 'bg-blue-600 text-white hover:bg-blue-700'
-                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                    }`}
-                  >
-                    Start Free Trial
-                  </Link>
-                )}
+                <div className="mt-auto">
+                  {tier.name === 'Enterprise Plan' ? (
+                    <Link
+                      to="/contact#contact-form"
+                      className="w-full py-4 px-6 rounded-xl font-bold transition-all bg-slate-100 text-slate-900 hover:bg-slate-200 inline-block text-center border border-slate-200"
+                    >
+                      Contact Sales
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/contact#contact-form"
+                      className={`w-full py-4 px-6 rounded-xl font-bold transition-all inline-block text-center ${tier.popular
+                        ? 'bg-[#032B93] text-white hover:bg-blue-800 shadow-[0_8px_20px_rgba(3,43,147,0.25)] hover:shadow-[0_12px_25px_rgba(3,43,147,0.35)]'
+                        : 'bg-white text-slate-900 hover:bg-slate-50 border border-slate-200 shadow-sm'
+                        }`}
+                    >
+                      Start Free Trial
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -400,41 +367,46 @@ const Pricing = () => {
       </section>
 
       {/* Add-ons Section */}
-      <section className="py-24">
+      <section className="py-24 bg-slate-50 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <div className="text-sm font-medium text-blue-600 mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <div className="text-center mb-16">
+            <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
               ENHANCE YOUR PLAN
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <h2 className="heading-section text-slate-900 mb-6">
               Pay as you Go Plans
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="subheading max-w-2xl mx-auto">
               Extend your plan with additional services tailored to your specific needs
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {addOns.map((addon, index) => (
-              <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold text-lg">+</span>
+              <div key={index} className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-slate-200 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#032B93]/5 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                <div className="w-12 h-12 bg-[#032B93] rounded-xl flex items-center justify-center mb-6 shadow-md shadow-[#032B93]/20">
+                  <span className="text-white font-bold text-2xl">+</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>{addon.name}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>{addon.description}</p>
-                <div className="space-y-4">
-                  <div className="text-center border-b border-gray-100 pb-4">
-                    <div className="text-sm text-gray-500 mb-1">Pay As You Go</div>
-                    <div className="text-2xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">₹{addon.payAsYouGoPrice}</div>
-                    <div className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>{addon.unit}</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{addon.name}</h3>
+                <p className="text-slate-500 mb-8 font-medium h-12 leading-relaxed">{addon.description}</p>
+                <div className="space-y-6">
+                  <div className="border-b border-slate-100 pb-6 flex items-end justify-between">
+                    <div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Pay As You Go</div>
+                      <div className="text-3xl font-extrabold text-slate-900">₹{addon.payAsYouGoPrice}</div>
+                    </div>
+                    <div className="text-sm font-medium text-slate-500 pb-1">{addon.unit}</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-sm text-gray-500 mb-1">One-Time Charge</div>
-                    <div className="text-2xl font-black bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                      {addon.oneTimePrice === '—' ? '—' : `₹${addon.oneTimePrice}`}
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">One-Time Charge</div>
+                      <div className="text-xl font-bold text-slate-700">
+                        {addon.oneTimePrice === '—' ? '—' : `₹${addon.oneTimePrice}`}
+                      </div>
                     </div>
                     {addon.oneTimePrice !== '—' && (
-                      <div className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>one-time setup</div>
+                      <div className="text-xs font-medium text-slate-400 pb-1">setup fee</div>
                     )}
                   </div>
                 </div>
@@ -445,29 +417,29 @@ const Pricing = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="heading-section text-slate-900 mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="subheading">
               Everything you need to know about our pricing and plans
             </p>
           </div>
 
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
-                <p className="text-gray-700">{faq.answer}</p>
+              <div key={index} className="bg-slate-50 border border-slate-100 rounded-2xl p-6 hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-slate-900 mb-3">{faq.question}</h3>
+                <p className="text-slate-600 leading-relaxed font-medium">{faq.answer}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-    
+
     </div>
   );
 };

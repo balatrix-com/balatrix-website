@@ -134,71 +134,47 @@ const About = () => {
             {/* Content Section */}
             <div className="space-y-6 sm:space-y-8 w-full overflow-hidden">
               {/* Small intro */}
-              <div className="text-sm font-medium text-gray-500 opacity-0 animate-fade-in-up" style={{ fontFamily: 'Inter, sans-serif', animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-                Our Story 📖
+              <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+                Our Story
               </div>
 
               {/* Main Headline */}
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-[1.2] sm:leading-[1.1] tracking-[-0.02em] opacity-0 animate-fade-in-up break-words"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.3s',
-                  animationFillMode: 'forwards',
-                  wordWrap: 'break-word',
-                  overflowWrap: 'break-word'
-                }}
-              >
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight opacity-0 animate-fade-in-up break-words" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
                 Making Business<br />Communication<br />
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Affordable</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#032B93] to-blue-500">Affordable</span>
               </h1>
 
               {/* Supporting subtext */}
-              <p 
-                className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-full lg:max-w-lg opacity-0 animate-fade-in-up break-words"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.5s',
-                  animationFillMode: 'forwards',
-                  wordWrap: 'break-word',
-                  overflowWrap: 'break-word'
-                }}
-              >
-                For over 15 years, we've been the trusted partner for businesses of all sizes 
-                seeking affordable, reliable toll-free numbers for US & Canada. Our mission is simple: 
-                make business communication effortless and affordable.
+              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-full lg:max-w-xl opacity-0 animate-fade-in-up break-words" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+                For over 15 years, we've been the trusted partner for businesses of all sizes
+                seeking reliable toll-free numbers for US & Canada. Our mission is simple:
+                make business communication effortless.
               </p>
 
               {/* CTA Group */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-                <button className="bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-0.5 hover:shadow-xl text-sm sm:text-base touch-manipulation"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+                <button className="btn btn-primary text-lg px-8 py-4 w-full sm:w-auto shadow-[0_8px_20px_rgba(3,43,147,0.25)] hover:shadow-[0_12px_25px_rgba(3,43,147,0.35)]">
                   Get Your Numbers
                 </button>
-                <button className="border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-px text-sm sm:text-base touch-manipulation"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Our Story
+                <button className="btn btn-secondary text-lg px-8 py-4 w-full sm:w-auto font-semibold">
+                  Contact Us
                 </button>
               </div>
 
               {/* Trust indicators */}
-              <div className="pt-6 sm:pt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-                <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 text-xs sm:text-sm font-medium text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div className="pt-8 border-t border-slate-200/60 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
+                <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">15+</span>
+                    <span className="text-lg font-bold text-slate-800">15+</span>
                     <span>Years Experience</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">5K+</span>
+                    <span className="text-lg font-bold text-slate-800">5K+</span>
                     <span>Happy Customers</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">99.9%</span>
-                    <span>Uptime</span>
+                    <span className="text-lg font-bold text-slate-800">99.9%</span>
+                    <span>Uptime SLA</span>
                   </div>
                 </div>
               </div>
@@ -207,24 +183,24 @@ const About = () => {
             {/* Visual Element */}
             <div className="hidden lg:block opacity-0 animate-fade-in-right" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
               <div className="relative h-80 xl:h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-5xl xl:text-6xl font-bold text-blue-600 mb-2">2015</div>
-                  <div className="text-base xl:text-lg text-gray-900 font-semibold mb-4">Founded in Brampton, Canada</div>
-                  <div className="text-sm xl:text-base text-gray-600 max-w-xs">
-                    With a vision to transform business telecommunications through 
-                    affordability, reliability, and exceptional customer service.
+                <div className="bg-white rounded-3xl p-12 shadow-[0_20px_50px_rgba(3,43,147,0.12)] border border-slate-200/60 max-w-sm w-full text-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#032B93]/5 rounded-bl-full -z-10"></div>
+                  <div className="text-6xl font-extrabold text-[#032B93] mb-4">2015</div>
+                  <div className="text-lg text-slate-900 font-bold mb-3">Founded in Canada</div>
+                  <div className="text-sm text-slate-500 mb-8 font-medium">
+                    With a vision to transform business telecommunications through reliability and customer service.
                   </div>
                 </div>
               </div>
             </div>
-            
+
             {/* Mobile Visual Element */}
-            <div className="lg:hidden mt-6 sm:mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
+            <div className="lg:hidden mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
               <div className="flex justify-center">
-                <div className="text-center bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-200 shadow-sm w-full max-w-xs mx-4">
-                  <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">2015</div>
-                  <div className="text-sm font-semibold text-gray-900 mb-1 sm:mb-2">Founded</div>
-                  <div className="text-xs text-gray-600">
+                <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-[0_10px_30px_rgba(3,43,147,0.1)] text-center w-full max-w-xs mx-4">
+                  <div className="text-5xl font-extrabold text-[#032B93] mb-3">2015</div>
+                  <div className="text-base text-slate-900 font-bold mb-3">Founded in Canada</div>
+                  <div className="text-sm text-slate-500 font-medium">
                     15+ years of telecommunications excellence
                   </div>
                 </div>
@@ -235,14 +211,17 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
             {stats.map((stat, index) => (
-              <div key={index} className="group">
-                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:transform hover:-translate-y-1">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2 sm:mb-3">{stat.number}</div>
-                  <div className="text-gray-600 font-medium text-sm sm:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>{stat.label}</div>
+              <div key={index} className="relative px-4 group">
+                {index !== 0 && <div className="hidden md:block absolute left-0 top-1/4 bottom-1/4 w-px bg-slate-200"></div>}
+                <div className="text-4xl md:text-5xl font-black text-[#032B93] tracking-tight mb-2 group-hover:scale-105 transition-transform duration-300">
+                  {stat.number}
+                </div>
+                <div className="text-sm md:text-base font-semibold text-slate-500 uppercase tracking-wider">
+                  {stat.label}
                 </div>
               </div>
             ))}
@@ -251,45 +230,45 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
+                HOW IT STARTED
+              </div>
+              <h2 className="heading-section text-slate-900 mb-6 text-left">
                 Our Story
               </h2>
-              <div className="space-y-4 text-gray-700">
+              <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
                 <p>
-                  Balatrix was born from a simple observation: getting toll-free numbers 
-                  was unnecessarily complex and expensive. In 2015, our founders recognized 
-                  that businesses needed a partner who could deliver affordable toll-free 
+                  Balatrix was born from a simple observation: getting toll-free numbers
+                  was unnecessarily complex and expensive. In 2015, our founders recognized
+                  that businesses needed a partner who could deliver affordable toll-free
                   communication solutions with the same reliability they expected from other services.
                 </p>
+                <div className="p-6 bg-slate-50 border-l-4 border-[#032B93] rounded-r-2xl my-8">
+                  <p className="font-medium text-slate-800 italic">
+                    Balatrix is registered as A2 Cloud Solutions, proudly headquartered in Brampton, Canada.
+                    Balatrix is a Registered Trademark Owned by A2 Cloud Solutions.
+                  </p>
+                </div>
                 <p>
-                  Balatrix is registered as A2 Cloud Solutions, proudly headquartered in Brampton, Canada.
-                  Balatrix is a Registered Trademark Owned by A2 Cloud Solutions.
-                </p>
-                <p>
-                  What started as a mission to simplify toll-free number provisioning has evolved into 
-                  a comprehensive business communication platform serving over 50,000 businesses 
-                  across US & Canada. Our commitment to affordability, reliability, and customer 
+                  What started as a mission to simplify toll-free number provisioning has evolved into
+                  a comprehensive business communication platform serving over 50,000 businesses
+                  across US & Canada. Our commitment to affordability, reliability, and customer
                   success has made us the go-to choice for companies seeking cost-effective communication.
-                </p>
-                <p>
-                  Today, we're proud to maintain a 99.9% uptime guarantee while keeping our prices 
-                  affordable for businesses of all sizes. Our team works around the clock to ensure 
-                  your toll-free numbers are always reliable, always affordable, and always ready for growth.
                 </p>
               </div>
             </div>
-            <div className="bg-gray-100 rounded-2xl p-8">
-              <div className="text-center">
-                <div className="text-6xl font-bold text-blue-600 mb-2">2015</div>
-                <div className="text-lg text-gray-900 font-semibold mb-4">Founded in Brampton, Canada</div>
-                <div className="text-gray-600">
-                  With a vision to transform business telecommunications through 
-                  reliability, innovation, and exceptional customer service.
+            <div className="relative">
+              <div className="absolute inset-0 bg-[#032B93]/5 transform rotate-3 rounded-3xl"></div>
+              <div className="bg-white border border-slate-200 p-10 rounded-3xl shadow-xl relative z-10 lg:aspect-square flex flex-col justify-center text-center">
+                <div className="text-8xl font-black text-[#032B93] mb-4 opacity-20">❝</div>
+                <div className="text-2xl font-bold text-slate-900 mb-6 leading-snug">
+                  Our team works around the clock to ensure your toll-free numbers are always reliable, always affordable, and always ready for growth.
                 </div>
+                <div className="text-[#032B93] font-bold tracking-wider uppercase text-sm">The Founders</div>
               </div>
             </div>
           </div>
@@ -297,31 +276,32 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="bg-gray-50 py-24">
+      <section className="bg-slate-50 py-24 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="text-sm font-medium text-blue-600 mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
               OUR VALUES
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <h2 className="heading-section text-slate-900 mb-6">
               Our Core Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="subheading max-w-2xl mx-auto">
               These principles guide everything we do and shape how we serve our clients
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="group">
-                <div className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2 h-full">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-white mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+              <div key={index} className="group relative">
+                <div className="absolute inset-0 bg-white rounded-2xl shadow-sm border border-slate-200 group-hover:shadow-[0_20px_40px_rgba(3,43,147,0.12)] group-hover:border-[#032B93]/20 transition-all duration-300"></div>
+                <div className="relative p-8 h-full flex flex-col">
+                  <div className="w-16 h-16 bg-[#032B93]/5 text-[#032B93] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#032B93] group-hover:text-white shadow-sm border border-[#032B93]/10">
                     {value.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <p className="text-slate-600 leading-relaxed font-medium">
                     {value.description}
                   </p>
                 </div>
@@ -332,32 +312,45 @@ const About = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-12 sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
+              HISTORY
+            </div>
+            <h2 className="heading-section text-slate-900 mb-4">
               Our Journey
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="subheading max-w-2xl mx-auto">
               Key milestones that shaped Balatrix into the industry leader it is today
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="relative border-l-2 border-slate-100 ml-4 md:ml-0 space-y-12">
             {milestones.map((milestone, index) => (
-              <div key={index} className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center font-bold">
-                    {milestone.year}
+              <div key={index} className="relative pl-8 md:pl-0">
+                <div className="md:grid md:grid-cols-5 items-center group">
+                  <div className="hidden md:block col-span-2 text-right pr-12">
+                    <span className="text-3xl font-extrabold text-slate-300 transition-colors group-hover:text-[#032B93]">{milestone.year}</span>
                   </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {milestone.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {milestone.description}
-                  </p>
+
+                  {/* Timeline Dot */}
+                  <div className="absolute left-[-9px] md:left-auto md:col-start-3 md:mx-auto w-4 h-4 rounded-full bg-white border-4 border-slate-300 md:w-5 md:h-5 z-10 group-hover:border-[#032B93] transition-colors shadow-[0_0_0_4px_white]"></div>
+
+                  <div className="md:hidden mb-2">
+                    <span className="text-2xl font-extrabold text-[#032B93]">{milestone.year}</span>
+                  </div>
+
+                  <div className="md:col-span-2 md:pl-12">
+                    <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl group-hover:shadow-md transition-shadow group-hover:border-slate-200 group-hover:bg-white group-hover:-translate-y-1 duration-300">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-slate-600 font-medium">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -365,9 +358,9 @@ const About = () => {
         </div>
       </section>
 
-     
 
-    
+
+
     </div>
   );
 };

@@ -17,7 +17,7 @@ const Contact = () => {
   const scrollToContactForm = () => {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-      contactForm.scrollIntoView({ 
+      contactForm.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -70,9 +70,9 @@ const Contact = () => {
 
   // Floating animation component
   const FloatingElement = ({ children, delay = 0 }) => (
-    <div 
+    <div
       className="animate-float"
-      style={{ 
+      style={{
         animation: `float 6s ease-in-out infinite`,
         animationDelay: `${delay}s`
       }}
@@ -113,7 +113,7 @@ const Contact = () => {
     },
     {
       city: 'London',
-      country: 'United Kingdom', 
+      country: 'United Kingdom',
       address: '45 Finsbury Square, London EC2A 1PX',
       phone: '+44 20 7946 0958',
       type: 'European Operations',
@@ -176,71 +176,48 @@ const Contact = () => {
             {/* Content Section */}
             <div className="space-y-6 sm:space-y-8 w-full overflow-hidden">
               {/* Small intro */}
-              <div className="text-sm font-medium text-gray-500 opacity-0 animate-fade-in-up" style={{ fontFamily: 'Inter, sans-serif', animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-                Contact Us �
+              <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+                Contact Us
               </div>
 
               {/* Main Headline */}
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-[1.2] sm:leading-[1.1] tracking-[-0.02em] opacity-0 animate-fade-in-up break-words"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.3s',
-                  animationFillMode: 'forwards',
-                  wordWrap: 'break-word',
-                  overflowWrap: 'break-word'
-                }}
-              >
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight opacity-0 animate-fade-in-up break-words" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
                 Get In<br />Touch With<br />
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Our Team</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#032B93] to-blue-500">Our Team</span>
               </h1>
 
               {/* Supporting subtext */}
-              <p 
-                className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-full lg:max-w-lg opacity-0 animate-fade-in-up break-words"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.5s',
-                  animationFillMode: 'forwards',
-                  wordWrap: 'break-word',
-                  overflowWrap: 'break-word'
-                }}
-              >
-                Ready to transform your telecommunications infrastructure? Our team of experts 
+              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-full lg:max-w-xl opacity-0 animate-fade-in-up break-words" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+                Ready to transform your telecommunications infrastructure? Our team of experts
                 is here to help you find the perfect solution for your business needs.
               </p>
 
               {/* CTA Group */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-                <button className="bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-0.5 hover:shadow-xl text-sm sm:text-base"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+                <button className="btn btn-primary text-lg px-8 py-4 w-full sm:w-auto shadow-[0_8px_20px_rgba(3,43,147,0.25)] hover:shadow-[0_12px_25px_rgba(3,43,147,0.35)]">
                   Talk to Sales
                 </button>
-                <button 
+                <button
                   onClick={scrollToContactForm}
-                  className="border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-px text-sm sm:text-base"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  className="btn btn-secondary text-lg px-8 py-4 w-full sm:w-auto font-semibold"
                 >
                   Schedule Demo
                 </button>
               </div>
 
               {/* Trust indicators */}
-              <div className="pt-6 sm:pt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-                <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 text-xs sm:text-sm font-medium text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div className="pt-8 border-t border-slate-200/60 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
+                <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">50K+</span>
+                    <span className="text-lg font-bold text-slate-800">50K+</span>
                     <span>Numbers Delivered</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">24/7</span>
+                    <span className="text-lg font-bold text-slate-800">24/7</span>
                     <span>Support</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">&lt; 24h</span>
+                    <span className="text-lg font-bold text-slate-800">&lt; 24h</span>
                     <span>Setup Time</span>
                   </div>
                 </div>
@@ -248,17 +225,17 @@ const Contact = () => {
             </div>
 
             {/* Mobile Visual Element */}
-            <div className="lg:hidden mt-6 sm:mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
-                  <div className="text-2xl sm:text-3xl mb-2">📞</div>
-                  <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">Sales & Support</div>
-                  <div className="text-xs text-gray-600">Talk to experts</div>
+            <div className="lg:hidden mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                  <div className="text-3xl mb-3">📞</div>
+                  <div className="text-base font-bold text-slate-900 mb-1">Sales & Support</div>
+                  <div className="text-sm text-slate-500 font-medium">Talk to experts</div>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
-                  <div className="text-2xl sm:text-3xl mb-2">💬</div>
-                  <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">Live Chat</div>
-                  <div className="text-xs text-gray-600">Instant help</div>
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                  <div className="text-3xl mb-3">💬</div>
+                  <div className="text-base font-bold text-slate-900 mb-1">Live Chat</div>
+                  <div className="text-sm text-slate-500 font-medium">Instant help</div>
                 </div>
               </div>
             </div>
@@ -266,14 +243,15 @@ const Contact = () => {
             {/* Visual Element - Desktop */}
             <div className="hidden lg:block opacity-0 animate-fade-in-right" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
               <div className="relative h-80 xl:h-96 flex items-center justify-center">
-                <div className="text-center space-y-4 lg:space-y-6">
-                  <div className="text-5xl xl:text-6xl mb-4">📞</div>
-                  <div className="text-2xl xl:text-3xl font-bold text-gray-900 mb-2">Get In Touch</div>
-                  <div className="text-sm xl:text-base text-gray-600 max-w-xs">
+                <div className="bg-white rounded-3xl p-12 shadow-[0_20px_50px_rgba(3,43,147,0.12)] border border-slate-200/60 max-w-sm w-full text-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#032B93]/5 rounded-bl-full -z-10"></div>
+                  <div className="text-6xl mb-6">📞</div>
+                  <div className="text-2xl font-bold text-slate-900 mb-3">Get In Touch</div>
+                  <div className="text-sm text-slate-500 mb-8 font-medium">
                     Multiple ways to connect with our expert support team
                   </div>
-                  <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-                    <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex items-center justify-center gap-2 text-sm text-slate-600 font-bold bg-slate-50 py-3 rounded-xl border border-slate-100">
+                    <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>24/7 availability</span>
@@ -286,118 +264,93 @@ const Contact = () => {
       </section>
 
       {/* Contact Methods Section */}
-      <section ref={sectionRef} className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
-        {/* Premium Background System */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/80 via-white to-gray-50/40"></div>
-        
-        {/* Subtle Geometric Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        
-        {/* Radial Gradients for Depth */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-radial from-blue-100/30 to-transparent blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-radial from-purple-100/20 to-transparent blur-3xl"></div>
-
+      <section ref={sectionRef} className="relative py-24 bg-slate-50 border-t border-slate-200/60 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Premium Section Header */}
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20 space-y-4 sm:space-y-6 fade-in-up">
-            <div className="inline-flex items-center space-x-2 text-xs sm:text-sm font-medium text-gray-600 bg-gray-100/60 px-3 sm:px-4 py-2 rounded-full border border-gray-200/60">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-              <span>Contact Options</span>
+          <div className="text-center mb-16 space-y-4 fade-in-up">
+            <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
+              METHODS
             </div>
-            
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] max-w-4xl mx-auto px-4">
-              Choose Your Preferred
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Contact Method</span>
+
+            <h2 className="heading-section text-slate-900">
+              Choose Your Preferred Contact Method
             </h2>
-            
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
+
+            <p className="subheading max-w-2xl mx-auto">
               Get the support you need, when you need it. Multiple ways to connect with our expert team.
             </p>
           </div>
 
           {/* Contact Methods Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-24">
             {contactMethods.map((method, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-white/90 backdrop-blur-sm border border-gray-200/60 rounded-3xl p-8 hover:shadow-2xl hover:shadow-gray-900/10 transition-all duration-500 hover:transform hover:-translate-y-3 fade-in-up"
+              <div
+                key={index}
+                className="group relative bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-[0_20px_40px_rgba(3,43,147,0.12)] hover:border-[#032B93]/20 transition-all duration-300 hover:transform hover:-translate-y-2 fade-in-up overflow-hidden h-full flex flex-col"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Gradient background on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`}></div>
-                
-                <div className="relative z-10">
-                  {/* Icon with gradient background */}
-                  <div className={`w-16 h-16 bg-gradient-to-br ${method.gradient} rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#032B93]/5 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+
+                <div className="relative z-10 flex-grow">
+                  <div className="w-16 h-16 bg-[#032B93]/5 text-[#032B93] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-[#032B93]/10">
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d={method.icon} />
                     </svg>
                   </div>
 
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3">
                     {method.title}
                   </h3>
-                  
-                  <p className="text-gray-600 mb-4 text-base leading-relaxed">
+
+                  <p className="text-slate-600 mb-6 font-medium">
                     {method.description}
                   </p>
 
                   <div className="space-y-3">
-                    <div className="flex items-center text-gray-900 font-semibold text-lg">
+                    <div className="text-2xl font-extrabold text-[#032B93]">
                       {method.contact}
                     </div>
-                    
-                    <div className="text-sm text-gray-500">
+
+                    <div className="text-sm font-bold text-slate-400 tracking-wider">
                       {method.subtext}
                     </div>
-
-                    <button className={`inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r ${method.gradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-200 hover:scale-105 mt-4`}>
-                      <span>{method.action}</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
                   </div>
                 </div>
 
-                {/* Subtle glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                <div className="mt-8">
+                  <button className="w-full btn btn-primary py-4 px-6 rounded-xl font-bold">
+                    {method.action}
+                  </button>
+                </div>
               </div>
             ))}
           </div>
 
           {/* Contact Form and Office Info */}
-          <div id="contact-form" className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div id="contact-form" className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mt-12 mb-24">
             {/* Premium Contact Form */}
             <div className="lg:col-span-2 fade-in-up">
-              <div className="relative bg-white/80 backdrop-blur-md border border-gray-200/60 rounded-3xl p-8 lg:p-12 shadow-2xl shadow-gray-900/10 hover:shadow-gray-900/20 transition-all duration-500">
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-purple-50/20 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-                
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 lg:p-12 shadow-[0_20px_40px_rgba(3,43,147,0.08)]">
+
                 <div className="relative z-10">
                   {/* Form Header */}
-                  <div className="mb-8 space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <div className="mb-10 space-y-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-14 h-14 bg-[#032B93]/5 text-[#032B93] rounded-2xl flex items-center justify-center shadow-sm border border-[#032B93]/10">
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-900">Send Us a Message</h3>
-                        <p className="text-gray-600">We'll get back to you within 2 hours</p>
+                        <h3 className="text-3xl font-bold text-slate-900 mb-1">Send Us a Message</h3>
+                        <p className="text-slate-600 font-medium">We'll get back to you within 2 hours</p>
                       </div>
                     </div>
                   </div>
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-900">
+                        <label className="block text-sm font-bold text-slate-700 uppercase tracking-widest">
                           First Name *
                         </label>
                         <input
@@ -406,12 +359,12 @@ const Contact = () => {
                           required
                           value={formData.firstName}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base placeholder-gray-400 hover:bg-white/90"
+                          className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#032B93]/50 focus:border-[#032B93] outline-none transition-all duration-200 text-slate-900 font-medium placeholder-slate-400 hover:bg-white"
                           placeholder="John"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-900">
+                        <label className="block text-sm font-bold text-slate-700 uppercase tracking-widest">
                           Last Name *
                         </label>
                         <input
@@ -420,14 +373,14 @@ const Contact = () => {
                           required
                           value={formData.lastName}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base placeholder-gray-400 hover:bg-white/90"
+                          className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#032B93]/50 focus:border-[#032B93] outline-none transition-all duration-200 text-slate-900 font-medium placeholder-slate-400 hover:bg-white"
                           placeholder="Doe"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-gray-900">
+                      <label className="block text-sm font-bold text-slate-700 uppercase tracking-widest">
                         Email Address *
                       </label>
                       <input
@@ -436,14 +389,14 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base placeholder-gray-400 hover:bg-white/90"
+                        className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#032B93]/50 focus:border-[#032B93] outline-none transition-all duration-200 text-slate-900 font-medium placeholder-slate-400 hover:bg-white"
                         placeholder="john@company.com"
                       />
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-900">
+                        <label className="block text-sm font-bold text-slate-700 uppercase tracking-widest">
                           Company
                         </label>
                         <input
@@ -451,12 +404,12 @@ const Contact = () => {
                           name="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base placeholder-gray-400 hover:bg-white/90"
+                          className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#032B93]/50 focus:border-[#032B93] outline-none transition-all duration-200 text-slate-900 font-medium placeholder-slate-400 hover:bg-white"
                           placeholder="Your Company"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-900">
+                        <label className="block text-sm font-bold text-slate-700 uppercase tracking-widest">
                           Phone Number
                         </label>
                         <input
@@ -464,33 +417,40 @@ const Contact = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base placeholder-gray-400 hover:bg-white/90"
+                          className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#032B93]/50 focus:border-[#032B93] outline-none transition-all duration-200 text-slate-900 font-medium placeholder-slate-400 hover:bg-white"
                           placeholder="+1 (844) 225-2435"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-gray-900">
+                      <label className="block text-sm font-bold text-slate-700 uppercase tracking-widest">
                         Subject *
                       </label>
-                      <select
-                        name="subject"
-                        required
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base"
-                      >
-                        {departments.map((dept) => (
-                          <option key={dept.value} value={dept.value}>
-                            {dept.label}
-                          </option>
-                        ))}
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="subject"
+                          required
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#032B93]/50 focus:border-[#032B93] outline-none transition-all duration-200 text-slate-900 font-medium hover:bg-white appearance-none cursor-pointer"
+                        >
+                          {departments.map((dept) => (
+                            <option key={dept.value} value={dept.value}>
+                              {dept.label}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                          <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-gray-900">
+                      <label className="block text-sm font-bold text-slate-700 uppercase tracking-widest">
                         Message *
                       </label>
                       <textarea
@@ -499,19 +459,21 @@ const Contact = () => {
                         rows={6}
                         value={formData.message}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none text-base placeholder-gray-400 hover:bg-white/90"
+                        className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#032B93]/50 focus:border-[#032B93] outline-none transition-all duration-200 text-slate-900 font-medium placeholder-slate-400 resize-none hover:bg-white"
                         placeholder="Tell us about your telecom needs, current challenges, or any questions you have..."
                       />
                     </div>
 
-                    <button
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-gray-900 to-gray-800 text-white py-4 px-6 rounded-xl font-semibold hover:from-gray-800 hover:to-gray-700 transition-all duration-300 text-base hover:transform hover:-translate-y-0.5 hover:shadow-xl"
-                    >
-                      Send Message
-                    </button>
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        className="w-full btn btn-primary py-4 px-6 rounded-xl font-bold shadow-[0_8px_20px_rgba(3,43,147,0.25)] hover:shadow-[0_12px_25px_rgba(3,43,147,0.35)] hover:-translate-y-1 transition-all"
+                      >
+                        Send Message
+                      </button>
+                    </div>
 
-                    <p className="text-xs text-gray-500 text-center">
+                    <p className="text-xs text-slate-500 text-center font-medium mt-6">
                       By submitting this form, you agree to our privacy policy and terms of service.
                     </p>
                   </form>
@@ -520,28 +482,28 @@ const Contact = () => {
             </div>
 
             {/* Office Information */}
-            <div className="space-y-6 fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <div className="space-y-8 fade-in-up" style={{ animationDelay: '0.2s' }}>
               {/* Office Card */}
-              <div className="bg-white/80 backdrop-blur-md border border-gray-200/60 rounded-3xl p-8 shadow-2xl shadow-gray-900/10 hover:shadow-gray-900/20 transition-all duration-500">
-                <div className="mb-6">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-[0_20px_40px_rgba(3,43,147,0.08)]">
+                <div className="mb-8 border-b border-slate-100 pb-8">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shadow-sm border border-emerald-100">
+                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">Global Headquarters</h3>
-                      <p className="text-gray-600">Visit us in person</p>
+                      <h3 className="text-2xl font-bold text-slate-900">Global Headquarters</h3>
+                      <p className="text-slate-600 font-medium">Visit us in person</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-8">
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Main Office</h4>
-                    <p className="text-gray-600 leading-relaxed">
+                    <h4 className="text-sm font-bold text-slate-400 tracking-widest uppercase mb-3">Main Office</h4>
+                    <p className="text-slate-900 font-medium leading-relaxed">
                       38 Keppel Cir<br />
                       Brampton, ON L7A 0B6<br />
                       Canada
@@ -549,54 +511,56 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Business Hours</h4>
-                    <div className="space-y-1 text-gray-600">
-                      <p>Monday - Friday: 8:00 AM - 6:00 PM EST</p>
-                      <p>Saturday: 9:00 AM - 2:00 PM EST</p>
-                      <p>Sunday: Closed</p>
+                    <h4 className="text-sm font-bold text-slate-400 tracking-widest uppercase mb-3">Business Hours</h4>
+                    <div className="space-y-2 text-slate-900 font-medium">
+                      <p className="flex justify-between"><span>Mon - Fri</span> <span>8:00 AM - 6:00 PM EST</span></p>
+                      <p className="flex justify-between"><span>Saturday</span> <span>9:00 AM - 2:00 PM EST</span></p>
+                      <p className="flex justify-between text-slate-500"><span>Sunday</span> <span>Closed</span></p>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-3">Quick Contact</h4>
-                    <div className="space-y-3">
+                    <h4 className="text-sm font-bold text-slate-400 tracking-widest uppercase mb-3">Quick Contact</h4>
+                    <div className="space-y-4">
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                          <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-200">
+                          <svg className="w-5 h-5 text-[#032B93]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
                         </div>
-                        <span className="text-gray-700">+1 (844) 225-2435</span>
+                        <span className="text-slate-900 font-bold">+1 (844) 225-2435</span>
                       </div>
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                          <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-200">
+                          <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                           </svg>
                         </div>
-                        <span className="text-gray-700">hello@balatrix.com</span>
+                        <span className="text-slate-900 font-bold">hello@balatrix.com</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-gray-200">
-                    <button className="w-full bg-gradient-to-r from-emerald-500 to-green-600 text-white py-3 px-4 rounded-xl font-medium hover:from-emerald-600 hover:to-green-700 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-lg">
-                      Get Directions
+                  <div className="pt-6">
+                    <button className="w-full btn btn-secondary py-4 px-4 rounded-xl font-bold flex items-center justify-center space-x-2">
+                      <span>Get Directions</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </button>
                   </div>
                 </div>
               </div>
 
               {/* Additional Info Card */}
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200/50 rounded-2xl p-6">
-                <div className="text-center space-y-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <div className="bg-[#032B93] rounded-3xl p-8 text-white relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full -z-0 group-hover:scale-110 transition-transform duration-500"></div>
+                <div className="relative z-10 text-center space-y-4">
+                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mx-auto text-white backdrop-blur-sm border border-white/20">
+                    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h4 className="font-semibold text-gray-900">Enterprise Support</h4>
-                  <p className="text-sm text-gray-600">
+                  <h4 className="text-xl font-bold">Enterprise Support</h4>
+                  <p className="text-blue-100 font-medium leading-relaxed">
                     Priority support for enterprise customers with dedicated account management
                   </p>
                 </div>
@@ -608,58 +572,37 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
-        {/* Premium Dark Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900"></div>
-        
-        {/* Sophisticated Pattern Overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        
-        {/* Premium Gradient Orbs */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-radial from-blue-600/15 to-transparent blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-radial from-purple-600/10 to-transparent blur-3xl"></div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16 space-y-4 fade-in-up">
-            <div className="inline-flex items-center space-x-2 text-xs sm:text-sm font-medium text-gray-400 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              <span>Frequently Asked Questions</span>
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 space-y-4">
+            <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
+              SUPPORT
             </div>
-            
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] max-w-3xl mx-auto">
-              Quick Answers to
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"> Common Questions</span>
+
+            <h2 className="heading-section text-slate-900">
+              Frequently Asked Questions
             </h2>
-            
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+
+            <p className="subheading max-w-2xl mx-auto">
               Find instant answers to the most common questions about our services and support.
             </p>
           </div>
 
-          {/* FAQ Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="space-y-6">
             {faqData.map((faq, index) => (
-              <div 
-                key={index} 
-                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 lg:p-8 hover:bg-white/10 transition-all duration-500 fade-in-up hover:transform hover:-translate-y-1"
-                style={{ animationDelay: `${index * 0.1}s` }}
+              <div
+                key={index}
+                className="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:bg-white hover:border-slate-300 hover:shadow-[0_8px_30px_rgba(3,43,147,0.06)] transition-all duration-300 group"
               >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                <div className="flex items-start space-x-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#032B93]/5 text-[#032B93] rounded-xl flex items-center justify-center group-hover:bg-[#032B93] group-hover:text-white transition-colors duration-300 font-bold text-xl">
+                    ?
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-white mb-3 text-lg leading-tight">
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#032B93] transition-colors">
                       {faq.question}
                     </h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                    <p className="text-slate-600 font-medium leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -668,21 +611,10 @@ const Contact = () => {
             ))}
           </div>
 
-          {/* Additional CTA */}
-          <div className="text-center mt-12 fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-white mb-2">
-                Still have questions?
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Our expert support team is here to help you find the perfect solution.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-xl">
-                  Contact Support
-                </button>
-                
-              </div>
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center space-x-2 bg-slate-50 border border-slate-200 px-6 py-3 rounded-full text-slate-700 font-bold hover:bg-slate-100 transition-colors cursor-pointer" onClick={scrollToContactForm}>
+              <span>Still have questions? Let's talk</span>
+              <svg className="w-5 h-5 text-[#032B93]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </div>
           </div>
         </div>

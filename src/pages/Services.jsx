@@ -6,7 +6,7 @@ const Services = () => {
   const scrollToCoreServices = () => {
     const coreServicesSection = document.getElementById('core-services');
     if (coreServicesSection) {
-      coreServicesSection.scrollIntoView({ 
+      coreServicesSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -15,14 +15,14 @@ const Services = () => {
   const services = [
     {
       id: 1,
-      title: "Toll-Free Numbers",
-      description: "Instantly get professional toll-free numbers for US & Canada. Our automated system ensures rapid setup with 99.9% success rates.",
+      title: "Enterprise-Grade Cloud Telephony",
+      description: "Our core Cloud Telephony engine provides complete control over your business communications.",
       features: [
-        "Instant number activation",
-        "US & Canada coverage", 
-        "Multiple number patterns (800, 888, 877, etc.)",
-        "Custom vanity numbers available",
-        "Easy online management"
+        "Global Number Provisioning (DID & TFN)",
+        "Intelligent Call Routing & IVR",
+        "Ring Groups & Complete Call Forwarding",
+        "Bring Your Own Device (BYOD) & SIP Trunking",
+        "Custom Operational Schedules & Audio Libraries"
       ],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,87 +33,69 @@ const Services = () => {
     },
     {
       id: 2,
-      title: "Business Communication",
-      description: "Cloud-based phone system with advanced features designed for modern businesses. Scale from 1 to 1000+ users seamlessly.",
+      title: "Real-Time Analytics & Monitoring",
+      description: "Make data-driven decisions with our comprehensive analytics suite and ensure crystal-clear audio quality.",
       features: [
-        "Call forwarding & routing",
-        "Voicemail to email",
-        "Auto-attendant & IVR",
-        "Call analytics & reporting",
-        "Mobile & desktop apps"
+        "Live Command Center Dashboard",
+        "Call Detail Records (CDRs) Logs",
+        "Visual Analytics & Interactive Charts",
+        "Active Agent Status Tracking",
+        "Network Latency & Packet Loss Monitroing"
       ],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       )
     },
     {
       id: 3,
-      title: "24/7 Support",
-      description: "Round-the-clock support from our communication experts. Get immediate help with setup, features, and troubleshooting.",
+      title: "Automated Billing & Wallet System",
+      description: "A transparent, frictionless financial engine built for scale, preventing fraud and saving money.",
       features: [
-        "24/7/365 availability",
-        "Phone & email support",
-        "Live chat assistance",
-        "Setup & configuration help",
-        "Billing & account support"
+        "Prepaid Digital Wallets",
+        "Real-Time Usage-Based Metering",
+        "Automated Credit Enforcement",
+        "Detailed Itemized Invoicing",
+        "Custom Tiered Licensing Plans"
       ],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12l.01.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
         </svg>
       )
     },
     {
       id: 4,
-      title: "Custom Solutions",
-      description: "Tailored communication solutions for unique business needs. From complex call routing to specialized integrations.",
+      title: "Advanced Call Center Capabilities",
+      description: "Empower your support and sales teams with tools designed for high-volume operations.",
       features: [
-        "Custom call routing",
-        "CRM integrations",
-        "Advanced reporting",
-        "Multi-location setup",
-        "Compliance assistance"
+        "Advanced Call Queue Management",
+        "Agent Performance Tracking",
+        "Call Recording & Quality Monitoring",
+        "Overflow & Failover Routing",
+        "Live Agent Statuses"
       ],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       )
     },
     {
       id: 5,
-      title: "Cost Optimization",
-      description: "Reduce your communication costs with our affordable rates and smart routing technology. Save up to 70% on phone bills.",
+      title: "Security & Multi-Tenancy",
+      description: "Built from the ground up for agencies, resellers, and large enterprises requiring strict control.",
       features: [
-        "Competitive US & Canada rates",
-        "No hidden fees",
-        "Flexible billing options",
-        "Usage analytics",
-        "Cost tracking tools"
+        "True Multi-Tenancy Management",
+        "Role-Based Access Control (RBAC)",
+        "Immutable Audit Logs",
+        "Automated Tenant Onboarding",
+        "Enterprise-Grade Redis/Load Balancing"
       ],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-        </svg>
-      )
-    },
-    {
-      id: 6,
-      title: "Mobile & Desktop Apps",
-      description: "Take your business phone system anywhere with our mobile and desktop applications. Stay connected from any device.",
-      features: [
-        "iOS & Android apps",
-        "Windows & Mac desktop",
-        "Cloud synchronization",
-        "Offline capabilities",
-        "Push notifications"
-      ],
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       )
     }
@@ -126,7 +108,7 @@ const Services = () => {
       description: "Select from available toll-free numbers or request custom vanity numbers for your business."
     },
     {
-      step: "02", 
+      step: "02",
       title: "Quick Setup",
       description: "Configure call forwarding, voicemail, and other features through our easy-to-use dashboard."
     },
@@ -165,69 +147,44 @@ const Services = () => {
             {/* Content Section */}
             <div className="space-y-6 sm:space-y-8">
               {/* Small intro */}
-              <div className="text-sm font-medium text-gray-500 opacity-0 animate-fade-in-up" style={{ fontFamily: 'Inter, sans-serif', animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-                Our Services 📞
+              <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+                Our Services
               </div>
 
               {/* Main Headline */}
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-[1.1] tracking-[-0.02em] opacity-0 animate-fade-in-up"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.3s',
-                  animationFillMode: 'forwards'
-                }}
-              >
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
                 Business<br />Communication<br />
-                <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Services</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#032B93] to-blue-500">Services</span>
               </h1>
 
               {/* Supporting subtext */}
-              <p 
-                className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-full lg:max-w-lg opacity-0 animate-fade-in-up"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.5s',
-                  animationFillMode: 'forwards'
-                }}
-              >
-                Complete toll-free number and cloud communication solutions for businesses. 
-                Affordable, reliable, and easy to use with full US & Canada coverage.
+              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-full lg:max-w-xl opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+                Complete cloud communication solutions for businesses. Affordable, reliable, and easy to use with full global coverage.
               </p>
 
               {/* CTA Group */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-                <button 
-                  onClick={scrollToCoreServices}
-                  className="bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-0.5 hover:shadow-xl text-sm sm:text-base"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Get Started
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+                <button onClick={scrollToCoreServices} className="btn btn-primary text-lg px-8 py-4 w-full sm:w-auto shadow-[0_8px_20px_rgba(3,43,147,0.25)] hover:shadow-[0_12px_25px_rgba(3,43,147,0.35)]">
+                  Explore Services
                 </button>
-                <Link 
-                  to="/contact"
-                  className="border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-px text-sm sm:text-base inline-block text-center"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
+                <Link to="/contact" className="btn btn-secondary text-lg px-8 py-4 w-full sm:w-auto font-semibold">
                   Schedule Consultation
                 </Link>
               </div>
 
               {/* Trust indicators */}
-              <div className="pt-6 sm:pt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-                <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 text-xs sm:text-sm font-medium text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div className="pt-8 border-t border-slate-200/60 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
+                <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">6</span>
+                    <span className="text-lg font-bold text-slate-800">5</span>
                     <span>Core Services</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">24/7</span>
+                    <span className="text-lg font-bold text-slate-800">24/7</span>
                     <span>Support</span>
                   </div>
-                  <div className="w-px h-3 sm:h-4 bg-gray-300" />
                   <div className="flex items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-gray-800">Instant</span>
+                    <span className="text-lg font-bold text-slate-800">Instant</span>
                     <span>Setup</span>
                   </div>
                 </div>
@@ -237,53 +194,53 @@ const Services = () => {
             {/* Visual Element */}
             <div className="hidden lg:block opacity-0 animate-fade-in-right" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
               <div className="relative h-80 xl:h-96 flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-3 lg:gap-4 text-center">
-                  <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
-                    <div className="text-xl lg:text-2xl xl:text-3xl mb-2 lg:mb-3">📞</div>
-                    <div className="text-sm lg:text-base xl:text-lg font-bold text-gray-900 mb-1 lg:mb-2">Toll-Free Numbers</div>
-                    <div className="text-xs lg:text-sm text-gray-600">US & Canada</div>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="card-infrastructure hover:-translate-y-1">
+                    <div className="text-3xl mb-3">📞</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">Toll-Free Numbers</div>
+                    <div className="text-sm text-slate-500">US & Canada</div>
                   </div>
-                  <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
-                    <div className="text-xl lg:text-2xl xl:text-3xl mb-2 lg:mb-3">☁️</div>
-                    <div className="text-sm lg:text-base xl:text-lg font-bold text-gray-900 mb-1 lg:mb-2">Cloud System</div>
-                    <div className="text-xs lg:text-sm text-gray-600">Advanced Features</div>
+                  <div className="card-infrastructure hover:-translate-y-1">
+                    <div className="text-3xl mb-3">☁️</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">Cloud System</div>
+                    <div className="text-sm text-slate-500">Advanced Features</div>
                   </div>
-                  <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
-                    <div className="text-xl lg:text-2xl xl:text-3xl mb-2 lg:mb-3">🔧</div>
-                    <div className="text-sm lg:text-base xl:text-lg font-bold text-gray-900 mb-1 lg:mb-2">Custom Solutions</div>
-                    <div className="text-xs lg:text-sm text-gray-600">Tailored Setup</div>
+                  <div className="card-infrastructure hover:-translate-y-1">
+                    <div className="text-3xl mb-3">🔧</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">Custom Solutions</div>
+                    <div className="text-sm text-slate-500">Tailored Setup</div>
                   </div>
-                  <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
-                    <div className="text-xl lg:text-2xl xl:text-3xl mb-2 lg:mb-3">📱</div>
-                    <div className="text-sm lg:text-base xl:text-lg font-bold text-gray-900 mb-1 lg:mb-2">Mobile Apps</div>
-                    <div className="text-xs lg:text-sm text-gray-600">Stay Connected</div>
+                  <div className="card-infrastructure hover:-translate-y-1">
+                    <div className="text-3xl mb-3">📱</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">Mobile Apps</div>
+                    <div className="text-sm text-slate-500">Stay Connected</div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             {/* Mobile Visual Element */}
-            <div className="lg:hidden mt-6 sm:mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
-                  <div className="text-2xl sm:text-3xl mb-2">📞</div>
-                  <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">Toll-Free Numbers</div>
-                  <div className="text-xs text-gray-600">US & Canada</div>
+            <div className="lg:hidden mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="card-infrastructure text-center p-4">
+                  <div className="text-2xl mb-2">📞</div>
+                  <div className="text-sm font-bold text-slate-900 mb-1">Toll-Free Numbers</div>
+                  <div className="text-xs text-slate-500">US & Canada</div>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
-                  <div className="text-2xl sm:text-3xl mb-2">☁️</div>
-                  <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">Cloud System</div>
-                  <div className="text-xs text-gray-600">Advanced Features</div>
+                <div className="card-infrastructure text-center p-4">
+                  <div className="text-2xl mb-2">☁️</div>
+                  <div className="text-sm font-bold text-slate-900 mb-1">Cloud System</div>
+                  <div className="text-xs text-slate-500">Advanced Features</div>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
-                  <div className="text-2xl sm:text-3xl mb-2">🔧</div>
-                  <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">Custom Solutions</div>
-                  <div className="text-xs text-gray-600">Tailored Setup</div>
+                <div className="card-infrastructure text-center p-4">
+                  <div className="text-2xl mb-2">🔧</div>
+                  <div className="text-sm font-bold text-slate-900 mb-1">Custom Solutions</div>
+                  <div className="text-xs text-slate-500">Tailored Setup</div>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
-                  <div className="text-2xl sm:text-3xl mb-2">📱</div>
-                  <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">Mobile Apps</div>
-                  <div className="text-xs text-gray-600">Stay Connected</div>
+                <div className="card-infrastructure text-center p-4">
+                  <div className="text-2xl mb-2">📱</div>
+                  <div className="text-sm font-bold text-slate-900 mb-1">Mobile Apps</div>
+                  <div className="text-xs text-slate-500">Stay Connected</div>
                 </div>
               </div>
             </div>
@@ -295,48 +252,50 @@ const Services = () => {
       <section id="core-services" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="text-sm font-medium text-blue-600 mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <div className="text-sm font-bold text-[#032B93] tracking-widest uppercase mb-4">
               OUR SERVICES
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <h2 className="heading-section text-slate-900 mb-6">
               Our Core Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="subheading max-w-2xl mx-auto">
               Comprehensive communication solutions designed for reliability and ease of use
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <div key={service.id} className="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2">
+              <div key={service.id} className="group relative card-infrastructure bg-white flex flex-col h-full hover:-translate-y-1">
                 {service.popular && (
-                  <div className="absolute -top-4 left-8">
-                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                  <div className="absolute -top-4 left-6 z-10">
+                    <span className="bg-[#032B93] text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md tracking-wider uppercase">
                       Most Popular
                     </span>
                   </div>
                 )}
 
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
+                <div className="w-14 h-14 bg-[#032B93]/5 text-[#032B93] rounded-2xl flex items-center justify-center mb-6 border border-[#032B93]/10 group-hover:bg-[#032B93] group-hover:text-white transition-colors duration-400">
+                  <div className="w-7 h-7">
+                    {service.icon}
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-slate-600 mb-8 leading-relaxed flex-grow">
                   {service.description}
                 </p>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-4 mt-auto pt-8 border-t border-slate-100">
                   {service.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="w-5 h-5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <li key={index} className="flex items-start text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                      <div className="w-5 h-5 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5 border border-emerald-100">
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700" style={{ fontFamily: 'Inter, sans-serif' }}>{feature}</span>
+                      <span className="leading-snug">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -347,27 +306,32 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="bg-gray-50 py-12 sm:py-16 lg:py-20">
+      <section className="bg-white py-24 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-20">
+            <h2 className="heading-section text-slate-900 mb-6">
               Our Implementation Process
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="subheading max-w-2xl mx-auto">
               A proven methodology that ensures seamless deployment and optimal performance
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 relative">
+            {/* Connecting Line for Desktop */}
+            <div className="hidden lg:block absolute top-[2.5rem] left-[12.5%] right-[12.5%] h-px bg-slate-200 -z-10"></div>
+
             {processSteps.map((process, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {process.step}
+              <div key={index} className="text-center relative z-10">
+                <div className="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-[0_0_0_8px_rgba(255,255,255,1)] border border-slate-100">
+                  <div className="bg-[#0B1120] text-white w-16 h-16 rounded-full flex items-center justify-center text-xl font-extrabold shadow-lg">
+                    {process.step}
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
                   {process.title}
                 </h3>
-                <p className="text-gray-600 text-sm">
+                <p className="text-slate-500 font-medium leading-relaxed">
                   {process.description}
                 </p>
               </div>
@@ -377,30 +341,25 @@ const Services = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="py-20 bg-slate-50 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">99.9%</div>
-              <div className="text-gray-600">Uptime SLA</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">5K+</div>
-              <div className="text-gray-600">Happy Customers</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
-              <div className="text-gray-600">Countries Covered</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">24/7</div>
-              <div className="text-gray-600">Expert Support</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+            {[{ metric: '99.99%', label: 'Uptime SLA' }, { metric: '5K+', label: 'Happy Customers' }, { metric: '150+', label: 'Countries Covered' }, { metric: '24/7', label: 'Expert Support' }].map((stat, idx) => (
+              <div key={idx} className="relative px-4">
+                {idx !== 0 && <div className="hidden md:block absolute left-0 top-1/4 bottom-1/4 w-px bg-slate-200"></div>}
+                <div className="text-4xl md:text-5xl font-black text-[#032B93] tracking-tight mb-2">
+                  {stat.metric}
+                </div>
+                <div className="text-sm md:text-base font-semibold text-slate-500 uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      
+
     </div>
   );
 };

@@ -5,7 +5,7 @@ const Solutions = () => {
   const scrollToSolutions = () => {
     const solutionsSection = document.getElementById('solutions-grid');
     if (solutionsSection) {
-      solutionsSection.scrollIntoView({ 
+      solutionsSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -50,7 +50,6 @@ const Solutions = () => {
         "Multiple toll-free numbers included",
         "Advanced call routing & IVR systems",
         "Team collaboration features",
-        "CRM integrations available",
         "Call recording & analytics",
         "Priority customer support",
         "Multi-location support",
@@ -107,7 +106,6 @@ const Solutions = () => {
         "Advanced call queue management",
         "Real-time analytics & reporting",
         "Agent performance tracking",
-        "Integration with popular CRM systems",
         "Call recording & quality monitoring",
         "Overflow & failover capabilities",
         "24/7 technical support"
@@ -175,7 +173,7 @@ const Solutions = () => {
       company: "Growing E-commerce Business",
       industry: "Retail",
       challenge: "Managing customer communications across 2,500 locations with inconsistent quality and high costs.",
-      solution: "Implemented unified communications platform with centralized management and local number provisioning.",
+      solution: "Implemented cloud telephony platform with centralized management and local number provisioning.",
       results: [
         "40% reduction in communication costs",
         "99.9% uptime across all locations",
@@ -234,9 +232,9 @@ const Solutions = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 
+              <h1
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-[1.2] sm:leading-[1.1] tracking-[-0.02em] opacity-0 animate-fade-in-up break-words"
-                style={{ 
+                style={{
                   fontFamily: 'Inter, sans-serif',
                   animationDelay: '0.3s',
                   animationFillMode: 'forwards',
@@ -249,9 +247,9 @@ const Solutions = () => {
               </h1>
 
               {/* Supporting subtext */}
-              <p 
+              <p
                 className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-full lg:max-w-lg opacity-0 animate-fade-in-up break-words"
-                style={{ 
+                style={{
                   fontFamily: 'Inter, sans-serif',
                   animationDelay: '0.5s',
                   animationFillMode: 'forwards',
@@ -259,13 +257,13 @@ const Solutions = () => {
                   overflowWrap: 'break-word'
                 }}
               >
-                Tailored telecommunications solutions designed for your specific business needs. 
+                Tailored telecommunications solutions designed for your specific business needs.
                 From small startups to large enterprises, we have the right solution for your scale and industry.
               </p>
 
               {/* CTA Group */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-                <button 
+                <button
                   onClick={scrollToSolutions}
                   className="bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-0.5 hover:shadow-xl text-sm sm:text-base"
                   style={{ fontFamily: 'Inter, sans-serif' }}
@@ -323,7 +321,7 @@ const Solutions = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Mobile Visual Element */}
             <div className="lg:hidden mt-6 sm:mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -353,21 +351,21 @@ const Solutions = () => {
       <section id="solutions-grid" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 opacity-0 animate-fade-in-up" 
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.1s',
-                  animationFillMode: 'forwards'
-                }}
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 opacity-0 animate-fade-in-up"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                animationDelay: '0.1s',
+                animationFillMode: 'forwards'
+              }}
             >
               Choose Your <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Business Model</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in-up"
-               style={{ 
-                 fontFamily: 'Inter, sans-serif',
-                 animationDelay: '0.3s',
-                 animationFillMode: 'forwards'
-               }}
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                animationDelay: '0.3s',
+                animationFillMode: 'forwards'
+              }}
             >
               Each solution is specifically designed to address the unique challenges and requirements of different business types
             </p>
@@ -375,12 +373,11 @@ const Solutions = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {solutions.map((solution, index) => (
-              <div 
-                key={solution.id} 
-                className={`relative bg-white border-2 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group opacity-0 animate-fade-in-up ${
-                  solution.popular ? 'border-blue-500' : 'border-gray-200 hover:border-gray-300'
-                }`}
-                style={{ 
+              <div
+                key={solution.id}
+                className={`relative bg-white border-2 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group opacity-0 animate-fade-in-up ${solution.popular ? 'border-blue-500' : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                style={{
                   animationDelay: `${0.2 + index * 0.1}s`,
                   animationFillMode: 'forwards'
                 }}
@@ -399,12 +396,12 @@ const Solutions = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       {solution.title}
                     </h3>
                     <p className="text-gray-600 font-medium"
-                       style={{ fontFamily: 'Inter, sans-serif' }}
+                      style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       {solution.subtitle}
                     </p>
@@ -412,7 +409,7 @@ const Solutions = () => {
                 </div>
 
                 <p className="text-gray-700 mb-6 leading-relaxed"
-                   style={{ fontFamily: 'Inter, sans-serif' }}
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {solution.description}
                 </p>
@@ -420,7 +417,7 @@ const Solutions = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       Key Features:
                     </h4>
@@ -439,7 +436,7 @@ const Solutions = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       Key Benefits:
                     </h4>
@@ -468,45 +465,45 @@ const Solutions = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 opacity-0 animate-fade-in-up"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.1s',
-                  animationFillMode: 'forwards'
-                }}
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                animationDelay: '0.1s',
+                animationFillMode: 'forwards'
+              }}
             >
               Industry-Specific <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Solutions</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in-up"
-               style={{ 
-                 fontFamily: 'Inter, sans-serif',
-                 animationDelay: '0.3s',
-                 animationFillMode: 'forwards'
-               }}
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                animationDelay: '0.3s',
+                animationFillMode: 'forwards'
+              }}
             >
-              Specialized telecommunications solutions tailored to meet the unique compliance, 
+              Specialized telecommunications solutions tailored to meet the unique compliance,
               security, and operational requirements of different industries
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {industries.map((industry, index) => (
-              <div key={index} 
-                   className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group opacity-0 animate-fade-in-up hover:-translate-y-2"
-                   style={{ 
-                     animationDelay: `${0.2 + index * 0.1}s`,
-                     animationFillMode: 'forwards'
-                   }}
+              <div key={index}
+                className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group opacity-0 animate-fade-in-up hover:-translate-y-2"
+                style={{
+                  animationDelay: `${0.2 + index * 0.1}s`,
+                  animationFillMode: 'forwards'
+                }}
               >
                 <div className="p-3 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 text-white mb-4 w-fit group-hover:scale-110 transition-transform duration-300">
                   {industry.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {industry.name}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed"
-                   style={{ fontFamily: 'Inter, sans-serif' }}
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {industry.description}
                 </p>
@@ -533,20 +530,20 @@ const Solutions = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 opacity-0 animate-fade-in-up"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.1s',
-                  animationFillMode: 'forwards'
-                }}
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                animationDelay: '0.1s',
+                animationFillMode: 'forwards'
+              }}
             >
               Success <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Stories</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in-up"
-               style={{ 
-                 fontFamily: 'Inter, sans-serif',
-                 animationDelay: '0.3s',
-                 animationFillMode: 'forwards'
-               }}
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                animationDelay: '0.3s',
+                animationFillMode: 'forwards'
+              }}
             >
               See how companies like yours have transformed their communications infrastructure with Balatrix
             </p>
@@ -554,16 +551,16 @@ const Solutions = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
-              <div key={index} 
-                   className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group opacity-0 animate-fade-in-up hover:-translate-y-2"
-                   style={{ 
-                     animationDelay: `${0.2 + index * 0.1}s`,
-                     animationFillMode: 'forwards'
-                   }}
+              <div key={index}
+                className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group opacity-0 animate-fade-in-up hover:-translate-y-2"
+                style={{
+                  animationDelay: `${0.2 + index * 0.1}s`,
+                  animationFillMode: 'forwards'
+                }}
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="font-bold text-xl text-gray-900 group-hover:text-gray-800 transition-colors"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                    style={{ fontFamily: 'Inter, sans-serif' }}
                   >
                     {study.company}
                   </h3>
@@ -571,28 +568,28 @@ const Solutions = () => {
                     {study.industry}
                   </span>
                 </div>
-                
+
                 <div className="mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                    style={{ fontFamily: 'Inter, sans-serif' }}
                   >
                     Challenge:
                   </h4>
                   <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>{study.challenge}</p>
                 </div>
-                
+
                 <div className="mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                    style={{ fontFamily: 'Inter, sans-serif' }}
                   >
                     Solution:
                   </h4>
                   <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>{study.solution}</p>
                 </div>
-                
+
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                    style={{ fontFamily: 'Inter, sans-serif' }}
                   >
                     Results:
                   </h4>
@@ -615,7 +612,7 @@ const Solutions = () => {
         </div>
       </section>
 
-      
+
     </div>
   );
 };

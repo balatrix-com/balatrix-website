@@ -1,158 +1,79 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
-  const [currentTime, setCurrentTime] = useState('');
-  const [typedText, setTypedText] = useState('');
-  const headlines = [
-    'Affordable Toll-Free Numbers for US & Canada',
-    'Cloud Business Communication Made Simple',
-    'Customized Communication for Every Business'
-  ];
-  const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
-
-  useEffect(() => {
-    // Set greeting based on time
-    const hour = new Date().getHours();
-    const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-    setCurrentTime(greeting);
-
-    // Typing effect for headlines
-    let typeIndex = 0;
-    const currentHeadline = headlines[currentHeadlineIndex];
-    
-    const typeInterval = setInterval(() => {
-      if (typeIndex < currentHeadline.length) {
-        setTypedText(currentHeadline.slice(0, typeIndex + 1));
-        typeIndex++;
-      } else {
-        clearInterval(typeInterval);
-        // Switch to next headline after a delay
-        setTimeout(() => {
-          setCurrentHeadlineIndex((prev) => (prev + 1) % headlines.length);
-          setTypedText('');
-        }, 3000);
-      }
-    }, 100);
-
-    return () => clearInterval(typeInterval);
-  }, [currentHeadlineIndex]);
-
-  // Floating animation for visual elements
-  const FloatingElement = ({ children, delay = 0 }) => (
-    <div 
-      className="animate-float"
-      style={{ 
-        animation: `float 6s ease-in-out infinite`,
-        animationDelay: `${delay}s`
-      }}
-    >
-      {children}
-    </div>
-  );
-
   return (
-    <section className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-gray-50 flex items-center justify-center overflow-hidden relative">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+    <section className="bg-white pt-24 pb-16 lg:pt-28 lg:pb-20 min-h-screen flex items-center relative overflow-hidden">
+      {/* Soft Background Effects - Light Theme */}
+      <div className="absolute inset-0 z-0">
+        {/* Subtle engineering grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        {/* Large ambient glowing orbs using the brand #032B93 color */}
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-[#032B93] opacity-[0.08] blur-[100px]"></div>
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#032B93]/[0.05] rounded-full blur-[120px] translate-x-1/3 -translate-y-1/4 animate-pulse-subtle pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#032B93]/[0.03] rounded-full blur-[100px] -translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
       </div>
 
-      {/* Subtle radial gradient accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-radial from-gray-100/20 via-transparent to-transparent pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-16 sm:py-20 md:py-24 lg:py-32 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Content Section */}
-          <div className="space-y-8">
-            {/* Time-based greeting */}
-            <div className="text-sm font-medium text-gray-500 opacity-0 animate-fade-in-up" style={{ fontFamily: 'Inter, sans-serif', animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-              {currentTime} 👋
+          <div className="space-y-8 animate-fade-in lg:pr-8">
+            <div className="inline-flex items-center space-x-2 bg-[#032B93]/5 border border-[#032B93]/10 text-[#032B93] px-4 py-1.5 rounded-full shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#032B93] animate-pulse"></span>
+              <span className="font-semibold text-xs tracking-wide uppercase">Enterprise-Grade Cloud Telephony</span>
             </div>
 
-            {/* Main Headline with typing effect */}
-            <div className="space-y-6">
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-[1.1] tracking-[-0.02em] opacity-0 animate-fade-in-up min-h-[180px] sm:min-h-[200px] md:min-h-[240px] lg:min-h-[280px] xl:min-h-[320px] w-full max-w-4xl"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.3s',
-                  animationFillMode: 'forwards'
-                }}
-              >
-                {typedText}
-                <span className="animate-pulse text-gray-400">|</span>
-              </h1>
+            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+              The Ultimate <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#032B93] to-blue-500">
+                Cloud Telephony
+              </span> <br />
+              Platform.
+            </h1>
 
-              {/* Supporting subtext */}
-              <p 
-                className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg opacity-0 animate-fade-in-up"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  animationDelay: '0.5s',
-                  animationFillMode: 'forwards'
-                }}
-              >
-                Get affordable toll-free numbers for US & Canada with cloud-based business communication solutions. Fully customizable, easy to set up, and backed by 24/7 support.
-              </p>
-            </div>
+            <p className="text-lg lg:text-xl text-slate-600 max-w-xl leading-relaxed">
+              Take complete control of your business communications with global voice routing and real-time analytics built for modern enterprises.
+            </p>
 
-            {/* CTA Group */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-              <Link 
-                to="/contact"
-                className="bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-0.5 hover:shadow-xl text-sm sm:text-base touch-manipulation inline-block text-center"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Get Your Numbers Now
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 w-full sm:w-auto shadow-[0_8px_20px_rgba(3,43,147,0.25)] hover:shadow-[0_12px_25px_rgba(3,43,147,0.35)]">
+                Get Your Number
               </Link>
-              <Link 
-                to="/pricing"
-                className="border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:transform hover:-translate-y-px text-sm sm:text-base touch-manipulation inline-block text-center"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                View Pricing
+              <Link to="/contact" className="btn btn-secondary text-lg px-8 py-4 w-full sm:w-auto font-semibold">
+                Talk to an Engineer
               </Link>
             </div>
 
-           
-            {/* Trust Bar */}
-            <div className="pt-6 sm:pt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-              <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm font-medium text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
-                <div className="flex items-center gap-1 sm:gap-2">
-                  <span className="text-sm sm:text-lg font-bold text-gray-800">US & Canada</span>
-                  <span className="hidden sm:inline">Coverage</span>
-                  <span className="sm:hidden">Coverage</span>
-                </div>
-                <div className="w-px h-4 bg-gray-300" />
-                <div className="flex items-center gap-1 sm:gap-2">
-                  <span className="text-sm sm:text-lg font-bold text-gray-800">99.9%</span>
-                  <span>Uptime</span>
-                </div>
-                <div className="w-px h-4 bg-gray-300" />
-                <div className="flex items-center gap-1 sm:gap-2">
-                  <span className="text-sm sm:text-lg font-bold text-gray-800">24/7</span>
-                  <span>Support</span>
+          </div>
+
+          {/* Visual Element - Premium Photography in Light Theme Context */}
+          <div className="relative animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="relative rounded-2xl shadow-[0_20px_50px_rgba(3,43,147,0.15)] overflow-hidden group border border-slate-200/50">
+              <img
+                src="/images/hero_dashboard_1772447946359.png"
+                alt="Balatrix Live Communications Analytics"
+                className="w-full h-auto object-cover object-center transform transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+
+              {/* Light Theme Floating Trust Badge */}
+              <div className="absolute bottom-6 left-6 z-20 bg-white/95 backdrop-blur-md border border-slate-100 rounded-2xl p-4 shadow-[0_10px_40px_rgba(0,0,0,0.1)] animate-float">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#032B93]/10 flex items-center justify-center border border-[#032B93]/20">
+                    <svg className="w-5 h-5 text-[#032B93]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-slate-900 text-sm font-bold leading-tight">Active Node Health</p>
+                    <p className="text-[#032B93] text-xs font-semibold tracking-wide">100% OPERATIONAL</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Visual Element */}
-          <div className="hidden lg:block opacity-0 animate-fade-in-right" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
-            <div className="relative h-96 flex items-center justify-center">
-              <img 
-                src="https://i.postimg.cc/CLg39YWx/image-removebg-preview.png" 
-                alt="Balatrix" 
-                className="h-96 w-auto"
-              />
-            </div>
-          </div>
         </div>
-
-        
       </div>
     </section>
   );
