@@ -370,6 +370,31 @@ const Pricing = () => {
         </div>
       </section>
 
+      {/* Custom Plan Banner */}
+      <section className="pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-50 rounded-3xl p-8 sm:p-10 border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">👉</span>
+                <h3 className="text-2xl font-bold text-slate-900">
+                  Need something specific?
+                </h3>
+              </div>
+              <p className="text-slate-600 font-medium text-lg leading-relaxed max-w-3xl">
+                We offer fully customizable plans tailored to your business needs. 
+                From small teams to large call centers — we build plans that match your exact requirements.
+              </p>
+            </div>
+            <div className="flex-shrink-0 w-full md:w-auto">
+              <Link to="/contact#contact-form" className="inline-block w-full sm:w-auto text-center bg-white text-slate-900 font-bold text-base px-8 py-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                Talk to us for a tailored solution
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Add-ons Section */}
       <section className="py-24 bg-slate-50 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
