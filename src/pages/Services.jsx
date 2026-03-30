@@ -19,10 +19,11 @@ const Services = () => {
       description: "Our core Cloud Telephony engine provides complete control over your business communications.",
       features: [
         "Global Number Provisioning (DID & TFN)",
-        "Intelligent Call Routing & IVR",
-        "Ring Groups & Complete Call Forwarding",
-        "Bring Your Own Device (BYOD) & SIP Trunking",
-        "Custom Operational Schedules & Audio Libraries"
+        "Multi-level IVR (interactive voice menus)",
+        "Ring groups (simultaneous, hunt, round-robin)",
+        "Intelligent call forwarding (internal or external)",
+        "Call monitoring (listen, whisper, barge)",
+        "Time-Based Routing (Schedules)"
       ],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,11 +71,11 @@ const Services = () => {
       title: "Advanced Call Center Capabilities",
       description: "Empower your support and sales teams with tools designed for high-volume operations.",
       features: [
-        "Advanced Call Queue Management",
-        "Agent Performance Tracking",
-        "Call Recording & Quality Monitoring",
-        "Overflow & Failover Routing",
-        "Live Agent Statuses"
+        "Call monitoring (listen, whisper, barge)",
+        "Call transfer (blind & attended)",
+        "Dynamic routing based on rules & logic",
+        "Per-customer and per-number configurations",
+        "DTMF input handling for IVR navigation"
       ],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,7 +160,7 @@ const Services = () => {
 
               {/* Supporting subtext */}
               <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-full lg:max-w-xl opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-                Complete cloud communication solutions for businesses. Affordable, reliable, and easy to use with full global coverage.
+                Launch your US or Canada calling operation in minutes with Balatrix — get toll-free numbers, a cloud PBX, and complete call management at a fraction of traditional telecom costs.
               </p>
 
               {/* CTA Group */}
@@ -211,9 +212,9 @@ const Services = () => {
                     <div className="text-sm text-slate-500">Tailored Setup</div>
                   </div>
                   <div className="card-infrastructure hover:-translate-y-1">
-                    <div className="text-3xl mb-3">📱</div>
-                    <div className="text-lg font-bold text-slate-900 mb-1">Mobile Apps</div>
-                    <div className="text-sm text-slate-500">Stay Connected</div>
+                    <div className="text-3xl mb-3">🌐</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">Free Web Softphone</div>
+                    <div className="text-sm text-slate-500">Call from browser</div>
                   </div>
                 </div>
               </div>
@@ -238,9 +239,9 @@ const Services = () => {
                   <div className="text-xs text-slate-500">Tailored Setup</div>
                 </div>
                 <div className="card-infrastructure text-center p-4">
-                  <div className="text-2xl mb-2">📱</div>
-                  <div className="text-sm font-bold text-slate-900 mb-1">Mobile Apps</div>
-                  <div className="text-xs text-slate-500">Stay Connected</div>
+                  <div className="text-2xl mb-2">🌐</div>
+                  <div className="text-sm font-bold text-slate-900 mb-1">Free Web Softphone</div>
+                  <div className="text-xs text-slate-500">Call from browser</div>
                 </div>
               </div>
             </div>

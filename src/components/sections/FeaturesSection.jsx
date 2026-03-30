@@ -6,11 +6,12 @@ const FeaturesSection = () => {
             title: 'Enterprise-Grade Cloud Telephony',
             description: 'Our core Cloud Telephony engine provides complete control.',
             bullets: [
-                'Global Number Provisioning (DID & TFNs)',
-                'Intelligent Call Routing & IVR',
-                'Ring Groups & Forwarding',
-                'BYOD & SIP Trunking',
-                'Operational Schedules'
+                "Global Number Provisioning (DID & TFN)",
+                "Multi-level IVR (interactive voice menus)",
+                "Ring groups (simultaneous, hunt, round-robin)",
+                "Intelligent call forwarding (internal or external)",
+                "Call monitoring (listen, whisper, barge)",
+                "Time-Based Routing (Schedules)"
             ],
             icon: (
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -52,10 +53,11 @@ const FeaturesSection = () => {
             title: 'Advanced Call Center Capabilities',
             description: 'Empower your support and sales teams with tools designed for high-volume operations.',
             bullets: [
-                'Advanced Call Queue Management',
-                'Agent Performance Tracking',
-                'Call Recording & Quality Monitoring',
-                'Overflow & Failover Routing'
+                "Call monitoring (listen, whisper, barge)",
+                "Call transfer (blind & attended)",
+                "Dynamic routing based on rules & logic",
+                "Per-customer and per-number configurations",
+                "DTMF input handling for IVR navigation"
             ],
             icon: (
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

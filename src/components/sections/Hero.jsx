@@ -33,7 +33,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg lg:text-xl text-slate-600 max-w-xl leading-relaxed">
-              Take complete control of your business communications with global voice routing and real-time analytics built for modern enterprises.
+              Balatrix provides affordable US and Canada phone numbers with a fully hosted cloud PBX, enabling businesses to start calling operations instantly without any complex setup.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">

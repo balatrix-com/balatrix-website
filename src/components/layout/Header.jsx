@@ -158,7 +158,7 @@ const Header = () => {
               {/* Status Indicator */}
               <div className="hidden xl:flex items-center space-x-2 text-sm mr-4">
                 <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-gray-600 text-[11px] font-medium">All systems operational</span>
+                <span className="text-gray-600 text-[14px] font-medium">24x7 Free Support</span>
               </div>
 
 

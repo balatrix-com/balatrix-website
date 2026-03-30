@@ -15,7 +15,7 @@ const Solutions = () => {
     {
       id: 1,
       title: "Small Business",
-      subtitle: "Startups & Small Companies (1-50 employees)",
+      subtitle: "Startups & Small Companies (1-15 employees)",
       description: "Affordable toll-free communication solutions for growing businesses. Get professional phone presence without the enterprise costs.",
       features: [
         "Affordable monthly pricing starting at $9.99",
@@ -44,7 +44,7 @@ const Solutions = () => {
     {
       id: 2,
       title: "Medium Business",
-      subtitle: "Growing Companies (50-500 employees)",
+      subtitle: "Growing Companies (20-50 employees)",
       description: "Advanced business communication features for expanding companies that need more than basic phone service but less than enterprise complexity.",
       features: [
         "Multiple toll-free numbers included",
@@ -71,7 +71,7 @@ const Solutions = () => {
     {
       id: 3,
       title: "Enterprise",
-      subtitle: "Large Organizations (500+ employees)",
+      subtitle: "Large Organizations (100+ employees)",
       description: "Comprehensive communication infrastructure for large organizations requiring maximum reliability, compliance, and dedicated support.",
       features: [
         "Unlimited toll-free numbers",
@@ -257,8 +257,9 @@ const Solutions = () => {
                   overflowWrap: 'break-word'
                 }}
               >
-                Tailored telecommunications solutions designed for your specific business needs.
+                Scale your business your way — pay only for what you use.
                 From small startups to large enterprises, we have the right solution for your scale and industry.
+                No delays. No complexity. Just plug in and start calling.
               </p>
 
               {/* CTA Group */}
@@ -304,15 +305,15 @@ const Solutions = () => {
                 <div className="grid grid-cols-2 gap-3 lg:gap-4 text-center">
                   <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
                     <div className="text-xl lg:text-2xl font-bold text-blue-600 mb-1 lg:mb-2">Small</div>
-                    <div className="text-xs lg:text-sm text-gray-600">1-50 employees</div>
+                    <div className="text-xs lg:text-sm text-gray-600">1-15 employees</div>
                   </div>
                   <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
                     <div className="text-xl lg:text-2xl font-bold text-green-600 mb-1 lg:mb-2">Medium</div>
-                    <div className="text-xs lg:text-sm text-gray-600">50-500 employees</div>
+                    <div className="text-xs lg:text-sm text-gray-600">20-50 employees</div>
                   </div>
                   <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
                     <div className="text-xl lg:text-2xl font-bold text-purple-600 mb-1 lg:mb-2">Enterprise</div>
-                    <div className="text-xs lg:text-sm text-gray-600">500+ employees</div>
+                    <div className="text-xs lg:text-sm text-gray-600">100+ employees</div>
                   </div>
                   <div className="bg-white p-4 lg:p-6 rounded-xl shadow-lg border">
                     <div className="text-xl lg:text-2xl font-bold text-orange-600 mb-1 lg:mb-2">Call Centers</div>
@@ -327,15 +328,15 @@ const Solutions = () => {
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
                   <div className="text-lg sm:text-xl font-bold text-blue-600 mb-1">Small</div>
-                  <div className="text-xs text-gray-600">1-50 employees</div>
+                  <div className="text-xs text-gray-600">1-15 employees</div>
                 </div>
                 <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
                   <div className="text-lg sm:text-xl font-bold text-green-600 mb-1">Medium</div>
-                  <div className="text-xs text-gray-600">50-500 employees</div>
+                  <div className="text-xs text-gray-600">20-50 employees</div>
                 </div>
                 <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
                   <div className="text-lg sm:text-xl font-bold text-purple-600 mb-1">Enterprise</div>
-                  <div className="text-xs text-gray-600">500+ employees</div>
+                  <div className="text-xs text-gray-600">100+ employees</div>
                 </div>
                 <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-gray-200 shadow-sm text-center">
                   <div className="text-lg sm:text-xl font-bold text-orange-600 mb-1">Call Centers</div>

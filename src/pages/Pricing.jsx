@@ -23,6 +23,7 @@ const Pricing = () => {
       yearlyPrice: 3348, // 20% discount: 349 * 12 * 0.8
       savings: '20%',
       features: [
+        'Free Built-in WebRTC Softphone',
         '1 Toll-Free Number & 1 Extension',
         'Visual Call Routing & Basic IVR',
         'Real-Time Analytics Dashboard',
@@ -40,6 +41,7 @@ const Pricing = () => {
       yearlyPrice: 9590, // 20% discount: 999 * 12 * 0.8
       savings: '20%',
       features: [
+        'Free Built-in WebRTC Softphone',
         '2 Toll-Free Numbers & 5 Extensions',
         'Advanced Routing & Ring Groups',
         'Real-Time Analytics & CDR Logs',
@@ -57,6 +59,7 @@ const Pricing = () => {
       yearlyPrice: 47990, // 20% discount: 4999 * 12 * 0.8
       savings: '20%',
       features: [
+        'Free Built-in WebRTC Softphone',
         '5+ Toll-Free Numbers & Unlimited Exts',
         'Enterprise-Grade Call Routing',
         'Complete Analytics & QA Metrics',
@@ -156,7 +159,8 @@ const Pricing = () => {
               {/* Supporting subtext */}
               <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-full lg:max-w-xl opacity-0 animate-fade-in-up break-words" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
                 Choose the perfect plan for your business. All plans include our core features
-                with 99.9% uptime guarantee and expert support. Pay annually and get 20% discount.
+                Designed for businesses that want performance without telecom headaches,
+                24x7 Free Support.
               </p>
 
               {/* Billing Toggle */}
