@@ -28,7 +28,7 @@ const Pricing = () => {
         'Visual Call Routing & Basic IVR',
         'Real-Time Analytics Dashboard',
         'Automated Billing & Digital Wallet',
-        'Additional Minutes: USD 0.015 per minute'
+        'Additional Minutes: $0.015 per minute'
       ],
       limitations: [],
       popular: false,
@@ -46,7 +46,7 @@ const Pricing = () => {
         'Advanced Routing & Ring Groups',
         'Real-Time Analytics & CDR Logs',
         'Team Collaboration Features',
-        'Additional Minutes: USD 0.014 per minute'
+        'Additional Minutes: $0.014 per minute'
       ],
       limitations: [],
       popular: true,
@@ -65,7 +65,7 @@ const Pricing = () => {
         'Complete Analytics & QA Metrics',
         'Advanced Queue & Agent Management',
         'Full RBAC, Audit Logs & Multi-Tenancy',
-        'Additional Minutes: USD 0.013 per minute'
+        'Additional Minutes: $0.013 per minute'
       ],
       limitations: [],
       popular: false,
@@ -206,7 +206,7 @@ const Pricing = () => {
               <div className="pt-8 border-t border-slate-200/60 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
                 <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-slate-800">USD 39.99</span>
+                    <span className="text-lg font-bold text-slate-800">$39.99</span>
                     <span>Starting Price</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -226,7 +226,7 @@ const Pricing = () => {
               <div className="relative h-80 xl:h-96 flex items-center justify-center">
                 <div className="bg-white rounded-3xl p-12 shadow-[0_20px_50px_rgba(3,43,147,0.12)] border border-slate-200/60 max-w-sm w-full text-center relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#032B93]/5 rounded-bl-full -z-10"></div>
-                  <div className="text-6xl font-extrabold text-[#032B93] mb-4">USD 39.99</div>
+                  <div className="text-6xl font-extrabold text-[#032B93] mb-4">$39.99</div>
                   <div className="text-lg text-slate-900 font-bold mb-3">Starting from</div>
                   <div className="text-sm text-slate-500 mb-8 font-medium">
                     Professional toll-free numbers with all essential features included
@@ -244,7 +244,7 @@ const Pricing = () => {
             {/* Mobile Visual Element */}
             <div className="lg:hidden mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
               <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-[0_10px_30px_rgba(3,43,147,0.1)] text-center">
-                <div className="text-5xl font-extrabold text-[#032B93] mb-3">USD 39.99</div>
+                <div className="text-5xl font-extrabold text-[#032B93] mb-3">$39.99</div>
                 <div className="text-base text-slate-900 font-bold mb-3">Starting from</div>
                 <div className="text-sm text-slate-500 mb-6 font-medium">
                   Professional toll-free numbers with all essential features included
@@ -309,7 +309,7 @@ const Pricing = () => {
                     ) : (
                       <div className="flex items-baseline justify-center">
                         <span className="text-5xl font-black text-[#032B93]">
-                          USD {(billingCycle === 'monthly' ? tier.monthlyPrice : (tier.yearlyPrice / 12)).toFixed(2)}
+                          ${(billingCycle === 'monthly' ? tier.monthlyPrice : (tier.yearlyPrice / 12)).toFixed(2)}
                         </span>
                         <span className="text-slate-500 ml-2 text-lg font-medium">
                           /{billingCycle === 'monthly' ? 'month' : 'month'}
@@ -424,7 +424,7 @@ const Pricing = () => {
                   <div className="border-b border-slate-100 pb-6 flex items-end justify-between">
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Pay As You Go</div>
-                      <div className="text-3xl font-extrabold text-slate-900">USD {addon.payAsYouGoPrice}</div>
+                      <div className="text-3xl font-extrabold text-slate-900">${addon.payAsYouGoPrice}</div>
                     </div>
                     <div className="text-sm font-medium text-slate-500 pb-1">{addon.unit}</div>
                   </div>
@@ -432,7 +432,7 @@ const Pricing = () => {
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">One-Time Charge</div>
                       <div className="text-xl font-bold text-slate-700">
-                        {addon.oneTimePrice === '—' ? '—' : `USD ${addon.oneTimePrice}`}
+                        {addon.oneTimePrice === '—' ? '—' : `$${addon.oneTimePrice}`}
                       </div>
                     </div>
                     {addon.oneTimePrice !== '—' && (

@@ -79,7 +79,7 @@ const Terms = () => {
                   Prices, plan details, and applicable taxes (if any) are displayed before checkout.
                 </p>
                 <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                  <li>All amounts are in US Dollars (USD) unless specified otherwise.</li>
+                  <li>All amounts are in US Dollars ($) unless specified otherwise.</li>
                   <li>Payment processing is handled securely by third-party gateways; Balatrix does not store card, bank account, or digital wallet credentials.</li>
                   <li>Invoices and receipts are automatically generated and sent to your registered email address.</li>
                 </ul>
