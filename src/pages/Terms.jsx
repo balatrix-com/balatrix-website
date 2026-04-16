@@ -55,7 +55,7 @@ const Terms = () => {
                 </ul>
                 <p className="text-gray-600 mt-4">
                   Our services are intended for lawful business communication only and must not be used for spam,
-                  fraud, or any prohibited activities under Indian telecom and IT laws.
+                  fraud, or any prohibited activities under applicable telecom, data protection, and IT laws.
                 </p>
               </div>
 
@@ -79,8 +79,8 @@ const Terms = () => {
                   Prices, plan details, and applicable taxes (if any) are displayed before checkout.
                 </p>
                 <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                  <li>All amounts are in Indian Rupees (INR) unless specified otherwise.</li>
-                  <li>Payment processing is handled securely by third-party gateways; Balatrix does not store card or UPI data.</li>
+                  <li>All amounts are in US Dollars (USD) unless specified otherwise.</li>
+                  <li>Payment processing is handled securely by third-party gateways; Balatrix does not store card, bank account, or digital wallet credentials.</li>
                   <li>Invoices and receipts are automatically generated and sent to your registered email address.</li>
                 </ul>
               </div>
@@ -144,8 +144,8 @@ const Terms = () => {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Governing Law & Jurisdiction</h2>
                 <p className="text-gray-600">
-                  These Terms are governed by and construed under the laws of India.
-                  Any disputes shall be subject to the exclusive jurisdiction of the courts in Karnataka, India.
+                  These Terms are governed by and construed under applicable laws in the relevant service jurisdiction.
+                  Any disputes shall be subject to the exclusive jurisdiction of the competent courts in that jurisdiction.
                 </p>
               </div>
 

@@ -19,8 +19,8 @@ const Pricing = () => {
     {
       name: 'Starter Plan',
       description: 'Perfect for small businesses and startups',
-      monthlyPrice: 349,
-      yearlyPrice: 3348, // 20% discount: 349 * 12 * 0.8
+      monthlyPrice: 39.99,
+      yearlyPrice: 383.90, // 20% discount: 39.99 * 12 * 0.8
       savings: '20%',
       features: [
         'Free Built-in WebRTC Softphone',
@@ -28,17 +28,17 @@ const Pricing = () => {
         'Visual Call Routing & Basic IVR',
         'Real-Time Analytics Dashboard',
         'Automated Billing & Digital Wallet',
-        'Per Minute Charge: ₹1.99'
+        'Additional Minutes: USD 0.015 per minute'
       ],
       limitations: [],
       popular: false,
       color: 'gray'
     },
     {
-      name: 'Professional Plan',
+      name: 'Pro Plan',
       description: 'Ideal for growing businesses with higher volume needs',
-      monthlyPrice: 999,
-      yearlyPrice: 9590, // 20% discount: 999 * 12 * 0.8
+      monthlyPrice: 79.99,
+      yearlyPrice: 767.90, // 20% discount: 79.99 * 12 * 0.8
       savings: '20%',
       features: [
         'Free Built-in WebRTC Softphone',
@@ -46,7 +46,7 @@ const Pricing = () => {
         'Advanced Routing & Ring Groups',
         'Real-Time Analytics & CDR Logs',
         'Team Collaboration Features',
-        'Per Minute Charge: ₹1.60'
+        'Additional Minutes: USD 0.014 per minute'
       ],
       limitations: [],
       popular: true,
@@ -55,8 +55,8 @@ const Pricing = () => {
     {
       name: 'Enterprise Plan',
       description: 'For call centers and large organizations requiring scale',
-      monthlyPrice: 4999,
-      yearlyPrice: 47990, // 20% discount: 4999 * 12 * 0.8
+      monthlyPrice: 149.99,
+      yearlyPrice: 1439.90, // 20% discount: 149.99 * 12 * 0.8
       savings: '20%',
       features: [
         'Free Built-in WebRTC Softphone',
@@ -64,7 +64,8 @@ const Pricing = () => {
         'Enterprise-Grade Call Routing',
         'Complete Analytics & QA Metrics',
         'Advanced Queue & Agent Management',
-        'Full RBAC, Audit Logs & Multi-Tenancy'
+        'Full RBAC, Audit Logs & Multi-Tenancy',
+        'Additional Minutes: USD 0.013 per minute'
       ],
       limitations: [],
       popular: false,
@@ -76,21 +77,21 @@ const Pricing = () => {
     {
       name: 'Additional TFN',
       description: 'Extra toll-free numbers beyond your plan limit',
-      payAsYouGoPrice: '199',
-      oneTimePrice: '99',
+      payAsYouGoPrice: '5.00',
+      oneTimePrice: '5.00',
       unit: 'per month'
     },
     {
       name: 'Additional Extension',
       description: 'Extra extensions beyond your plan limit',
-      payAsYouGoPrice: '199',
-      oneTimePrice: '99',
+      payAsYouGoPrice: '5.00',
+      oneTimePrice: '3.00',
       unit: 'per month'
     },
     {
       name: 'Per Minute Charge',
       description: 'Additional calling minutes when you exceed your plan',
-      payAsYouGoPrice: '1.99',
+      payAsYouGoPrice: '0.015',
       oneTimePrice: '—',
       unit: 'per minute'
     }
@@ -205,7 +206,7 @@ const Pricing = () => {
               <div className="pt-8 border-t border-slate-200/60 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
                 <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-slate-800">₹349</span>
+                    <span className="text-lg font-bold text-slate-800">USD 39.99</span>
                     <span>Starting Price</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -225,7 +226,7 @@ const Pricing = () => {
               <div className="relative h-80 xl:h-96 flex items-center justify-center">
                 <div className="bg-white rounded-3xl p-12 shadow-[0_20px_50px_rgba(3,43,147,0.12)] border border-slate-200/60 max-w-sm w-full text-center relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#032B93]/5 rounded-bl-full -z-10"></div>
-                  <div className="text-6xl font-extrabold text-[#032B93] mb-4">₹349</div>
+                  <div className="text-6xl font-extrabold text-[#032B93] mb-4">USD 39.99</div>
                   <div className="text-lg text-slate-900 font-bold mb-3">Starting from</div>
                   <div className="text-sm text-slate-500 mb-8 font-medium">
                     Professional toll-free numbers with all essential features included
@@ -243,7 +244,7 @@ const Pricing = () => {
             {/* Mobile Visual Element */}
             <div className="lg:hidden mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '1.0s', animationFillMode: 'forwards' }}>
               <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-[0_10px_30px_rgba(3,43,147,0.1)] text-center">
-                <div className="text-5xl font-extrabold text-[#032B93] mb-3">₹349</div>
+                <div className="text-5xl font-extrabold text-[#032B93] mb-3">USD 39.99</div>
                 <div className="text-base text-slate-900 font-bold mb-3">Starting from</div>
                 <div className="text-sm text-slate-500 mb-6 font-medium">
                   Professional toll-free numbers with all essential features included
@@ -308,7 +309,7 @@ const Pricing = () => {
                     ) : (
                       <div className="flex items-baseline justify-center">
                         <span className="text-5xl font-black text-[#032B93]">
-                          ₹{billingCycle === 'monthly' ? tier.monthlyPrice : Math.floor(tier.yearlyPrice / 12)}
+                          USD {(billingCycle === 'monthly' ? tier.monthlyPrice : (tier.yearlyPrice / 12)).toFixed(2)}
                         </span>
                         <span className="text-slate-500 ml-2 text-lg font-medium">
                           /{billingCycle === 'monthly' ? 'month' : 'month'}
@@ -423,7 +424,7 @@ const Pricing = () => {
                   <div className="border-b border-slate-100 pb-6 flex items-end justify-between">
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Pay As You Go</div>
-                      <div className="text-3xl font-extrabold text-slate-900">₹{addon.payAsYouGoPrice}</div>
+                      <div className="text-3xl font-extrabold text-slate-900">USD {addon.payAsYouGoPrice}</div>
                     </div>
                     <div className="text-sm font-medium text-slate-500 pb-1">{addon.unit}</div>
                   </div>
@@ -431,7 +432,7 @@ const Pricing = () => {
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">One-Time Charge</div>
                       <div className="text-xl font-bold text-slate-700">
-                        {addon.oneTimePrice === '—' ? '—' : `₹${addon.oneTimePrice}`}
+                        {addon.oneTimePrice === '—' ? '—' : `USD ${addon.oneTimePrice}`}
                       </div>
                     </div>
                     {addon.oneTimePrice !== '—' && (

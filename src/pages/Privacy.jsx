@@ -65,7 +65,7 @@ const Privacy = () => {
                   <li>To process payments and manage billing, subscriptions, and wallet balances.</li>
                   <li>To provide technical support, troubleshoot issues, and improve service performance.</li>
                   <li>To communicate with you regarding updates, invoices, or service-related alerts.</li>
-                  <li>To comply with applicable Indian telecom, data retention, and tax regulations.</li>
+                  <li>To comply with applicable telecom, data retention, privacy, and tax regulations.</li>
                 </ul>
               </div>
 
@@ -75,7 +75,7 @@ const Privacy = () => {
                 <p className="text-gray-600">
                   We use industry-standard security practices to safeguard your personal data, including encryption, restricted access,
                   and secure data storage. Payment information is processed only through PCI-DSS-compliant third-party gateways.
-                  We do not store your card, UPI, or net-banking details on our servers.
+                  We do not store your card, bank account, or digital wallet credentials on our servers.
                 </p>
               </div>
 
@@ -84,7 +84,7 @@ const Privacy = () => {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Data Retention</h2>
                 <p className="text-gray-600">
                   We retain user information for as long as necessary to provide our services, comply with legal obligations,
-                  resolve disputes, and enforce agreements. Call records and logs may be stored as required under Indian telecom regulations.
+                  resolve disputes, and enforce agreements. Call records and logs may be stored as required under applicable telecom regulations.
                 </p>
               </div>
 
@@ -153,8 +153,8 @@ const Privacy = () => {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Jurisdiction</h2>
                 <p className="text-gray-600">
-                  This Privacy Policy shall be governed by and construed in accordance with the laws of India.
-                  Any disputes shall fall under the exclusive jurisdiction of the courts of Karnataka, India.
+                  This Privacy Policy shall be governed by and construed in accordance with applicable laws in the relevant service jurisdiction.
+                  Any disputes shall fall under the exclusive jurisdiction of the competent courts in that jurisdiction.
                 </p>
               </div>
 
