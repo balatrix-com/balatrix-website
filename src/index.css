@@ -108,16 +108,177 @@ body {
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 800;
-  /* Discord uses heavy weights for headings */
-  letter-spacing: -0.02em;
-  color: var(--text-dark-primary);
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 800;
+    /* Discord uses heavy weights for headings */
+    letter-spacing: -0.02em;
+    color: var(--text-dark-primary);
+  }
+}
+
+/* PBX Demo Platform Styles - Dynamic Light & Dark Mode */
+.pbx-demo {
+  transition: background-color 0.25s ease, color 0.25s ease;
+  font-size: 0.8125rem;
+}
+
+/* LIGHT MODE — matches screenshot: white cards, slate-200 borders, no heavy outlines */
+.pbx-demo:not(.dark) {
+  color: #374151;
+  background-color: #f7f8fa;
+}
+
+.pbx-demo:not(.dark) h1:not(.text-white),
+.pbx-demo:not(.dark) h2:not(.text-white),
+.pbx-demo:not(.dark) h3:not(.text-white),
+.pbx-demo:not(.dark) h4:not(.text-white),
+.pbx-demo:not(.dark) h5:not(.text-white),
+.pbx-demo:not(.dark) h6:not(.text-white) {
+  color: #111827 !important;
+}
+
+.pbx-demo:not(.dark) .metric-value {
+  color: #111827 !important;
+}
+
+/* Soften all border-2 inside pbx-demo in light mode */
+.pbx-demo:not(.dark) .border-2 {
+  border-width: 1px !important;
+}
+
+/* Cards: white bg, subtle border */
+.pbx-demo:not(.dark) .bg-white {
+  border-color: #e5e7eb !important;
+}
+
+/* Sidebar: thinner border */
+.pbx-demo:not(.dark) aside {
+  border-right-width: 1px !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Header bar: thinner border */
+.pbx-demo:not(.dark) header {
+  border-bottom-width: 1px !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Search inputs: lighter border */
+.pbx-demo:not(.dark) input,
+.pbx-demo:not(.dark) select {
+  border-color: #d1d5db !important;
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+}
+
+/* PBX Demo Dark Mode Overrides */
+.pbx-demo.dark {
+  background-color: #070a13 !important;
+  color: #f1f5f9 !important;
+}
+
+.pbx-demo.dark aside,
+.pbx-demo.dark header {
+  background-color: #0c101d !important;
+  border-color: #1a2234 !important;
+}
+
+.pbx-demo.dark .bg-white {
+  background-color: #0e1526 !important;
+  border-color: #1a2338 !important;
+  color: #f8fafc !important;
+}
+
+.pbx-demo.dark .bg-slate-50 {
+  background-color: #121a2f !important;
+  border-color: #1a2338 !important;
+  color: #e2e8f0 !important;
+}
+
+.pbx-demo.dark .bg-slate-100 {
+  background-color: #17223b !important;
+  border-color: #24324f !important;
+  color: #e2e8f0 !important;
+}
+
+.pbx-demo.dark .bg-slate-200 {
+  background-color: #1e2a47 !important;
+  border-color: #334155 !important;
+}
+
+.pbx-demo.dark .hover\:bg-slate-50:hover {
+  background-color: #151e36 !important;
+}
+
+.pbx-demo.dark .hover\:bg-slate-100:hover {
+  background-color: #1c2744 !important;
+}
+
+.pbx-demo.dark h1,
+.pbx-demo.dark h2,
+.pbx-demo.dark h3,
+.pbx-demo.dark h4,
+.pbx-demo.dark h5,
+.pbx-demo.dark h6 {
+  color: #ffffff !important;
+}
+
+.pbx-demo.dark [style*="#090d16"],
+.pbx-demo.dark [style*="#020617"],
+.pbx-demo.dark [style*="rgb(9, 13, 22)"] {
+  color: #ffffff !important;
+}
+
+.pbx-demo.dark [style*="#334155"],
+.pbx-demo.dark [style*="#475569"] {
+  color: #94a3b8 !important;
+}
+
+.pbx-demo.dark .text-slate-950,
+.pbx-demo.dark .text-slate-900,
+.pbx-demo.dark .text-slate-800 {
+  color: #f8fafc !important;
+}
+
+.pbx-demo.dark .text-slate-700,
+.pbx-demo.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+.pbx-demo.dark .text-slate-500,
+.pbx-demo.dark .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+.pbx-demo.dark .border-slate-300,
+.pbx-demo.dark .border-slate-200 {
+  border-color: #1e293b !important;
+}
+
+.pbx-demo.dark .border-slate-100 {
+  border-color: #172033 !important;
+}
+
+.pbx-demo.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+.pbx-demo.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e293b !important;
+}
+
+.pbx-demo.dark input,
+.pbx-demo.dark select {
+  background-color: #090e1a !important;
+  border-color: #243048 !important;
+  color: #f8fafc !important;
+}
+
+.pbx-demo.dark input::placeholder {
+  color: #64748b !important;
 }
 
 .font-display-xl {

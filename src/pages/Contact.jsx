@@ -53,18 +53,6 @@ const Contact = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       console.log('Form submitted:', formData);
 
-      if (window.$zoho && window.$zoho.salesiq) {
-        try {
-          window.$zoho.salesiq.visitor.name(formData.firstName + ' ' + formData.lastName);
-          window.$zoho.salesiq.visitor.email(formData.email);
-          window.$zoho.salesiq.visitor.contactnumber(formData.phone);
-
-          const notes = `Contact Page Submission. Company: ${formData.company || 'N/A'}, Subject: ${formData.subject}, Message: ${formData.message}`;
-          window.$zoho.salesiq.visitor.question(notes);
-        } catch (err) {
-          console.warn('Zoho SalesIQ sync failed:', err);
-        }
-      }
 
       setSubmitStatus('success');
 

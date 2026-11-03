@@ -59,19 +59,6 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
       
       console.log('Enterprise Quote Request:', formData);
       
-      // Sync lead details to Zoho SalesIQ if it is loaded in the browser
-      if (window.$zoho && window.$zoho.salesiq) {
-        try {
-          window.$zoho.salesiq.visitor.name(formData.firstName + ' ' + formData.lastName);
-          window.$zoho.salesiq.visitor.email(formData.email);
-          window.$zoho.salesiq.visitor.contactnumber(formData.phone);
-          
-          const notes = `Quote Form Submission. Company: ${formData.company}, Job Title: ${formData.jobTitle || 'N/A'}, Employees: ${formData.numberOfEmployees || 'N/A'}, Vol: ${formData.monthlyVolume || 'N/A'}, Use Case: ${formData.useCase}, Notes: ${formData.additionalRequirements || 'None'}`;
-          window.$zoho.salesiq.visitor.question(notes);
-        } catch (err) {
-          console.warn('Zoho SalesIQ sync failed:', err);
-        }
-      }
       
       setSubmitStatus('success');
       
