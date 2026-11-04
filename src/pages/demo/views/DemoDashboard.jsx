@@ -14,7 +14,7 @@ import {
     Layers
 } from 'lucide-react';
 
-const DemoDashboard = ({ onNavigateTab, onOpenAddFunds, walletBalance = 29.31, transactions = [] }) => {
+const DemoDashboard = ({ onNavigateTab, onOpenAddFunds, walletBalance = 50.00, transactions = [] }) => {
     const [callRecordingEnabled, setCallRecordingEnabled] = useState(true);
     const [isRefreshing, setIsRefreshing] = useState(false);
 

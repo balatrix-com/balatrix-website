@@ -15,7 +15,7 @@ import {
     Check
 } from 'lucide-react';
 
-const DemoWallet = ({ onNavigateTab, onOpenAddFunds, walletBalance = 29.31, transactions = [] }) => {
+const DemoWallet = ({ onNavigateTab, onOpenAddFunds, walletBalance = 50.00, transactions = [] }) => {
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [showManageCardsModal, setShowManageCardsModal] = useState(false);
 

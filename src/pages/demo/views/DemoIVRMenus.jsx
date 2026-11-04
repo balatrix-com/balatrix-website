@@ -19,20 +19,19 @@ import {
     Trash2,
     Check,
     X,
-    Settings,
-    Layers
+    Settings
 } from 'lucide-react';
 
 const ACTION_BUTTONS = [
-    { type: 'Extension', label: 'Extension', icon: Phone, color: 'text-blue-600', bg: 'bg-blue-50/60 hover:bg-blue-50', border: 'border-blue-200' },
-    { type: 'Ring Group', label: 'Ring Group', icon: Users, color: 'text-indigo-600', bg: 'bg-indigo-50/60 hover:bg-indigo-50', border: 'border-indigo-200' },
-    { type: 'Submenu', label: 'Submenu', icon: CornerDownRight, color: 'text-purple-600', bg: 'bg-purple-50/60 hover:bg-purple-50', border: 'border-purple-200' },
-    { type: 'Route to IVR', label: 'Route to IVR', icon: LinkIcon, color: 'text-emerald-600', bg: 'bg-emerald-50/60 hover:bg-emerald-50', border: 'border-emerald-200' },
-    { type: 'DID Forward', label: 'DID Forward', icon: PhoneForwarded, color: 'text-amber-600', bg: 'bg-amber-50/60 hover:bg-amber-50', border: 'border-amber-200' },
-    { type: 'External No.', label: 'External No.', icon: PhoneCall, color: 'text-orange-600', bg: 'bg-orange-50/60 hover:bg-orange-50', border: 'border-orange-200' },
-    { type: 'Go Back', label: 'Go Back', icon: CornerUpLeft, color: 'text-slate-600', bg: 'bg-slate-50/60 hover:bg-slate-50', border: 'border-slate-200' },
-    { type: 'Repeat Menu', label: 'Repeat Menu', icon: RotateCcw, color: 'text-cyan-600', bg: 'bg-cyan-50/60 hover:bg-cyan-50', border: 'border-cyan-200' },
-    { type: 'Hangup', label: 'Hangup', icon: PhoneOff, color: 'text-rose-600', bg: 'bg-rose-50/60 hover:bg-rose-50', border: 'border-rose-200' }
+    { type: 'Extension', label: 'Extension', icon: Phone, color: 'text-blue-600', bg: 'bg-blue-50/50 hover:bg-blue-50/80', border: 'border-blue-200/80' },
+    { type: 'Ring Group', label: 'Ring Group', icon: Users, color: 'text-indigo-600', bg: 'bg-indigo-50/50 hover:bg-indigo-50/80', border: 'border-indigo-200/80' },
+    { type: 'Submenu', label: 'Submenu', icon: CornerDownRight, color: 'text-purple-600', bg: 'bg-purple-50/50 hover:bg-purple-50/80', border: 'border-purple-200/80' },
+    { type: 'Route to IVR', label: 'Route to IVR', icon: LinkIcon, color: 'text-emerald-600', bg: 'bg-emerald-50/50 hover:bg-emerald-50/80', border: 'border-emerald-200/80' },
+    { type: 'DID Forward', label: 'DID Forward', icon: PhoneForwarded, color: 'text-amber-600', bg: 'bg-amber-50/50 hover:bg-amber-50/80', border: 'border-amber-200/80' },
+    { type: 'External No.', label: 'External No.', icon: PhoneCall, color: 'text-orange-600', bg: 'bg-orange-50/50 hover:bg-orange-50/80', border: 'border-orange-200/80' },
+    { type: 'Go Back', label: 'Go Back', icon: CornerUpLeft, color: 'text-slate-600', bg: 'bg-slate-50 hover:bg-slate-100', border: 'border-slate-200' },
+    { type: 'Repeat Menu', label: 'Repeat Menu', icon: RotateCcw, color: 'text-cyan-600', bg: 'bg-cyan-50/50 hover:bg-cyan-50/80', border: 'border-cyan-200/80' },
+    { type: 'Hangup', label: 'Hangup', icon: PhoneOff, color: 'text-rose-600', bg: 'bg-rose-50/50 hover:bg-rose-50/80', border: 'border-rose-200/80' }
 ];
 
 const INITIAL_NODES = [
@@ -43,7 +42,8 @@ const INITIAL_NODES = [
         icon: Phone,
         title: 'Unconfigured',
         sub: 'Ext: 1001',
-        color: 'border-blue-200 text-blue-600'
+        border: 'border-blue-200',
+        iconColor: 'text-blue-500'
     },
     {
         id: 'node-2',
@@ -52,7 +52,8 @@ const INITIAL_NODES = [
         icon: Users,
         title: 'Unconfigured',
         sub: 'Sales Team',
-        color: 'border-indigo-200 text-indigo-600'
+        border: 'border-indigo-200',
+        iconColor: 'text-indigo-500'
     },
     {
         id: 'node-3',
@@ -61,7 +62,9 @@ const INITIAL_NODES = [
         icon: CornerDownRight,
         title: 'No Greeting',
         sub: 'Support Menu',
-        color: 'border-purple-200 text-purple-600'
+        border: 'border-purple-200',
+        iconColor: 'text-purple-500',
+        hasChildrenPort: true
     },
     {
         id: 'node-4',
@@ -70,7 +73,8 @@ const INITIAL_NODES = [
         icon: LinkIcon,
         title: 'Unconfigured',
         sub: 'Billing Menu',
-        color: 'border-emerald-200 text-emerald-600'
+        border: 'border-emerald-200',
+        iconColor: 'text-emerald-500'
     }
 ];
 
@@ -86,7 +90,7 @@ const DemoIVRMenus = () => {
     const nodePinRefs = useRef({});
     const [paths, setPaths] = useState([]);
 
-    // Compute exact SVG Bezier paths from root port to every node's top pin
+    // Compute exact SVG Bezier paths from root port to every node top pin
     const updateConnectorPaths = () => {
         if (!treeContainerRef.current || !rootPortRef.current) return;
         const containerRect = treeContainerRef.current.getBoundingClientRect();
@@ -106,15 +110,9 @@ const DemoIVRMenus = () => {
             const midY = startY + (endY - startY) * 0.55;
             const pathD = `M ${startX} ${startY} C ${startX} ${midY}, ${endX} ${midY}, ${endX} ${endY}`;
 
-            // Midpoint along the curve for placing the "Press X" label badge
-            const labelX = (startX + endX) / 2;
-            const labelY = (startY + endY) / 2 - 2;
-
             return {
                 id: node.id,
                 pathD,
-                labelX,
-                labelY,
                 endX,
                 endY,
                 press: node.press
@@ -128,7 +126,7 @@ const DemoIVRMenus = () => {
         updateConnectorPaths();
         const handleResize = () => updateConnectorPaths();
         window.addEventListener('resize', handleResize);
-        const timer = setTimeout(updateConnectorPaths, 50);
+        const timer = setTimeout(updateConnectorPaths, 60);
         return () => {
             window.removeEventListener('resize', handleResize);
             clearTimeout(timer);
@@ -141,32 +139,41 @@ const DemoIVRMenus = () => {
         if (nextPressNum > 9) return;
 
         let icon = Phone;
-        let color = 'border-blue-200 text-blue-600';
+        let border = 'border-blue-200';
+        let iconColor = 'text-blue-500';
 
         if (action.type === 'Ring Group') {
             icon = Users;
-            color = 'border-indigo-200 text-indigo-600';
+            border = 'border-indigo-200';
+            iconColor = 'text-indigo-500';
         } else if (action.type === 'Submenu') {
             icon = CornerDownRight;
-            color = 'border-purple-200 text-purple-600';
+            border = 'border-purple-200';
+            iconColor = 'text-purple-500';
         } else if (action.type === 'Route to IVR') {
             icon = LinkIcon;
-            color = 'border-emerald-200 text-emerald-600';
+            border = 'border-emerald-200';
+            iconColor = 'text-emerald-500';
         } else if (action.type === 'DID Forward') {
             icon = PhoneForwarded;
-            color = 'border-amber-200 text-amber-600';
+            border = 'border-amber-200';
+            iconColor = 'text-amber-500';
         } else if (action.type === 'External No.') {
             icon = PhoneCall;
-            color = 'border-orange-200 text-orange-600';
+            border = 'border-orange-200';
+            iconColor = 'text-orange-500';
         } else if (action.type === 'Hangup') {
             icon = PhoneOff;
-            color = 'border-rose-200 text-rose-600';
+            border = 'border-rose-200';
+            iconColor = 'text-rose-500';
         } else if (action.type === 'Repeat Menu') {
             icon = RotateCcw;
-            color = 'border-cyan-200 text-cyan-600';
+            border = 'border-cyan-200';
+            iconColor = 'text-cyan-500';
         } else if (action.type === 'Go Back') {
             icon = CornerUpLeft;
-            color = 'border-slate-200 text-slate-600';
+            border = 'border-slate-200';
+            iconColor = 'text-slate-500';
         }
 
         const newNode = {
@@ -176,7 +183,9 @@ const DemoIVRMenus = () => {
             icon,
             title: 'Unconfigured',
             sub: `${action.label} Destination`,
-            color
+            border,
+            iconColor,
+            hasChildrenPort: action.type === 'Submenu'
         };
 
         setNodes([...nodes, newNode]);
@@ -203,7 +212,7 @@ const DemoIVRMenus = () => {
                         IVR Studio & Visual Call Flow Builder
                     </h1>
                     <p className="text-slate-500 text-xs mt-0.5">
-                        Click any block on the left to connect it directly to the Main Menu.
+                        Click any block on the left to add and automatically connect it directly to the Main Menu.
                     </p>
                 </div>
 
@@ -215,19 +224,19 @@ const DemoIVRMenus = () => {
                         Reset Tree
                     </button>
                     <span className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
-                        Interactive Studio
+                        Live Studio
                     </span>
                 </div>
             </div>
 
             {/* Main Interactive Flow Canvas */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col lg:flex-row min-h-[640px] overflow-hidden relative">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col lg:flex-row min-h-[660px] overflow-hidden relative">
                 
                 {/* LEFT SIDEBAR: ACTIONS PALETTE */}
                 <div className="w-full lg:w-72 border-b lg:border-b-0 lg:border-r border-slate-200 p-5 flex flex-col justify-between shrink-0 bg-white z-20">
                     <div>
                         <div className="mb-4">
-                            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-600">
+                            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
                                 ACTIONS
                             </h2>
                             <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
@@ -245,10 +254,10 @@ const DemoIVRMenus = () => {
                                         type="button"
                                         disabled={isLocked || nodes.length >= 8}
                                         onClick={() => handleAddBlock(action)}
-                                        className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border ${action.border} ${action.bg} transition-all duration-150 cursor-pointer group disabled:opacity-40 disabled:cursor-not-allowed text-left`}
+                                        className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl border ${action.border} ${action.bg} transition-all duration-150 cursor-pointer group disabled:opacity-40 disabled:cursor-not-allowed text-left`}
                                     >
                                         <div className="flex items-center gap-3">
-                                            <Icon className={`w-4 h-4 ${action.color} group-hover:scale-110 transition-transform`} />
+                                            <Icon className={`w-4 h-4 ${action.color} group-hover:scale-105 transition-transform`} />
                                             <span className={`text-xs font-semibold ${action.color}`}>
                                                 {action.label}
                                             </span>
@@ -269,13 +278,13 @@ const DemoIVRMenus = () => {
                 </div>
 
                 {/* RIGHT AREA: CANVAS & DYNAMIC CONNECTED GRAPH */}
-                <div className="flex-1 bg-[#fafbfe] relative overflow-hidden flex flex-col">
+                <div className="flex-1 bg-[#fbfcfe] relative overflow-hidden flex flex-col">
                     
                     {/* Subtle dot matrix grid background */}
                     <div
-                        className="absolute inset-0 pointer-events-none opacity-40"
+                        className="absolute inset-0 pointer-events-none opacity-45"
                         style={{
-                            backgroundImage: 'radial-gradient(#94a3b8 0.75px, transparent 0.75px)',
+                            backgroundImage: 'radial-gradient(#94a3b8 1px, transparent 1px)',
                             backgroundSize: '24px 24px'
                         }}
                     />
@@ -300,7 +309,7 @@ const DemoIVRMenus = () => {
                     <div className="flex-1 overflow-auto flex items-center justify-center p-6 lg:p-12 relative">
                         <div
                             ref={treeContainerRef}
-                            className="flex flex-col items-center select-none relative pt-4 pb-12"
+                            className="flex flex-col items-center select-none relative pt-4 pb-14"
                             style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
                         >
                             {/* SVG CANVAS LAYER FOR ALL CONNECTOR WIRES & ARROWS */}
@@ -320,7 +329,7 @@ const DemoIVRMenus = () => {
                                 </defs>
                                 {paths.map((p) => (
                                     <g key={p.id}>
-                                        {/* Smooth Bezier line connecting from Main Menu down to each child node */}
+                                        {/* Smooth Bezier line connecting from Main Menu down to each child node pin */}
                                         <path
                                             d={p.pathD}
                                             fill="none"
@@ -333,26 +342,13 @@ const DemoIVRMenus = () => {
                                 ))}
                             </svg>
 
-                            {/* Press X labels floating on the connector curves */}
-                            {paths.map((p) => (
-                                <div
-                                    key={`label-${p.id}`}
-                                    className="absolute z-20 pointer-events-none -translate-x-1/2 -translate-y-1/2"
-                                    style={{ left: `${p.labelX}px`, top: `${p.labelY}px` }}
-                                >
-                                    <span className="text-[10px] font-bold text-slate-600 bg-white/95 border border-slate-200 px-2.5 py-0.5 rounded-full shadow-xs whitespace-nowrap">
-                                        {p.press}
-                                    </span>
-                                </div>
-                            ))}
-
                             {/* 1. ROOT NODE: IVR ENTRY / MAIN MENU */}
-                            <div className="relative z-20 mb-24">
-                                <div className="bg-white border-2 border-slate-800 rounded-2xl px-6 py-3.5 shadow-md min-w-[200px] flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-xs shrink-0">
-                                        <PhoneCall className="w-4 h-4 text-emerald-400" />
+                            <div className="relative z-20 mb-20">
+                                <div className="bg-white border border-slate-200/90 rounded-2xl px-6 py-3.5 shadow-sm min-w-[210px] flex items-center gap-3.5">
+                                    <div className="w-9 h-9 rounded-xl bg-[#0b192c] text-white flex items-center justify-center shadow-xs shrink-0">
+                                        <Phone className="w-4 h-4 text-emerald-400" />
                                     </div>
-                                    <div>
+                                    <div className="text-left">
                                         <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 leading-none">
                                             IVR ENTRY
                                         </p>
@@ -365,44 +361,57 @@ const DemoIVRMenus = () => {
                                 {/* Blue output port at bottom center of Main Menu (wires start here) */}
                                 <div
                                     ref={rootPortRef}
-                                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#1a68ff] border-2 border-white shadow-sm z-30 flex items-center justify-center"
+                                    className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#1a68ff] border-2 border-white shadow-xs z-30"
                                 />
                             </div>
 
                             {/* 2. CONNECTED CHILD NODES ROW */}
-                            <div className="flex items-start justify-center gap-4 lg:gap-6 flex-nowrap relative z-20">
+                            <div className="flex items-start justify-center gap-5 lg:gap-7 flex-nowrap relative z-20">
                                 {nodes.map((node) => {
                                     const NodeIcon = node.icon;
                                     return (
                                         <div key={node.id} className="flex flex-col items-center group relative">
+                                            
                                             {/* Top Pin / Input Port (connector line ends here) */}
                                             <div
                                                 ref={(el) => {
                                                     if (el) nodePinRefs.current[node.id] = el;
                                                 }}
-                                                className="w-3.5 h-3.5 rounded-full bg-slate-400 border-2 border-white shadow-xs mb-2 z-30"
+                                                className="w-2.5 h-2.5 rounded-full bg-slate-400 border border-white shadow-xs mb-1.5 z-30"
                                             />
+
+                                            {/* Press X Pill (Matching Screenshot 3) */}
+                                            <div className="mb-2 z-20">
+                                                <span className="inline-block px-3 py-0.5 rounded-full bg-white border border-slate-200 text-[11px] font-semibold text-slate-600 shadow-xs select-none">
+                                                    {node.press}
+                                                </span>
+                                            </div>
 
                                             {/* Node Card Container */}
                                             <div
                                                 onClick={() => setActiveNodeEdit(node)}
-                                                className={`min-w-[170px] max-w-[190px] p-3.5 rounded-2xl border ${node.color} shadow-xs hover:shadow-md transition-all cursor-pointer relative bg-white`}
+                                                className={`w-[185px] p-3.5 rounded-2xl border ${node.border} shadow-xs hover:shadow-md transition-all cursor-pointer relative bg-white text-left`}
                                             >
+                                                {/* Top Row: Icon + Type + Title */}
                                                 <div className="flex items-center gap-2.5">
-                                                    <NodeIcon className="w-4 h-4 shrink-0" />
+                                                    <NodeIcon className={`w-4 h-4 shrink-0 ${node.iconColor}`} />
                                                     <div className="min-w-0">
                                                         <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400 truncate">
                                                             {node.type}
                                                         </p>
-                                                        <p className="text-xs font-bold text-slate-800 truncate">
+                                                        <p className="text-xs font-bold text-slate-900 truncate">
                                                             {node.title}
                                                         </p>
                                                     </div>
                                                 </div>
 
-                                                <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400 font-medium">
-                                                    <span className="truncate">{node.sub}</span>
-                                                    <Edit3 className="w-3 h-3 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                                                {/* Separator Line */}
+                                                <div className="border-t border-slate-100 my-2.5" />
+
+                                                {/* Bottom Row: Destination + Edit Pencil */}
+                                                <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                                                    <span className="truncate text-slate-400">{node.sub}</span>
+                                                    <Edit3 className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
                                                 </div>
 
                                                 {/* Delete button on hover */}
@@ -420,9 +429,9 @@ const DemoIVRMenus = () => {
                                                     </button>
                                                 )}
 
-                                                {/* Blue bottom port on submenus like screenshot */}
-                                                {node.type === 'SUBMENU' && (
-                                                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#1a68ff] border-2 border-white shadow-xs z-30" />
+                                                {/* Blue bottom port on submenus like Screenshot 3 */}
+                                                {node.hasChildrenPort && (
+                                                    <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#1a68ff] border-2 border-white shadow-xs z-30" />
                                                 )}
                                             </div>
                                         </div>

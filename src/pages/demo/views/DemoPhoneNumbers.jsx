@@ -78,8 +78,8 @@ const DemoPhoneNumbers = () => {
             selectedType === 'All'
                 ? true
                 : selectedType === 'Local'
-                ? item.type === 'Local'
-                : item.type === 'Toll Free';
+                    ? item.type === 'Local'
+                    : item.type === 'Toll Free';
 
         const matchesStatus =
             statusFilter === 'All'
@@ -104,7 +104,7 @@ const DemoPhoneNumbers = () => {
 
                 <div className="flex items-center gap-3">
                     <span className="text-xs font-bold text-slate-700 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-300">
-                        Available Balance: <strong className="text-slate-950 font-black">$29.31</strong>
+                        Available Balance: <strong className="text-slate-950 font-black">.$50.00</strong>
                     </span>
 
                     <button
@@ -198,11 +198,10 @@ const DemoPhoneNumbers = () => {
                         <button
                             key={t}
                             onClick={() => setSelectedType(t)}
-                            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                                selectedType === t
+                            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${selectedType === t
                                     ? 'bg-slate-950 text-white font-black shadow-xs'
                                     : 'bg-slate-100 text-slate-700 hover:text-slate-950 border border-slate-300'
-                            }`}
+                                }`}
                         >
                             {t}
                         </button>

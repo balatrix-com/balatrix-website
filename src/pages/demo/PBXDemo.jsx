@@ -8,7 +8,7 @@ import {
     Users,
     UsersRound,
     ListTree,
-    FileAudio,
+    Headphones,
     PhoneForwarded,
     Clock,
     Activity,
@@ -66,7 +66,7 @@ const navItems = [
     },
     { id: 'ring-groups', label: 'Ring Groups', icon: UsersRound },
     { id: 'ivr-menus', label: 'IVR Menus', icon: ListTree },
-    { id: 'audio-library', label: 'Audio Library', icon: FileAudio },
+    { id: 'audio-library', label: 'Audio Library', icon: Headphones },
     { id: 'did-forwards', label: 'DID Forwards', icon: PhoneForwarded },
     { id: 'operational-time', label: 'Operational Time', icon: Clock },
     { id: 'call-monitoring', label: 'Call Monitoring', icon: Activity },
@@ -125,7 +125,7 @@ const PBXDemo = () => {
         return localStorage.getItem('balatrix_demo_theme') === 'dark';
     });
     const [isAddFundsOpen, setIsAddFundsOpen] = useState(false);
-    const [walletBalance, setWalletBalance] = useState(29.31);
+    const [walletBalance, setWalletBalance] = useState(50.00);
     const [transactions, setTransactions] = useState(INITIAL_TRANSACTIONS);
     const [customFundAmt, setCustomFundAmt] = useState('');
     const [addFundsSuccess, setAddFundsSuccess] = useState(false);
