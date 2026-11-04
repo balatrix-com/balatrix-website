@@ -105,8 +105,7 @@ const Header = () => {
     { name: 'Pricing', href: '/pricing' },
     { name: 'About Us', href: '/about' },
     {
-      name: 'Want a Demo?',
-      href: '/demo'
+      name: 'Want a Demo?', href: '/demo'
     },
   ];
 

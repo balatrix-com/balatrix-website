@@ -12,8 +12,9 @@ const Footer = () => {
 
   const footerSections = [
     {
-      title: 'Solutions',
+      title: 'Solutions & Demo',
       links: [
+        { name: 'Interactive PBX Demo', href: '/demo' },
         { name: 'Business Solutions', href: '/solutions' }
       ]
     },
