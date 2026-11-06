@@ -9,7 +9,11 @@ import {
     MoreVertical,
     CheckCircle2,
     Sliders,
-    Trash2
+    Trash2,
+    Activity,
+    Mail,
+    X,
+    User
 } from 'lucide-react';
 
 const initialStaff = [
@@ -40,6 +44,8 @@ const initialStaff = [
 const DemoUserManagement = () => {
     const [staffList, setStaffList] = useState(initialStaff);
     const [isInviteOpen, setIsInviteOpen] = useState(false);
+    const [inviteEmail, setInviteEmail] = useState('');
+    const [inviteName, setInviteName] = useState('');
 
     const toggleMonitor = (id) => {
         setStaffList(
@@ -223,9 +229,40 @@ const DemoUserManagement = () => {
 
                                     {/* Control */}
                                     <td className="py-4 px-5 text-right">
-                                        <button className="px-3 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs shadow-xs transition-colors cursor-pointer">
-                                            Manage
-                                        </button>
+                                        <div className="flex items-center justify-end gap-3 text-slate-400">
+                                            {/* Pulse / Activity with Tooltip */}
+                                            <div className="relative group">
+                                                <button
+                                                    type="button"
+                                                    className="p-1 text-blue-500 hover:text-blue-600 transition-colors cursor-pointer"
+                                                    title="Audit Logs"
+                                                >
+                                                    <Activity className="w-4 h-4 stroke-[2.2]" />
+                                                </button>
+                                                {/* Tooltip matching screenshot */}
+                                                <div className="absolute right-0 top-full mt-1.5 hidden group-hover:flex items-center bg-[#111827] text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-xl whitespace-nowrap z-30 pointer-events-none">
+                                                    Audit Logs
+                                                </div>
+                                            </div>
+
+                                            {/* Suspend / Ban button */}
+                                            <button
+                                                type="button"
+                                                className="p-1 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+                                                title="Suspend"
+                                            >
+                                                <Ban className="w-4 h-4 stroke-[1.8]" />
+                                            </button>
+
+                                            {/* Delete button */}
+                                            <button
+                                                type="button"
+                                                className="p-1 text-slate-400 hover:text-rose-500 transition-colors cursor-pointer"
+                                                title="Delete"
+                                            >
+                                                <Trash2 className="w-4 h-4 stroke-[1.8]" />
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
@@ -234,66 +271,88 @@ const DemoUserManagement = () => {
                 </div>
             </div>
 
-            {/* Invite Staff Modal Simulation */}
+            {/* Team Invite Modal Matching Screenshot */}
             {isInviteOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-                    <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-slate-300">
-                        <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-slate-200">
-                            <h3 className="text-base font-black text-slate-950">
-                                Invite Staff Member
-                            </h3>
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-fade-in">
+                    <div className="bg-white rounded-[32px] max-w-[420px] w-full p-8 shadow-2xl relative border border-slate-100">
+                        {/* Header */}
+                        <div className="flex items-center justify-between mb-8">
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <Mail className="w-6 h-6 stroke-[2]" />
+                                </div>
+                                <h3 className="text-2xl font-black text-slate-900 tracking-tight">
+                                    Team Invite
+                                </h3>
+                            </div>
                             <button
                                 onClick={() => setIsInviteOpen(false)}
-                                className="text-slate-500 hover:text-slate-950 text-2xl font-black cursor-pointer"
+                                className="text-slate-400 hover:text-slate-600 p-1 rounded-lg transition-colors cursor-pointer"
                             >
-                                &times;
+                                <X className="w-5 h-5 stroke-[2.2]" />
                             </button>
                         </div>
 
-                        <div className="space-y-4 mb-6 text-xs">
+                        {/* Form Body */}
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                setIsInviteOpen(false);
+                            }}
+                            className="space-y-6"
+                        >
+                            {/* Email Address */}
                             <div>
-                                <label className="block text-slate-800 font-bold mb-1.5">
+                                <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">
                                     Email Address
                                 </label>
-                                <input
-                                    type="email"
-                                    placeholder="colleague@yourcompany.com"
-                                    className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-950 font-bold"
-                                />
+                                <div className="relative">
+                                    <Mail className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 stroke-[1.8]" />
+                                    <input
+                                        type="email"
+                                        value={inviteEmail}
+                                        onChange={(e) => setInviteEmail(e.target.value)}
+                                        placeholder="user@domain.com"
+                                        className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-700 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all placeholder:text-slate-400"
+                                    />
+                                </div>
                             </div>
 
+                            {/* Full Name */}
                             <div>
-                                <label className="block text-slate-800 font-bold mb-1.5">
-                                    Administrative Role
+                                <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">
+                                    Full Name
                                 </label>
-                                <select className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-950 font-bold">
-                                    <option>SUPPORT (Read-only monitoring, CDRs & Extension routing)</option>
-                                    <option>ADMIN (Full tenant management, Wallet & Billing)</option>
-                                </select>
+                                <div className="relative">
+                                    <Users className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 stroke-[1.8]" />
+                                    <input
+                                        type="text"
+                                        value={inviteName}
+                                        onChange={(e) => setInviteName(e.target.value)}
+                                        placeholder="Full Name"
+                                        className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-700 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all placeholder:text-slate-400"
+                                    />
+                                </div>
                             </div>
 
-                            <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-900">
-                                <p className="font-black mb-0.5">Role-Based Access Control</p>
-                                <p className="text-[11px] text-blue-800 font-medium">
-                                    Invited colleagues receive a secure sign-in magic link and MFA verification prompt.
-                                </p>
+                            {/* Buttons */}
+                            <div className="space-y-3 pt-4">
+                                <button
+                                    type="submit"
+                                    className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white rounded-2xl font-black text-sm tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-blue-600/25 transition-all cursor-pointer"
+                                >
+                                    <span>Send Invitation</span>
+                                    <UserPlus className="w-4 h-4 stroke-[2.2]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setIsInviteOpen(false)}
+                                    className="w-full py-3.5 px-6 border border-slate-200 hover:bg-slate-50 active:scale-[0.99] text-slate-600 font-bold text-sm rounded-2xl transition-all cursor-pointer"
+                                >
+                                    Cancel
+                                </button>
                             </div>
-                        </div>
-
-                        <div className="flex justify-end gap-2">
-                            <button
-                                onClick={() => setIsInviteOpen(false)}
-                                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-xl text-xs font-bold cursor-pointer"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={() => setIsInviteOpen(false)}
-                                className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-black cursor-pointer shadow-sm"
-                            >
-                                Send Invitation
-                            </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             )}

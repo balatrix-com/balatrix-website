@@ -17,7 +17,6 @@ import {
 
 const DemoWallet = ({ onNavigateTab, onOpenAddFunds, walletBalance = 50.00, transactions = [] }) => {
     const [isRefreshing, setIsRefreshing] = useState(false);
-    const [showManageCardsModal, setShowManageCardsModal] = useState(false);
 
     const handleRefresh = () => {
         setIsRefreshing(true);
@@ -52,14 +51,6 @@ const DemoWallet = ({ onNavigateTab, onOpenAddFunds, walletBalance = 50.00, tran
                     >
                         <CreditCard className="w-4 h-4 text-blue-600" />
                         <span>Subscriptions</span>
-                    </button>
-
-                    <button
-                        onClick={() => setShowManageCardsModal(true)}
-                        className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 text-xs font-medium px-3.5 py-2.5 rounded-xl border border-slate-200 shadow-xs transition-all cursor-pointer"
-                    >
-                        <CreditCard className="w-4 h-4 text-blue-600" />
-                        <span>Manage Cards</span>
                     </button>
                 </div>
             </div>
@@ -219,58 +210,6 @@ const DemoWallet = ({ onNavigateTab, onOpenAddFunds, walletBalance = 50.00, tran
                     </table>
                 </div>
             </div>
-
-            {/* Manage Cards Modal */}
-            {showManageCardsModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in">
-                    <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-                        <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
-                            <div className="flex items-center gap-2">
-                                <CreditCard className="w-5 h-5 text-blue-600" />
-                                <h3 className="text-sm font-bold text-slate-900">
-                                    Stored Payment Methods
-                                </h3>
-                            </div>
-                            <button
-                                onClick={() => setShowManageCardsModal(false)}
-                                className="text-slate-400 hover:text-slate-700 font-bold p-1 cursor-pointer"
-                            >
-                                &times;
-                            </button>
-                        </div>
-
-                        <div className="space-y-3 mb-5 text-xs">
-                            <div className="p-3.5 rounded-xl border border-blue-200 bg-blue-50/50 flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-9 h-6 bg-slate-800 text-white font-bold text-[10px] rounded flex items-center justify-center">
-                                        VISA
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-slate-800">•••• •••• •••• 4242</p>
-                                        <p className="text-[11px] text-slate-500 font-medium">Expires 12/28 • Primary</p>
-                                    </div>
-                                </div>
-                                <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 font-bold text-[10px]">
-                                    DEFAULT
-                                </span>
-                            </div>
-
-                            <p className="text-[11px] text-slate-500">
-                                In this demo sandbox, card transactions are simulated without real billing.
-                            </p>
-                        </div>
-
-                        <div className="flex justify-end">
-                            <button
-                                onClick={() => setShowManageCardsModal(false)}
-                                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold cursor-pointer"
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

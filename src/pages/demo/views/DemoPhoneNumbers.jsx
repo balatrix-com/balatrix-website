@@ -10,25 +10,26 @@ import {
     Sliders,
     ArrowRight,
     Users,
-    PhoneForwarded
+    PhoneForwarded,
+    X
 } from 'lucide-react';
 
 const initialNumbers = [
     {
         id: 1,
         number: '+1 (800) 633-2545',
-        raw: '+18006332545',
-        type: 'Local',
+        raw: '+14151230178',
+        type: 'Local Number (DID)',
         status: 'Active',
         cost: '$2.00 /mo',
-        routing: 'Ring Group',
-        targetName: 'Main Sales Queue #101'
+        routing: 'Extension',
+        targetName: 'U100501 - Extension from starter_to_pro'
     },
     {
         id: 2,
         number: '+1 (800) 032-9824',
         raw: '+18000329824',
-        type: 'Local',
+        type: 'Local Number (DID)',
         status: 'Active',
         cost: '$2.00 /mo',
         routing: 'Ring Group',
@@ -38,7 +39,7 @@ const initialNumbers = [
         id: 3,
         number: '+1 (800) 789-2451',
         raw: '+18007892451',
-        type: 'Toll Free',
+        type: 'Toll Free (TFN)',
         status: 'ASSIGNED',
         cost: '$2.00 /mo',
         routing: 'Extension',
@@ -48,7 +49,7 @@ const initialNumbers = [
         id: 4,
         number: '+1 (800) 200-0120',
         raw: '+18002000120',
-        type: 'Toll Free',
+        type: 'Toll Free (TFN)',
         status: 'ASSIGNED',
         cost: '$2.00 /mo',
         routing: 'Extension',
@@ -56,30 +57,87 @@ const initialNumbers = [
     }
 ];
 
+const TARGET_OPTIONS = {
+    'Extension': [
+        'U100501 - Extension from starter_to_pro',
+        'U100502 - Extension from starter_to_pro2',
+        'U100503 - Tech Support Seat',
+        'U100504 - Billing & Accounts Desk'
+    ],
+    'Ring Group': [
+        'Sales Team (Ring in order)',
+        'Technical Support Group',
+        'Reception & Dispatch Queue'
+    ],
+    'IVR Menu': [
+        'Main Menu - Auto-Attendant',
+        'Support Submenu',
+        'Billing & Payments IVR'
+    ],
+    'DID Forward': [
+        'External Mobile Forward (+1 555-019-2834)',
+        'After Hours On-Call Forward'
+    ]
+};
+
 const DemoPhoneNumbers = () => {
+    const [numbersList, setNumbersList] = useState(initialNumbers);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedType, setSelectedType] = useState('All');
     const [statusFilter, setStatusFilter] = useState('All');
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [activeConfigureItem, setActiveConfigureItem] = useState(null);
+    const [routeType, setRouteType] = useState('Extension');
+    const [targetVal, setTargetVal] = useState('U100501 - Extension from starter_to_pro');
+
+    const handleOpenConfigure = (item) => {
+        setActiveConfigureItem(item);
+        const currentRoute = item.routing === 'Ring Group' ? 'Ring Group' : item.routing === 'IVR Menu' ? 'IVR Menu' : 'Extension';
+        setRouteType(currentRoute);
+        const availableTargets = TARGET_OPTIONS[currentRoute] || TARGET_OPTIONS['Extension'];
+        const matched = availableTargets.find((t) => t.includes(item.targetName)) || availableTargets[0];
+        setTargetVal(matched);
+    };
+
+    const handleRouteChange = (newRoute) => {
+        setRouteType(newRoute);
+        const available = TARGET_OPTIONS[newRoute] || [];
+        setTargetVal(available[0] || '');
+    };
+
+    const handleSaveConfiguration = () => {
+        if (!activeConfigureItem) return;
+        setNumbersList((prev) =>
+            prev.map((num) =>
+                num.id === activeConfigureItem.id
+                    ? {
+                        ...num,
+                        routing: routeType,
+                        targetName: targetVal
+                    }
+                    : num
+            )
+        );
+        setActiveConfigureItem(null);
+    };
 
     const handleRefresh = () => {
         setIsRefreshing(true);
         setTimeout(() => setIsRefreshing(false), 500);
     };
 
-    const filteredNumbers = initialNumbers.filter((item) => {
-        const matchesSearch =
-            item.number.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.raw.includes(searchQuery) ||
-            item.routing.toLowerCase().includes(searchQuery.toLowerCase());
+        const filteredNumbers = numbersList.filter((item) => {
+            const matchesSearch =
+                item.number.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.raw.includes(searchQuery) ||
+                item.routing.toLowerCase().includes(searchQuery.toLowerCase());
 
-        const matchesType =
-            selectedType === 'All'
-                ? true
-                : selectedType === 'Local'
-                    ? item.type === 'Local'
-                    : item.type === 'Toll Free';
+            const matchesType =
+                selectedType === 'All'
+                    ? true
+                    : selectedType === 'Local'
+                    ? item.type.includes('Local')
+            : item.type.includes('Toll Free');
 
         const matchesStatus =
             statusFilter === 'All'
@@ -199,8 +257,8 @@ const DemoPhoneNumbers = () => {
                             key={t}
                             onClick={() => setSelectedType(t)}
                             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${selectedType === t
-                                    ? 'bg-slate-950 text-white font-black shadow-xs'
-                                    : 'bg-slate-100 text-slate-700 hover:text-slate-950 border border-slate-300'
+                                ? 'bg-slate-950 text-white font-black shadow-xs'
+                                : 'bg-slate-100 text-slate-700 hover:text-slate-950 border border-slate-300'
                                 }`}
                         >
                             {t}
@@ -272,11 +330,11 @@ const DemoPhoneNumbers = () => {
 
                                     <td className="py-4 px-5 text-right">
                                         <button
-                                            onClick={() => setActiveConfigureItem(row)}
+                                            onClick={() => handleOpenConfigure(row)}
                                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 hover:border-blue-600 bg-white hover:bg-blue-50 text-slate-900 hover:text-blue-800 text-xs font-bold transition-all shadow-xs cursor-pointer"
                                         >
                                             <Sliders className="w-3.5 h-3.5 text-blue-600" />
-                                            <span>Routing</span>
+                                            <span>Configure</span>
                                         </button>
                                     </td>
                                 </tr>
@@ -286,61 +344,92 @@ const DemoPhoneNumbers = () => {
                 </div>
             </div>
 
-            {/* Configure Routing Modal */}
+            {/* Configure Routing Modal matching uploaded screenshot */}
             {activeConfigureItem && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-                    <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-slate-300">
-                        <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-slate-200">
-                            <div>
-                                <h3 className="text-base font-black text-slate-950">
-                                    Configure Inbound Routing
-                                </h3>
-                                <p className="text-xs text-slate-700 font-mono font-bold mt-0.5">
-                                    DID: {activeConfigureItem.number}
-                                </p>
-                            </div>
-                            <button
-                                onClick={() => setActiveConfigureItem(null)}
-                                className="text-slate-500 hover:text-slate-950 text-2xl font-black cursor-pointer"
-                            >
-                                &times;
-                            </button>
-                        </div>
+                            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in">
+                                <div className="bg-white rounded-3xl max-w-lg w-full p-7 sm:p-8 shadow-2xl border border-slate-200 dark:border-zinc-800 text-slate-800 relative">
+                                    {/* Header: Title with raw number + close button */}
+                                    <div className="flex items-start justify-between mb-2">
+                                        <div>
+                                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center flex-wrap gap-1.5">
+                                                <span>Configure Routing:</span>
+                                                <span className="text-blue-600 font-bold">{activeConfigureItem.raw || activeConfigureItem.number}</span>
+                                            </h2>
+                                            <div className="mt-2">
+                                                <span className="inline-block px-3 py-1 rounded-lg border border-blue-200 bg-blue-50/70 text-blue-600 font-semibold text-xs">
+                                                    {activeConfigureItem.type}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <button
+                                            onClick={() => setActiveConfigureItem(null)}
+                                            className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+                                            title="Close"
+                                        >
+                                            <X className="w-5 h-5" />
+                                        </button>
+                                    </div>
 
-                        <div className="space-y-4 mb-6 text-xs">
-                            <div>
-                                <label className="block text-slate-800 font-bold mb-1.5">
-                                    Routing Destination Type
-                                </label>
-                                <select className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-950 font-bold">
-                                    <option>Ring Group (Simultaneous/Sequential)</option>
-                                    <option>Extension (Direct User Seat)</option>
-                                    <option>IVR Auto-Attendant Tree</option>
-                                    <option>External Forward (DID Forwards)</option>
-                                </select>
-                            </div>
+                                        {/* Form Fields matching screenshot */}
+                                        <div className="space-y-5 my-6 text-xs">
+                                            {/* ROUTE CALLS TO */}
+                                            <div>
+                                                    <label className="block text-slate-700 font-black uppercase tracking-wider text-[11px] mb-2">
+                                                        ROUTE CALLS TO
+                                                    </label>
+                                                        <select
+                                                            value={routeType}
+                                                            onChange={(e) => handleRouteChange(e.target.value)}
+                                                            className="w-full px-4 py-3 rounded-2xl border border-slate-300 bg-white text-slate-900 font-semibold text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer shadow-2xs"
+                                                        >
+                                                            <option value="Extension">Extension</option>
+                                                            <option value="Ring Group">Ring Group</option>
+                                                            <option value="IVR Menu">IVR Menu</option>
+                                                            <option value="DID Forward">DID Forward</option>
+                                                        </select>
+                                                    </div>
 
-                            <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-900">
-                                <p className="font-black mb-0.5">Carrier Inbound Switch</p>
-                                <p className="text-[11px] text-blue-800 font-medium">
-                                    Changes take effect across global SBC clusters in &lt; 200 milliseconds.
-                                </p>
-                            </div>
-                        </div>
+                                                        {/* TARGET */}
+                                                        <div>
+                                                            <label className="block text-slate-700 font-black uppercase tracking-wider text-[11px] mb-2">
+                                                                TARGET
+                                                            </label>
+                                                            <select
+                                                                value={targetVal}
+                                                                onChange={(e) => setTargetVal(e.target.value)}
+                                                                className="w-full px-4 py-3 rounded-2xl border border-slate-300 bg-white text-slate-900 font-semibold text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer shadow-2xs"
+                                                            >
+                                                                {(TARGET_OPTIONS[routeType] || TARGET_OPTIONS['Extension']).map((opt) => (
+                                                                    <option key={opt} value={opt}>
+                                                                        {opt}
+                                                                    </option>
+                                                                ))}
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
-                        <div className="flex justify-end">
-                            <button
-                                onClick={() => setActiveConfigureItem(null)}
-                                className="px-5 py-2 bg-slate-950 hover:bg-slate-800 text-white rounded-xl text-xs font-black cursor-pointer"
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                                                        {/* Modal Action Buttons matching screenshot */}
+                                                        <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => setActiveConfigureItem(null)}
+                                                                className="px-6 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs shadow-2xs transition-colors cursor-pointer"
+                                                            >
+                                                                Cancel
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                onClick={handleSaveConfiguration}
+                                                                className="px-6 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs shadow-sm hover:shadow transition-all cursor-pointer"
+                                                            >
+                                                                Save Configuration
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                            </div>
             )}
-        </div>
-    );
+                                        </div>
+                                        );
 };
 
-export default DemoPhoneNumbers;
+                                        export default DemoPhoneNumbers;

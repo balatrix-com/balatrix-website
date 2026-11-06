@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Core Foundation */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -87,7 +89,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar - Discord Style */
+/* Custom Scrollbar - Discord Style (Default dark for main site) */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -107,8 +109,76 @@ body {
   background: #202225;
 }
 
+/* Sidebar Scrollable Specific Styling: Smooth, responsive mouse wheel scrolling */
+.sidebar-scrollable {
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+/* Discreet, auto-fading scrollbar for the sidebar */
+.sidebar-scrollable::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-thumb {
+  background-color: transparent !important;
+  border-radius: 9999px !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Reveal thumb gently when hovering over the sidebar */
+.pbx-demo:not(.dark) aside:hover .sidebar-scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.5) !important;
+}
+
+.pbx-demo:not(.dark) aside:hover .sidebar-scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 116, 139, 0.8) !important;
+}
+
+.pbx-demo.dark aside:hover .sidebar-scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(113, 113, 122, 0.4) !important;
+}
+
+.pbx-demo.dark aside:hover .sidebar-scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(161, 161, 170, 0.7) !important;
+}
+
+/* Light Mode Scrollbar for PBX Demo & Main Content Area */
+.pbx-demo:not(.dark) ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.pbx-demo:not(.dark) ::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 4px;
+}
+
+.pbx-demo:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.pbx-demo:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Ensure smooth mouse-wheel scrolling throughout PBX Demo scroll containers */
+.pbx-demo,
+.pbx-demo .overflow-y-auto,
+.pbx-demo .overflow-x-auto {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Typography */
 @layer base {
+
   h1,
   h2,
   h3,
@@ -177,49 +247,91 @@ body {
   color: #111827 !important;
 }
 
-/* PBX Demo Dark Mode Overrides */
+/* PBX Demo Dark Mode Overrides - Sleek Pure Pitch-Black & Charcoal Palette */
 .pbx-demo.dark {
-  background-color: #070a13 !important;
+  background-color: #000000 !important;
   color: #f1f5f9 !important;
 }
 
-.pbx-demo.dark aside,
+/* Sidebar and Header in Dark Mode - Soft, clean border alignment */
+.pbx-demo.dark aside {
+  background-color: #00000000 !important;
+  border-right-color: #14141600 !important;
+}
+
 .pbx-demo.dark header {
-  background-color: #0c101d !important;
-  border-color: #1a2234 !important;
+  background-color: #00000000 !important;
+  border-bottom-color: #14141600 !important;
 }
 
+/* Sidebar navigation items */
+.pbx-demo.dark aside .text-\[\#475569\],
+.pbx-demo.dark aside .text-slate-600,
+.pbx-demo.dark aside .text-slate-700 {
+  color: #9ca3af !important;
+}
+
+.pbx-demo.dark aside button:hover:not(.bg-\[\#1a68ff\]) {
+  background-color: #11111300 !important;
+  color: #ffffff !important;
+}
+
+.pbx-demo.dark aside button:hover svg {
+  color: #ffffff !important;
+}
+
+.pbx-demo.dark aside .border-b,
+.pbx-demo.dark aside .border-t {
+  border-color: #14141600 !important;
+}
+
+.pbx-demo.dark aside .bg-\[\#fafbfe\]\/80 {
+  background-color: #05050500 !important;
+}
+
+/* Cards & Surface Containers (Deep Black with subtle, less bright 1px border) */
 .pbx-demo.dark .bg-white {
-  background-color: #0e1526 !important;
-  border-color: #1a2338 !important;
-  color: #f8fafc !important;
+  background-color: #07070900 !important;
+  border-color: #15151800 !important;
+  color: #fafafa !important;
 }
 
-.pbx-demo.dark .bg-slate-50 {
-  background-color: #121a2f !important;
-  border-color: #1a2338 !important;
-  color: #e2e8f0 !important;
+/* All slate-50 and slate-100 variants including opacity like /40, /60, /70 */
+.pbx-demo.dark [class*="bg-slate-50"],
+.pbx-demo.dark [class*="bg-slate-100"],
+.pbx-demo.dark [class*="bg-gray-50"],
+.pbx-demo.dark [class*="bg-gray-100"],
+.pbx-demo.dark .bg-\[\#fafbfe\],
+.pbx-demo.dark .bg-\[\#fbfcfe\] {
+  background-color: #0a0a0d00 !important;
+  border-color: #15151800 !important;
+  color: #f4f4f5 !important;
 }
 
-.pbx-demo.dark .bg-slate-100 {
-  background-color: #17223b !important;
-  border-color: #24324f !important;
-  color: #e2e8f0 !important;
+.pbx-demo.dark .bg-slate-200,
+.pbx-demo.dark [class*="bg-slate-200"] {
+  background-color: #14141800 !important;
+  border-color: #1e1e24 !important;
 }
 
-.pbx-demo.dark .bg-slate-200 {
-  background-color: #1e2a47 !important;
-  border-color: #334155 !important;
+/* Dim general borders in dark mode so lines are less bright */
+.pbx-demo.dark .border-slate-100,
+.pbx-demo.dark .border-slate-200,
+.pbx-demo.dark .border-slate-300,
+.pbx-demo.dark [class*="border-slate-200"] {
+  border-color: #15151800 !important;
 }
 
-.pbx-demo.dark .hover\:bg-slate-50:hover {
-  background-color: #151e36 !important;
-}
-
+/* Hover states across all surfaces */
+.pbx-demo.dark [class*="hover:bg-slate-50"]:hover,
+.pbx-demo.dark [class*="hover:bg-slate-100"]:hover,
+.pbx-demo.dark .hover\:bg-slate-50:hover,
 .pbx-demo.dark .hover\:bg-slate-100:hover {
-  background-color: #1c2744 !important;
+  background-color: #14141800 !important;
+  color: #ffffff !important;
 }
 
+/* Headings & Text Visibility in Pure Black Theme */
 .pbx-demo.dark h1,
 .pbx-demo.dark h2,
 .pbx-demo.dark h3,
@@ -229,56 +341,194 @@ body {
   color: #ffffff !important;
 }
 
-.pbx-demo.dark [style*="#090d16"],
-.pbx-demo.dark [style*="#020617"],
-.pbx-demo.dark [style*="rgb(9, 13, 22)"] {
-  color: #ffffff !important;
-}
-
-.pbx-demo.dark [style*="#334155"],
-.pbx-demo.dark [style*="#475569"] {
-  color: #94a3b8 !important;
-}
-
 .pbx-demo.dark .text-slate-950,
 .pbx-demo.dark .text-slate-900,
-.pbx-demo.dark .text-slate-800 {
-  color: #f8fafc !important;
+.pbx-demo.dark .text-slate-800,
+.pbx-demo.dark strong {
+  color: #fafafa !important;
 }
 
 .pbx-demo.dark .text-slate-700,
 .pbx-demo.dark .text-slate-600 {
-  color: #cbd5e1 !important;
+  color: #d4d4d8 !important;
 }
 
 .pbx-demo.dark .text-slate-500,
 .pbx-demo.dark .text-slate-400 {
-  color: #94a3b8 !important;
+  color: #a1a1aa !important;
 }
 
-.pbx-demo.dark .border-slate-300,
-.pbx-demo.dark .border-slate-200 {
-  border-color: #1e293b !important;
+.pbx-demo.dark .text-slate-300 {
+  color: #71717a !important;
 }
 
-.pbx-demo.dark .border-slate-100 {
-  border-color: #172033 !important;
+/* Complete Table Overhauls in Dark Mode - Fix Hover Flashing & Backgrounds */
+.pbx-demo.dark table {
+  background-color: #070709 !important;
 }
 
-.pbx-demo.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
-.pbx-demo.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
-  border-color: #1e293b !important;
+.pbx-demo.dark table thead,
+.pbx-demo.dark table thead tr,
+.pbx-demo.dark table thead th {
+  background-color: #0c0c0f !important;
+  color: #a1a1aa !important;
+  border-color: #151518 !important;
 }
 
+.pbx-demo.dark table tbody tr {
+  background-color: #070709 !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.pbx-demo.dark table tbody tr td {
+  background-color: #070709 !important;
+  border-color: #121215 !important;
+  color: #f4f4f5 !important;
+}
+
+/* When hovered, row smoothly highlights to #131317 without brightening or flashing */
+.pbx-demo.dark table tbody tr:hover,
+.pbx-demo.dark table tbody tr:hover td {
+  background-color: #131317 !important;
+}
+
+/* Card Headers above tables (e.g., Billing & Transaction History) */
+.pbx-demo.dark .border-b {
+  border-color: #151518 !important;
+}
+
+.pbx-demo.dark .divide-slate-100> :not([hidden])~ :not([hidden]),
+.pbx-demo.dark .divide-slate-200> :not([hidden])~ :not([hidden]) {
+  border-color: #121215 !important;
+}
+
+/* Inputs, Selects & Form Controls with dimmer border */
 .pbx-demo.dark input,
-.pbx-demo.dark select {
-  background-color: #090e1a !important;
-  border-color: #243048 !important;
-  color: #f8fafc !important;
+.pbx-demo.dark select,
+.pbx-demo.dark textarea {
+  background-color: #070709 !important;
+  border-color: #1c1c20 !important;
+  color: #ffffff !important;
+}
+
+.pbx-demo.dark input:focus,
+.pbx-demo.dark select:focus {
+  border-color: #2563eb !important;
+  background-color: #070709 !important;
 }
 
 .pbx-demo.dark input::placeholder {
-  color: #64748b !important;
+  color: #71717a !important;
+}
+
+/* Status Badges & Pill Contrast in Dark Mode - Soft, sleek, low-glare */
+.pbx-demo.dark .bg-emerald-50,
+.pbx-demo.dark [class*="bg-emerald-50"],
+.pbx-demo.dark .bg-emerald-100,
+.pbx-demo.dark [class*="bg-emerald-100"],
+.pbx-demo.dark .bg-emerald-200,
+.pbx-demo.dark [class*="bg-emerald-200"] {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(52, 211, 153, 0.25) !important;
+  color: #34d399 !important;
+}
+
+.pbx-demo.dark .text-emerald-950,
+.pbx-demo.dark .text-emerald-900,
+.pbx-demo.dark .text-emerald-800,
+.pbx-demo.dark .text-emerald-700,
+.pbx-demo.dark .text-emerald-600 {
+  color: #34d399 !important;
+}
+
+.pbx-demo.dark .bg-blue-50,
+.pbx-demo.dark [class*="bg-blue-50"],
+.pbx-demo.dark .bg-blue-100,
+.pbx-demo.dark [class*="bg-blue-100"],
+.pbx-demo.dark .bg-blue-200,
+.pbx-demo.dark [class*="bg-blue-200"] {
+  background-color: rgba(37, 99, 235, 0.12) !important;
+  border-color: rgba(59, 130, 246, 0.25) !important;
+  color: #93c5fd !important;
+}
+
+.pbx-demo.dark .text-blue-950,
+.pbx-demo.dark .text-blue-900,
+.pbx-demo.dark .text-blue-800,
+.pbx-demo.dark .text-blue-700,
+.pbx-demo.dark .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+.pbx-demo.dark .bg-purple-50,
+.pbx-demo.dark [class*="bg-purple-50"],
+.pbx-demo.dark .bg-purple-100,
+.pbx-demo.dark [class*="bg-purple-100"],
+.pbx-demo.dark .bg-purple-200,
+.pbx-demo.dark [class*="bg-purple-200"] {
+  background-color: rgba(147, 51, 234, 0.12) !important;
+  border-color: rgba(168, 85, 247, 0.25) !important;
+  color: #c084fc !important;
+}
+
+.pbx-demo.dark .text-purple-950,
+.pbx-demo.dark .text-purple-900,
+.pbx-demo.dark .text-purple-800,
+.pbx-demo.dark .text-purple-700,
+.pbx-demo.dark .text-purple-600,
+.pbx-demo.dark .text-indigo-600 {
+  color: #c084fc !important;
+}
+
+.pbx-demo.dark .bg-amber-50,
+.pbx-demo.dark [class*="bg-amber-50"],
+.pbx-demo.dark .bg-amber-100,
+.pbx-demo.dark [class*="bg-amber-100"],
+.pbx-demo.dark .bg-amber-200,
+.pbx-demo.dark [class*="bg-amber-200"] {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+  color: #fbbf24 !important;
+}
+
+.pbx-demo.dark .text-amber-950,
+.pbx-demo.dark .text-amber-900,
+.pbx-demo.dark .text-amber-800,
+.pbx-demo.dark .text-amber-700,
+.pbx-demo.dark .text-amber-600 {
+  color: #fbbf24 !important;
+}
+
+.pbx-demo.dark .bg-rose-50,
+.pbx-demo.dark [class*="bg-rose-50"],
+.pbx-demo.dark .bg-rose-100,
+.pbx-demo.dark [class*="bg-rose-100"],
+.pbx-demo.dark .bg-rose-200,
+.pbx-demo.dark [class*="bg-rose-200"] {
+  background-color: rgba(244, 63, 94, 0.12) !important;
+  border-color: rgba(244, 63, 94, 0.25) !important;
+  color: #fb7185 !important;
+}
+
+.pbx-demo.dark .text-rose-950,
+.pbx-demo.dark .text-rose-900,
+.pbx-demo.dark .text-rose-800,
+.pbx-demo.dark .text-rose-700,
+.pbx-demo.dark .text-rose-600 {
+  color: #fb7185 !important;
+}
+
+/* Ensure inner badges within routing rules or cards stay elegant in dark mode */
+.pbx-demo.dark .bg-white.text-xs,
+.pbx-demo.dark span.bg-white {
+  background-color: #111114 !important;
+  color: #e4e4e7 !important;
+  border-color: #27272a !important;
+}
+
+/* IVR Studio Flow Canvas in Dark Mode */
+.pbx-demo.dark svg path[stroke="#64748b"] {
+  stroke: #71717a !important;
 }
 
 .font-display-xl {

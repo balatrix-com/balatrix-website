@@ -126,7 +126,7 @@ const DemoCallMonitoring = () => {
                     >
                         PING {pingLatency}ms
                     </button>
-                    <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-950 text-white font-mono text-xs shadow-sm">
+                    <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-red-950 text-white font-mono text-xs shadow-sm">
                         <span className="text-slate-400 font-sans text-xs">Admin Ext:</span>
                         <span className="font-black text-blue-300">U100510</span>
                     </div>

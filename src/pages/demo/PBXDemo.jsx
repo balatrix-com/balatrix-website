@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import balatrixFullLogo from '../../assets/svg logo/Balatrix final logo 1.svg';
+import balatrixLogoMark from '../../assets/svg logo/Balatrix logo mark.svg';
 import {
     LayoutDashboard,
     Wallet,
@@ -238,9 +241,8 @@ const PBXDemo = () => {
 
     return (
         <div
-            className={`pbx-demo ${
-                isDarkMode ? 'dark' : ''
-            } min-h-screen bg-[#f7f8fa] text-slate-700 flex flex-col font-sans`}
+            className={`pbx-demo ${isDarkMode ? 'dark' : ''
+                } min-h-screen bg-[#f7f8fa] text-slate-700 flex flex-col font-sans`}
         >
             {/* Top Balatrix Return Banner */}
             <div className="bg-[#1a1f4e] text-white px-4 py-2 flex items-center justify-between text-xs border-b border-[#2a2f5e] z-50">
@@ -264,20 +266,37 @@ const PBXDemo = () => {
             <div className="flex flex-1 relative overflow-hidden">
                 {/* Desktop Sidebar - Refined & Sized to Screenshot */}
                 <aside
-                    className={`hidden lg:flex flex-col bg-white border-r border-slate-100 transition-all duration-300 ease-in-out shrink-0 select-none ${
-                        isSidebarCollapsed ? 'w-20' : 'w-64'
-                    }`}
+                    className={`hidden lg:flex flex-col bg-white border-r border-slate-200 transition-all duration-300 ease-in-out shrink-0 select-none relative ${isSidebarCollapsed ? 'w-20' : 'w-64'
+                        }`}
                 >
-                    {/* Sidebar Brand */}
-                    <div className="h-16 flex items-center px-6 border-b border-slate-100">
-                        <Link to="/" className="flex items-center gap-2.5 group">
-                            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-base shadow-sm group-hover:scale-105 transition-transform">
-                                B
-                            </div>
-                            {!isSidebarCollapsed && (
-                                <span className="text-xl font-bold tracking-tight text-slate-800">
-                                    Balatrix
-                                </span>
+                    {/* Floating Sidebar Collapse/Expand Button mounted directly on the sidebar border line */}
+                    <button
+                        onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                        className="absolute -right-3 top-4 w-6 h-6 rounded-full border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-slate-500 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white flex items-center justify-center shadow-sm hover:shadow-md z-50 transition-all cursor-pointer"
+                        title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                    >
+                        {isSidebarCollapsed ? (
+                            <ChevronRight className="w-3.5 h-3.5" />
+                        ) : (
+                            <ChevronLeft className="w-3.5 h-3.5" />
+                        )}
+                    </button>
+
+                    {/* Sidebar Brand (Fixed at top of sidebar) */}
+                    <div className={`h-14 flex items-center border-b border-slate-200 dark:border-zinc-800 shrink-0 ${isSidebarCollapsed ? 'justify-center px-2' : 'px-6'}`}>
+                        <Link to="/" className="flex items-center group transition-transform" title="Balatrix Home">
+                            {isSidebarCollapsed ? (
+                                <img
+                                    src={balatrixLogoMark}
+                                    alt="Balatrix"
+                                    className="w-7 h-7 object-contain transition-transform group-hover:scale-110"
+                                />
+                            ) : (
+                                <img
+                                    src={balatrixFullLogo}
+                                    alt="Balatrix"
+                                    className="h-8 max-w-[165px] object-contain transition-transform group-hover:scale-105"
+                                />
                             )}
                         </Link>
                     </div>
@@ -294,41 +313,51 @@ const PBXDemo = () => {
                             if (item.hasSubmenu) {
                                 return (
                                     <div key={item.id} className="space-y-1">
-                                        <button
-                                            onClick={() => {
-                                                if (isSidebarCollapsed) {
-                                                    setIsSidebarCollapsed(false);
-                                                    setIsExtensionsOpen(true);
-                                                } else {
-                                                    setIsExtensionsOpen(!isExtensionsOpen);
-                                                }
-                                                handleTabChange('extensions');
-                                            }}
-                                            title={isSidebarCollapsed ? item.label : undefined}
-                                            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-150 cursor-pointer ${
-                                                isSubActive
-                                                    ? 'text-blue-600 font-semibold bg-blue-50/60'
-                                                    : 'text-[#475569] hover:text-[#0f172a] hover:bg-slate-50'
-                                            } ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                                        <div
+                                            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-150 ${isSubActive
+                                                ? 'text-blue-600 font-semibold bg-blue-50/60'
+                                                : 'text-[#475569] hover:text-[#0f172a] hover:bg-slate-50'
+                                                } ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
                                         >
-                                            <div className="flex items-center gap-3.5 min-w-0">
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    if (isSidebarCollapsed) {
+                                                        setIsSidebarCollapsed(false);
+                                                        setIsExtensionsOpen(true);
+                                                    }
+                                                    handleTabChange('extensions');
+                                                }}
+                                                title={isSidebarCollapsed ? item.label : undefined}
+                                                className="flex items-center gap-3.5 min-w-0 flex-1 text-left cursor-pointer"
+                                            >
                                                 <Icon
-                                                    className={`w-5 h-5 shrink-0 ${
-                                                        isSubActive ? 'text-blue-600' : 'text-[#64748b]'
-                                                    }`}
+                                                    className={`w-5 h-5 shrink-0 ${isSubActive ? 'text-blue-600' : 'text-[#64748b]'
+                                                        }`}
                                                 />
                                                 {!isSidebarCollapsed && (
                                                     <span className="truncate">{item.label}</span>
                                                 )}
-                                            </div>
+                                            </button>
+
+                                            {/* Separate, small dropdown trigger at the corner */}
                                             {!isSidebarCollapsed && (
-                                                <ChevronDown
-                                                    className={`w-4 h-4 text-[#94a3b8] transition-transform duration-200 ${
-                                                        isExtensionsOpen ? 'rotate-180 text-blue-600' : ''
-                                                    }`}
-                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setIsExtensionsOpen(!isExtensionsOpen);
+                                                    }}
+                                                    title={isExtensionsOpen ? 'Collapse' : 'Expand'}
+                                                    className="p-1 -mr-1 rounded-md text-[#94a3b8] hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-zinc-800/60 transition-colors cursor-pointer"
+                                                >
+                                                    <ChevronDown
+                                                        className={`w-3.5 h-3.5 transition-transform duration-200 ${isExtensionsOpen ? 'rotate-180 text-blue-600' : ''
+                                                            }`}
+                                                    />
+                                                </button>
                                             )}
-                                        </button>
+                                        </div>
 
                                         {/* Submenu Accordion Items */}
                                         {!isSidebarCollapsed && isExtensionsOpen && (
@@ -340,11 +369,10 @@ const PBXDemo = () => {
                                                         <button
                                                             key={sub.id}
                                                             onClick={() => handleTabChange(sub.id)}
-                                                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all duration-150 cursor-pointer ${
-                                                                isSelected
-                                                                    ? 'text-blue-600 font-semibold bg-blue-50/50'
-                                                                    : 'text-[#64748b] hover:text-[#0f172a] hover:bg-slate-50 font-normal'
-                                                            }`}
+                                                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all duration-150 cursor-pointer ${isSelected
+                                                                ? 'text-blue-600 font-semibold bg-blue-50/50'
+                                                                : 'text-[#64748b] hover:text-[#0f172a] hover:bg-slate-50 font-normal'
+                                                                }`}
                                                         >
                                                             <span className={`${isSelected ? 'text-blue-400' : 'text-slate-300'} font-mono text-xs select-none`}>
                                                                 {isFirst ? '├──' : '└──'}
@@ -364,16 +392,14 @@ const PBXDemo = () => {
                                     key={item.id}
                                     onClick={() => handleTabChange(item.id)}
                                     title={isSidebarCollapsed ? item.label : undefined}
-                                    className={`w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-[13px] transition-all duration-150 cursor-pointer ${
-                                        isDirectActive
-                                            ? 'bg-[#1a68ff] text-white font-semibold shadow-xs'
-                                            : 'text-[#475569] hover:text-[#0f172a] hover:bg-slate-50 font-medium'
-                                    } ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                                    className={`w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-[13px] transition-all duration-150 cursor-pointer ${isDirectActive
+                                        ? 'bg-[#1a68ff] text-white font-semibold shadow-xs'
+                                        : 'text-[#475569] hover:text-[#0f172a] hover:bg-slate-50 font-medium'
+                                        } ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
                                 >
                                     <Icon
-                                        className={`w-5 h-5 shrink-0 ${
-                                            isDirectActive ? 'text-white' : 'text-[#64748b]'
-                                        }`}
+                                        className={`w-5 h-5 shrink-0 ${isDirectActive ? 'text-white' : 'text-[#64748b]'
+                                            }`}
                                     />
                                     {!isSidebarCollapsed && (
                                         <span className="truncate">{item.label}</span>
@@ -385,7 +411,7 @@ const PBXDemo = () => {
 
                     {/* Sidebar Footer */}
                     {!isSidebarCollapsed && (
-                        <div className="p-4 border-t border-slate-100 bg-[#fafbfe]/80">
+                        <div className="p-4 border-t border-slate-200 bg-[#fafbfe]/80">
                             <div className="text-[11px] text-slate-400">
                                 <p className="font-semibold text-slate-600">Enterprise PBX v2.4</p>
                                 <p className="text-slate-400 text-[10px] mt-0.5">SIP Engine Status: Normal</p>
@@ -402,18 +428,17 @@ const PBXDemo = () => {
                             onClick={() => setIsMobileMenuOpen(false)}
                         />
                         <div className="relative w-72 bg-white flex flex-col h-full z-10 shadow-2xl">
-                            <div className="h-16 flex items-center justify-between px-6 border-b border-slate-200">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">
-                                        B
-                                    </div>
-                                    <span className="text-xl font-black text-slate-950">
-                                        Balatrix
-                                    </span>
-                                </div>
+                            <div className="h-16 flex items-center justify-between px-6 border-b border-slate-200 dark:border-zinc-800">
+                                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center group">
+                                    <img
+                                        src={balatrixFullLogo}
+                                        alt="Balatrix"
+                                        className="h-8 max-w-[165px] object-contain group-hover:scale-105 transition-transform"
+                                    />
+                                </Link>
                                 <button
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="p-1 rounded-lg text-slate-500 hover:text-slate-800"
+                                    className="p-1 rounded-lg text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-white"
                                 >
                                     <X className="w-5 h-5" />
                                 </button>
@@ -432,20 +457,18 @@ const PBXDemo = () => {
                                             <div key={item.id} className="space-y-1">
                                                 <button
                                                     onClick={() => setIsExtensionsOpen(!isExtensionsOpen)}
-                                                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold ${
-                                                        isSubActive
-                                                            ? 'text-blue-700 bg-blue-50 border border-blue-200'
-                                                            : 'text-slate-700'
-                                                    }`}
+                                                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold ${isSubActive
+                                                        ? 'text-blue-700 bg-blue-50 border border-blue-200'
+                                                        : 'text-slate-700'
+                                                        }`}
                                                 >
                                                     <div className="flex items-center gap-3.5">
                                                         <Icon className="w-4 h-4 text-blue-600" />
                                                         <span>{item.label}</span>
                                                     </div>
                                                     <ChevronDown
-                                                        className={`w-3.5 h-3.5 text-slate-500 transition-transform ${
-                                                            isExtensionsOpen ? 'rotate-180' : ''
-                                                        }`}
+                                                        className={`w-3.5 h-3.5 text-slate-500 transition-transform ${isExtensionsOpen ? 'rotate-180' : ''
+                                                            }`}
                                                     />
                                                 </button>
 
@@ -455,11 +478,10 @@ const PBXDemo = () => {
                                                             <button
                                                                 key={sub.id}
                                                                 onClick={() => handleTabChange(sub.id)}
-                                                                className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold ${
-                                                                    activeTab === sub.id
-                                                                        ? 'bg-blue-600 text-white'
-                                                                        : 'text-slate-600'
-                                                                }`}
+                                                                className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold ${activeTab === sub.id
+                                                                    ? 'bg-blue-600 text-white'
+                                                                    : 'text-slate-600'
+                                                                    }`}
                                                             >
                                                                 <span className="text-slate-400 font-mono text-xs">
                                                                     {sIdx === 0 ? '├──' : '└──'}
@@ -477,16 +499,14 @@ const PBXDemo = () => {
                                         <button
                                             key={item.id}
                                             onClick={() => handleTabChange(item.id)}
-                                            className={`w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
-                                                isDirectActive
-                                                    ? 'bg-blue-600 text-white'
-                                                    : 'text-slate-700 hover:text-slate-950 hover:bg-slate-100'
-                                            }`}
+                                            className={`w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${isDirectActive
+                                                ? 'bg-blue-600 text-white'
+                                                : 'text-slate-700 hover:text-slate-950 hover:bg-slate-100'
+                                                }`}
                                         >
                                             <Icon
-                                                className={`w-4 h-4 shrink-0 ${
-                                                    isDirectActive ? 'text-white' : 'text-slate-500'
-                                                }`}
+                                                className={`w-4 h-4 shrink-0 ${isDirectActive ? 'text-white' : 'text-slate-500'
+                                                    }`}
                                             />
                                             <span>{item.label}</span>
                                         </button>
@@ -511,32 +531,19 @@ const PBXDemo = () => {
                                 <Menu className="w-5 h-5" />
                             </button>
 
-                            {/* Desktop collapse toggle */}
-                            <button
-                                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-                                className="hidden lg:flex p-1.5 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
-                                title="Toggle sidebar"
-                            >
-                                {isSidebarCollapsed ? (
-                                    <ChevronRight className="w-4 h-4" />
-                                ) : (
-                                    <ChevronLeft className="w-4 h-4" />
-                                )}
-                            </button>
-
                             {/* User Badge */}
                             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-xs">
-                                <span className="font-semibold text-slate-800">SMITH STEVE</span>
+                                <span className="font-semibold text-slate-800">Alex</span>
                                 <span className="bg-slate-800 text-white font-mono text-[10px] px-1.5 py-0.5 rounded">
-                                    u1005
+                                    u1001
                                 </span>
                             </div>
 
                             {/* Telephony Status Pills */}
                             <div className="hidden md:flex items-center gap-2">
                                 <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-medium text-slate-600">
-                                    <span className="w-2 h-2 rounded-full bg-slate-400"></span>
-                                    <span>ACTIVE CALLS: 0</span>
+                                    <span className="w-2 h-2 rounded-full bg-green-400"></span>
+                                    <span>ACTIVE CALLS: 2</span>
                                 </div>
 
                                 <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-medium text-slate-600">
@@ -608,9 +615,19 @@ const PBXDemo = () => {
                         </div>
                     </header>
 
-                    {/* Content View Container */}
+                    {/* Content View Container with smooth tab transition */}
                     <main className="flex-1 p-5 sm:p-6 lg:p-7 max-w-7xl w-full mx-auto">
-                        {renderActiveContent()}
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -8 }}
+                                transition={{ duration: 0.2, ease: 'easeOut' }}
+                            >
+                                {renderActiveContent()}
+                            </motion.div>
+                        </AnimatePresence>
                     </main>
                 </div>
             </div>

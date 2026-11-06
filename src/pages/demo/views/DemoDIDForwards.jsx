@@ -7,7 +7,9 @@ import {
     Edit3,
     Trash2,
     X,
-    Check
+    Check,
+    ArrowLeft,
+    Save
 } from 'lucide-react';
 
 const initialForwards = [
@@ -34,82 +36,119 @@ const initialForwards = [
     }
 ];
 
-const EditForwardModal = ({ item, onClose, onSave }) => {
-    const [name, setName] = useState(item.name);
-    const [destination, setDestination] = useState(item.rawDestination);
-    const [saved, setSaved] = useState(false);
-    const [error, setError] = useState('');
+/**
+ * Dedicated Page: Create / Edit DID Forward exactly matching uploaded screenshot
+ */
+const CreateDIDForwardView = ({ onBack, onSave, initialData }) => {
+    const [friendlyName, setFriendlyName] = useState(initialData?.name || '');
+    const [destinationNumber, setDestinationNumber] = useState(initialData?.rawDestination || '');
+    const [isSaved, setIsSaved] = useState(false);
 
-    const handleSave = () => {
-        if (!name.trim()) { setError('Label is required.'); return; }
-        if (!/^\+?[\d\s\-()]{7,}$/.test(destination.trim())) { setError('Enter a valid E.164 or local number.'); return; }
-        setError('');
-        setSaved(true);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!friendlyName.trim() || !destinationNumber.trim()) return;
+
+        const formatted = destinationNumber
+            .replace(/[^\d+]/g, '')
+            .replace(/(\+1)(\d{3})(\d{3})(\d{4})/, '+1 ($2) $3-$4');
+
+        onSave({
+            id: initialData?.id || String(Date.now()),
+            name: friendlyName.trim(),
+            rawDestination: destinationNumber.trim(),
+            destination: formatted || destinationNumber.trim(),
+            created: initialData?.created || new Date().toLocaleDateString('en-US')
+        });
+
+        setIsSaved(true);
         setTimeout(() => {
-            const formatted = destination.replace(/[^\d+]/g, '').replace(/(\+1)(\d{3})(\d{3})(\d{4})/, '+1 ($2) $3-$4');
-            onSave({ ...item, name: name.trim(), rawDestination: destination.trim(), destination: formatted });
-        }, 600);
+            onBack();
+        }, 200);
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-            <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-slate-300">
-                <div className="flex items-center justify-between mb-5 pb-3 border-b-2 border-slate-200">
-                    <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center">
-                            <Edit3 className="w-4 h-4" />
-                        </div>
-                        <h3 className="text-base font-black text-slate-950">Edit DID Forward</h3>
-                    </div>
-                    <button onClick={onClose} className="text-slate-500 hover:text-slate-950 cursor-pointer p-1">
-                        <X className="w-5 h-5" />
-                    </button>
-                </div>
+        <div className="space-y-4 max-w-4xl">
+            {/* Top Back Navigation Link */}
+            <div>
+                <button
+                    onClick={onBack}
+                    className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors cursor-pointer"
+                >
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>Back to DID Forwards</span>
+                </button>
+            </div>
 
-                <div className="space-y-4 text-xs mb-6">
-                    <div>
-                        <label className="block text-slate-800 font-bold mb-1.5 uppercase tracking-wide text-[11px]">Forward Label / Description</label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="e.g., Regional Mobile Cell"
-                            className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-950 font-bold focus:outline-none focus:border-blue-500 focus:bg-white transition-all"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-slate-800 font-bold mb-1.5 uppercase tracking-wide text-[11px]">PSTN / E.164 Destination Number</label>
-                        <input
-                            type="text"
-                            value={destination}
-                            onChange={(e) => setDestination(e.target.value)}
-                            placeholder="+15551234567"
-                            className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-950 font-bold font-mono focus:outline-none focus:border-blue-500 focus:bg-white transition-all"
-                        />
-                    </div>
-                    {error && (
-                        <p className="text-rose-700 font-bold text-[11px] bg-rose-50 border border-rose-200 rounded-lg px-3 py-2">{error}</p>
-                    )}
-                    <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-900">
-                        <p className="font-black mb-0.5">Carrier Forwarding Policy</p>
-                        <p className="text-[11px] text-blue-800 font-medium">
-                            External calls follow the tenant rate card for outbound leg minutes. Changes propagate within 2 seconds.
+            {/* Main Form Container Card */}
+            <div className="bg-white rounded-3xl border border-slate-200/90 dark:border-zinc-850 shadow-xs overflow-hidden">
+                <form onSubmit={handleSubmit}>
+                    {/* Header: Title and Subtitle with light divider */}
+                    <div className="p-7 sm:p-8 border-b border-slate-100 dark:border-zinc-850">
+                        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+                            {initialData ? 'Edit DID Forward' : 'Create DID Forward'}
+                        </h1>
+                        <p className="text-slate-600 dark:text-zinc-300 text-xs sm:text-sm mt-1 font-medium">
+                            Configure an external number destination that can be used by DIDs.
                         </p>
                     </div>
-                </div>
 
-                <div className="flex justify-end gap-2 pt-4 border-t-2 border-slate-200">
-                    <button onClick={onClose} className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-xl text-xs font-bold cursor-pointer">Cancel</button>
-                    <button
-                        onClick={handleSave}
-                        className={`px-5 py-2 rounded-xl text-xs font-black cursor-pointer shadow-sm transition-all inline-flex items-center gap-2 ${
-                            saved ? 'bg-emerald-600 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'
-                        }`}
-                    >
-                        {saved ? <Check className="w-3.5 h-3.5" /> : <Edit3 className="w-3.5 h-3.5" />}
-                        {saved ? 'Saved!' : 'Save Changes'}
-                    </button>
-                </div>
+                    {/* Form Fields */}
+                    <div className="p-7 sm:p-8 space-y-6">
+                        {/* Friendly Name */}
+                        <div>
+                            <label className="block text-xs font-bold text-slate-900 dark:text-zinc-100 mb-2">
+                                Friendly Name <span className="text-rose-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={friendlyName}
+                                onChange={(e) => setFriendlyName(e.target.value)}
+                                placeholder="e.g. CEO Mobile"
+                                required
+                                className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-slate-950 dark:text-white font-semibold text-sm focus:outline-none focus:border-blue-600 transition-all placeholder:text-slate-400 dark:placeholder:text-zinc-600 shadow-2xs"
+                            />
+                            <p className="text-xs text-slate-600 dark:text-zinc-400 mt-1.5 font-medium">
+                                A name to identify this forward in the dashboard.
+                            </p>
+                        </div>
+
+                        {/* Destination Number */}
+                        <div>
+                            <label className="block text-xs font-bold text-slate-900 dark:text-zinc-100 mb-2">
+                                Destination Number <span className="text-rose-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={destinationNumber}
+                                onChange={(e) => setDestinationNumber(e.target.value)}
+                                placeholder="e.g. +15551234567"
+                                required
+                                className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-slate-950 dark:text-white font-semibold text-sm focus:outline-none focus:border-blue-600 transition-all placeholder:text-slate-400 dark:placeholder:text-zinc-600 shadow-2xs font-mono"
+                            />
+                            <p className="text-xs text-slate-600 dark:text-zinc-400 mt-1.5 font-medium">
+                                The external phone number receiving the call (E.164 format recommended).
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Footer Actions */}
+                    <div className="p-5 sm:px-8 border-t border-slate-200 dark:border-zinc-800 flex items-center justify-end gap-3 bg-white dark:bg-zinc-900">
+                        <button
+                            type="button"
+                            onClick={onBack}
+                            className="px-6 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-850 hover:bg-slate-50 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-300 font-bold text-xs shadow-2xs transition-colors cursor-pointer"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs shadow-sm hover:shadow transition-all inline-flex items-center gap-2 cursor-pointer"
+                        >
+                            <Save className="w-4 h-4" />
+                            <span>{isSaved ? 'Saved!' : 'Save Forward'}</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     );
@@ -118,34 +157,42 @@ const EditForwardModal = ({ item, onClose, onSave }) => {
 const DemoDIDForwards = () => {
     const [forwards, setForwards] = useState(initialForwards);
     const [searchQuery, setSearchQuery] = useState('');
-    const [isCreateOpen, setIsCreateOpen] = useState(false);
+    const [isCreating, setIsCreating] = useState(false);
     const [activeEditItem, setActiveEditItem] = useState(null);
-    const [newName, setNewName] = useState('');
-    const [newDest, setNewDest] = useState('');
 
     const handleDelete = (id) => setForwards(forwards.filter((f) => f.id !== id));
 
-    const handleSaveEdit = (updated) => {
-        setForwards(forwards.map((f) => (f.id === updated.id ? updated : f)));
+    const handleSaveForward = (forwardData) => {
+        const exists = forwards.some((f) => f.id === forwardData.id);
+        if (exists) {
+            setForwards(forwards.map((f) => (f.id === forwardData.id ? forwardData : f)));
+        } else {
+            setForwards([forwardData, ...forwards]);
+        }
+        setIsCreating(false);
         setActiveEditItem(null);
     };
 
-    const handleCreate = () => {
-        if (!newName.trim() || !newDest.trim()) return;
-        setForwards([
-            ...forwards,
-            {
-                id: String(Date.now()),
-                name: newName.trim(),
-                destination: newDest.trim(),
-                rawDestination: newDest.trim(),
-                created: new Date().toLocaleDateString('en-US')
-            }
-        ]);
-        setNewName('');
-        setNewDest('');
-        setIsCreateOpen(false);
-    };
+    // Dedicated Page View Mode for Create
+    if (isCreating) {
+        return (
+            <CreateDIDForwardView
+                onBack={() => setIsCreating(false)}
+                onSave={handleSaveForward}
+            />
+        );
+    }
+
+    // Dedicated Page View Mode for Edit
+    if (activeEditItem) {
+        return (
+            <CreateDIDForwardView
+                initialData={activeEditItem}
+                onBack={() => setActiveEditItem(null)}
+                onSave={handleSaveForward}
+            />
+        );
+    }
 
     const filtered = forwards.filter(
         (f) =>
@@ -163,7 +210,7 @@ const DemoDIDForwards = () => {
                     <p className="text-slate-700 text-xs sm:text-sm mt-1 font-medium">Manage external call forwarding destinations</p>
                 </div>
                 <button
-                    onClick={() => setIsCreateOpen(true)}
+                    onClick={() => setIsCreating(true)}
                     className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs px-5 py-2.5 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
                 >
                     <Plus className="w-4 h-4" />
@@ -234,57 +281,6 @@ const DemoDIDForwards = () => {
                     </div>
                 ))}
             </div>
-
-            {/* Edit Modal */}
-            {activeEditItem && (
-                <EditForwardModal
-                    item={activeEditItem}
-                    onClose={() => setActiveEditItem(null)}
-                    onSave={handleSaveEdit}
-                />
-            )}
-
-            {/* Create Modal */}
-            {isCreateOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-                    <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-slate-300">
-                        <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-slate-200">
-                            <h3 className="text-base font-black text-slate-950">Create DID Forward</h3>
-                            <button onClick={() => setIsCreateOpen(false)} className="text-slate-500 hover:text-slate-950 text-2xl font-black cursor-pointer">&times;</button>
-                        </div>
-                        <div className="space-y-4 mb-6 text-xs">
-                            <div>
-                                <label className="block text-slate-800 font-bold mb-1.5">Forward Label / Description</label>
-                                <input
-                                    type="text"
-                                    placeholder="e.g., Regional Mobile Cell"
-                                    value={newName}
-                                    onChange={(e) => setNewName(e.target.value)}
-                                    className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-950 font-bold focus:outline-none focus:border-blue-500"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-slate-800 font-bold mb-1.5">PSTN / E.164 Destination Number</label>
-                                <input
-                                    type="text"
-                                    placeholder="+15551234567"
-                                    value={newDest}
-                                    onChange={(e) => setNewDest(e.target.value)}
-                                    className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-950 font-bold font-mono focus:outline-none focus:border-blue-500"
-                                />
-                            </div>
-                            <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-900">
-                                <p className="font-black mb-0.5">Carrier Forwarding Policy</p>
-                                <p className="text-[11px] text-blue-800 font-medium">External calls follow the tenant rate card for outbound leg minutes.</p>
-                            </div>
-                        </div>
-                        <div className="flex justify-end gap-2">
-                            <button onClick={() => setIsCreateOpen(false)} className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-xl text-xs font-bold cursor-pointer">Cancel</button>
-                            <button onClick={handleCreate} className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-black cursor-pointer shadow-sm">Save Forward</button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

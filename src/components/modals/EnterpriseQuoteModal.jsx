@@ -21,7 +21,7 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      
+
       // Pre-fill useCase from URL query parameters if present
       const params = new URLSearchParams(window.location.search);
       const quoteType = params.get('quote');
@@ -35,7 +35,7 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -52,16 +52,28 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       console.log('Enterprise Quote Request:', formData);
-      
-      
+      // Sync lead details to Zoho SalesIQ if it is loaded in the browser
+      if (window.$zoho && window.$zoho.salesiq) {
+        try {
+          window.$zoho.salesiq.visitor.name(formData.firstName + ' ' + formData.lastName);
+          window.$zoho.salesiq.visitor.email(formData.email);
+          window.$zoho.salesiq.visitor.contactnumber(formData.phone);
+
+          const notes = `Quote Form Submission. Company: ${formData.company}, Job Title: ${formData.jobTitle || 'N/A'}, Employees: ${formData.numberOfEmployees || 'N/A'}, Vol: ${formData.monthlyVolume || 'N/A'}, Use Case: ${formData.useCase}, Notes: ${formData.additionalRequirements || 'None'}`;
+          window.$zoho.salesiq.visitor.question(notes);
+        } catch (err) {
+          console.warn('Zoho SalesIQ sync failed:', err);
+        }
+      }
+
       setSubmitStatus('success');
-      
+
       setTimeout(() => {
         setFormData({
           firstName: '',
@@ -79,7 +91,7 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
         setSubmitStatus(null);
         onClose();
       }, 2000);
-      
+
     } catch (error) {
       console.error('Submission error:', error);
       setSubmitStatus('error');
@@ -93,25 +105,25 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
       {/* Backdrop with Blur */}
-      <div 
+      <div
         className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
         onClick={onClose}
       />
-      
+
       {/* Modal - Rebuilt Split Screen Inspired by HIVE Popup */}
       <div className="relative bg-[#080b16] border border-white/10 rounded-3xl shadow-2xl w-full max-w-4xl max-h-[92vh] overflow-hidden flex flex-col md:flex-row transform transition-all duration-300 scale-100 z-10">
-        
+
         {/* Left Side: Glowing Emblem Card */}
         <div className="md:w-2/5 bg-gradient-to-br from-[#032B93] via-[#011954] to-slate-950 p-8 flex flex-col justify-between relative overflow-hidden shrink-0">
           {/* Subtle background nodes pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:16px_16px] z-0"></div>
-          
+
           {/* Central Glow Orb */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
 
           {/* Close button for Mobile (visible inside left card) */}
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="md:hidden absolute top-4 right-4 text-gray-400 hover:text-white p-1 bg-white/5 border border-white/10 rounded-lg"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,7 +136,7 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
             <div className="inline-flex items-center space-x-1.5 bg-blue-500/15 border border-blue-400/20 text-blue-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
               <span>Reseller & Enterprise</span>
             </div>
-            
+
             <h2 className="text-3xl font-extrabold text-white leading-tight">
               Stop Guessing.<br />Start <em>Calling.</em>
             </h2>
@@ -175,8 +187,8 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
         {/* Right Side: Re-styled dark input form */}
         <div className="md:w-3/5 p-8 overflow-y-auto flex flex-col justify-between">
           {/* Close button for Desktop */}
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="hidden md:block absolute top-6 right-6 text-gray-400 hover:text-white p-1 hover:bg-white/5 border border-transparent hover:border-white/10 rounded-lg transition-all duration-200"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
