@@ -105,7 +105,9 @@ const Header = () => {
     { name: 'Pricing', href: '/pricing' },
     { name: 'About Us', href: '/about' },
     {
-      name: 'Want a Demo?', href: '/demo'
+      name: 'Want a Demo?',
+      href: '/demo',
+      highlight: true,
     },
   ];
 
@@ -145,8 +147,28 @@ const Header = () => {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-7">
               {navigation.map((item) => {
+                if (item.highlight) {
+                  return (
+                    <div key={item.name} className="relative">
+                      <Link
+                        to={item.href}
+                        className={`relative font-bold text-[14px] px-3.5 py-1.5 rounded-full transition-all duration-300 flex items-center gap-2 group/demo border ${
+                          isActive(item.href)
+                            ? 'bg-cyan-500/25 border-cyan-400 text-white shadow-[0_0_20px_rgba(34,211,238,0.45)]'
+                            : 'bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 border-cyan-400/40 hover:border-cyan-300 text-cyan-300 hover:text-white hover:bg-cyan-500/25 shadow-[0_0_14px_rgba(34,211,238,0.25)] hover:shadow-[0_0_22px_rgba(34,211,238,0.45)]'
+                        }`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.9)]" />
+                        <span className="bg-gradient-to-r from-cyan-300 via-sky-200 to-cyan-300 bg-clip-text text-transparent font-extrabold tracking-wide group-hover/demo:text-white group-hover/demo:bg-none transition-colors">
+                          {item.name}
+                        </span>
+                      </Link>
+                    </div>
+                  );
+                }
+
                 return (
                   <div key={item.name} className="relative group/dropdown">
                     <Link
@@ -258,6 +280,21 @@ const Header = () => {
             <div className="lg:hidden absolute top-0 left-0 w-full min-h-screen bg-[var(--canvas-dark-deep)]/98 backdrop-blur-xl border-b border-white/5 shadow-2xl z-40 flex flex-col justify-center px-6">
               <nav className="flex flex-col space-y-6 text-center">
                 {navigation.map((item, index) => {
+                  if (item.highlight) {
+                    return (
+                      <div key={index} className="flex flex-col items-center py-2">
+                        <Link
+                          to={item.href}
+                          className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-cyan-500/15 border border-cyan-400/50 text-cyan-300 hover:text-white font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.9)]" />
+                          <span>{item.name}</span>
+                        </Link>
+                      </div>
+                    );
+                  }
+
                   return (
                     <div key={index} className="flex flex-col items-center space-y-3">
                       <Link

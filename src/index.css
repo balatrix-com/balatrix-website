@@ -169,6 +169,13 @@ body {
 }
 
 /* Ensure smooth mouse-wheel scrolling throughout PBX Demo scroll containers */
+html:has(.pbx-demo),
+body:has(.pbx-demo) {
+  overflow: hidden !important;
+  height: 100% !important;
+  max-height: 100% !important;
+}
+
 .pbx-demo,
 .pbx-demo .overflow-y-auto,
 .pbx-demo .overflow-x-auto {

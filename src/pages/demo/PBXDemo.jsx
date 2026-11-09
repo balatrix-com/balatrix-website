@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import balatrixFullLogo from '../../assets/svg logo/Balatrix final logo 1.svg';
@@ -22,7 +22,6 @@ import {
     ChevronLeft,
     ChevronRight,
     ChevronDown,
-    Bell,
     Moon,
     Sun,
     LogOut,
@@ -123,7 +122,6 @@ const PBXDemo = () => {
 
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [showNotifications, setShowNotifications] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(() => {
         return localStorage.getItem('balatrix_demo_theme') === 'dark';
     });
@@ -158,6 +156,7 @@ const PBXDemo = () => {
     const [isExtensionsOpen, setIsExtensionsOpen] = useState(
         activeTab === 'extensions' || activeTab === 'extension-status'
     );
+    const mainContentRef = useRef(null);
 
     // Persist and apply dark mode preference
     const handleToggleDarkMode = () => {
@@ -168,11 +167,12 @@ const PBXDemo = () => {
         });
     };
 
-    // Keep extensions accordion open if active tab is inside it
+    // Keep extensions accordion open if active tab is inside it, reset scroll to top
     useEffect(() => {
         if (activeTab === 'extensions' || activeTab === 'extension-status') {
             setIsExtensionsOpen(true);
         }
+        mainContentRef.current?.scrollTo({ top: 0, behavior: 'instant' });
         window.scrollTo(0, 0);
     }, [activeTab]);
 
@@ -242,10 +242,10 @@ const PBXDemo = () => {
     return (
         <div
             className={`pbx-demo ${isDarkMode ? 'dark' : ''
-                } min-h-screen bg-[#f7f8fa] text-slate-700 flex flex-col font-sans`}
+                } h-screen max-h-screen overflow-hidden bg-[#f7f8fa] text-slate-700 flex flex-col font-sans select-none`}
         >
-            {/* Top Balatrix Return Banner */}
-            <div className="bg-[#1a1f4e] text-white px-4 py-2 flex items-center justify-between text-xs border-b border-[#2a2f5e] z-50">
+            {/* Top Balatrix Return Banner - Permanently Fixed */}
+            <div className="h-9 shrink-0 bg-[#1a1f4e] text-white px-4 py-2 flex items-center justify-between text-xs border-b border-[#2a2f5e] z-50 select-none">
                 <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span className="font-semibold text-white text-xs">Balatrix Cloud PBX Admin Sandbox</span>
@@ -263,22 +263,23 @@ const PBXDemo = () => {
                 </div>
             </div>
 
-            <div className="flex flex-1 relative overflow-hidden">
-                {/* Desktop Sidebar - Refined & Sized to Screenshot */}
+            <div className="flex flex-1 min-h-0 relative overflow-hidden">
+                {/* Desktop Sidebar - Permanently Fixed on the Left */}
                 <aside
-                    className={`hidden lg:flex flex-col bg-white border-r border-slate-200 transition-all duration-300 ease-in-out shrink-0 select-none relative ${isSidebarCollapsed ? 'w-20' : 'w-64'
+                    className={`hidden lg:flex flex-col h-full bg-white dark:bg-zinc-900 border-r border-slate-200 dark:border-zinc-800 transition-all duration-300 ease-in-out shrink-0 select-none relative z-40 ${isSidebarCollapsed ? 'w-20' : 'w-64'
                         }`}
                 >
                     {/* Floating Sidebar Collapse/Expand Button mounted directly on the sidebar border line */}
                     <button
                         onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-                        className="absolute -right-3 top-4 w-6 h-6 rounded-full border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-slate-500 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white flex items-center justify-center shadow-sm hover:shadow-md z-50 transition-all cursor-pointer"
+                        className="absolute -right-3.5 top-3.5 w-7 h-7 rounded-full border border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-850 text-slate-800 dark:text-zinc-100 hover:text-white hover:bg-blue-600 hover:border-blue-600 flex items-center justify-center shadow-md hover:shadow-lg z-50 transition-all cursor-pointer group active:scale-95"
                         title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                        aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
                     >
                         {isSidebarCollapsed ? (
-                            <ChevronRight className="w-3.5 h-3.5" />
+                            <ChevronRight className="w-4 h-4 stroke-[2.5] transition-transform group-hover:scale-110" />
                         ) : (
-                            <ChevronLeft className="w-3.5 h-3.5" />
+                            <ChevronLeft className="w-4 h-4 stroke-[2.5] transition-transform group-hover:scale-110" />
                         )}
                     </button>
 
@@ -302,7 +303,10 @@ const PBXDemo = () => {
                     </div>
 
                     {/* Sidebar Nav Items */}
-                    <div className="flex-1 overflow-y-auto py-3 px-3 space-y-1">
+                    <div
+                        data-lenis-prevent="true"
+                        className="flex-1 min-h-0 overflow-y-auto py-3 px-3 space-y-1 sidebar-scrollable"
+                    >
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             const isDirectActive = activeTab === item.id;
@@ -517,10 +521,10 @@ const PBXDemo = () => {
                     </div>
                 )}
 
-                {/* Main View Area */}
-                <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
-                    {/* Top App Bar */}
-                    <header className="h-14 bg-white border-b border-slate-200 px-4 sm:px-5 flex items-center justify-between sticky top-0 z-40">
+                {/* Main View Area Column - Constrained and Non-Scrolling */}
+                <div className="flex-1 min-w-0 min-h-0 flex flex-col overflow-hidden bg-[#f7f8fa]">
+                    {/* Top App Bar / Header Taskbar - Permanently Fixed at Top */}
+                    <header className="h-14 shrink-0 bg-white border-b border-slate-200 px-4 sm:px-5 flex items-center justify-between z-30 select-none">
                         {/* Left Controls */}
                         <div className="flex items-center gap-2.5">
                             {/* Mobile menu hamburger */}
@@ -559,37 +563,6 @@ const PBXDemo = () => {
 
                         {/* Right Tools */}
                         <div className="flex items-center gap-1.5 sm:gap-2">
-                            {/* Notification Bell */}
-                            <div className="relative">
-                                <button
-                                    onClick={() => setShowNotifications(!showNotifications)}
-                                    className="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors relative cursor-pointer"
-                                    title="Notifications"
-                                >
-                                    <Bell className="w-4 h-4" />
-                                    <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-400 ring-1 ring-white"></span>
-                                </button>
-
-                                {showNotifications && (
-                                    <div className="absolute right-0 mt-1.5 w-72 bg-white rounded-xl shadow-lg border border-slate-200 p-3.5 z-50 text-xs">
-                                        <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
-                                            <span className="font-semibold text-slate-800">Notifications</span>
-                                            <span className="text-[11px] text-blue-600 font-medium cursor-pointer">Mark read</span>
-                                        </div>
-                                        <div className="space-y-2">
-                                            <div className="p-2.5 rounded-lg bg-blue-50 border border-blue-100 text-slate-700">
-                                                <p className="font-semibold text-slate-800">Monthly Minutes Active</p>
-                                                <p className="text-[11px] text-slate-500 mt-0.5">1200 free minutes provisioned for this billing cycle.</p>
-                                            </div>
-                                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100 text-slate-700">
-                                                <p className="font-semibold text-slate-800">Carrier SIP Gateway Safe</p>
-                                                <p className="text-[11px] text-slate-500 mt-0.5">Latency 18ms across all US-East gateways.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-
                             {/* Theme Toggle */}
                             <button
                                 onClick={handleToggleDarkMode}
@@ -615,19 +588,25 @@ const PBXDemo = () => {
                         </div>
                     </header>
 
-                    {/* Content View Container with smooth tab transition */}
-                    <main className="flex-1 p-5 sm:p-6 lg:p-7 max-w-7xl w-full mx-auto">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeTab}
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -8 }}
-                                transition={{ duration: 0.2, ease: 'easeOut' }}
-                            >
-                                {renderActiveContent()}
-                            </motion.div>
-                        </AnimatePresence>
+                    {/* Content View Container - ONLY THIS ELEMENT SCROLLS WITH MOUSE WHEEL */}
+                    <main
+                        ref={mainContentRef}
+                        data-lenis-prevent="true"
+                        className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-5 sm:p-6 lg:p-7 select-text"
+                    >
+                        <div className="max-w-7xl w-full mx-auto">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeTab}
+                                    initial={{ opacity: 0, y: 8 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -8 }}
+                                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                                >
+                                    {renderActiveContent()}
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
                     </main>
                 </div>
             </div>

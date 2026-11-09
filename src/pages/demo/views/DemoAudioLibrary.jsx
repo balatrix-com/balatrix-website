@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Upload,
     RefreshCw,
@@ -16,6 +16,7 @@ const initialAudioFiles = [
         name: 'Main greet',
         filename: '087ec20b-71ed-4a6c-83d7-8805f81f7187.wav',
         size: '454.17 KB',
+        totalSec: 24,
         uploadedAt: '10/29/2026, 9:42:19 PM'
     },
     {
@@ -23,6 +24,7 @@ const initialAudioFiles = [
         name: 'After Hours Closed Notice',
         filename: '3a9b41dc-58a1-4322-a9b0-9118c7634f12.wav',
         size: '320.50 KB',
+        totalSec: 38,
         uploadedAt: '10/29/2026, 8:15:00 PM'
     },
     {
@@ -30,6 +32,7 @@ const initialAudioFiles = [
         name: 'Corporate Hold Stream - Lo-Fi Chill',
         filename: '7c89f012-e421-4f88-8123-5591ab012c44.mp3',
         size: '1.45 MB',
+        totalSec: 180,
         uploadedAt: '10/28/2026, 11:20:00 AM'
     }
 ];
@@ -40,6 +43,35 @@ const DemoAudioLibrary = () => {
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [isUploadOpen, setIsUploadOpen] = useState(false);
     const [playingId, setPlayingId] = useState(null);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
+
+    useEffect(() => {
+        let interval = null;
+        if (playingId !== null) {
+            interval = setInterval(() => {
+                setCurrentTime((prev) => {
+                    const currentItem = audioList.find((f) => f.id === playingId);
+                    const maxDur = currentItem?.totalSec || 30;
+                    const next = prev + 0.25 * playbackSpeed;
+                    if (next >= maxDur) {
+                        setPlayingId(null);
+                        return 0;
+                    }
+                    return next;
+                });
+            }, 250);
+        }
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [playingId, playbackSpeed, audioList]);
+
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    };
 
     const handleRefresh = () => {
         setIsRefreshing(true);
@@ -56,6 +88,7 @@ const DemoAudioLibrary = () => {
             setPlayingId(null);
         } else {
             setPlayingId(id);
+            setCurrentTime(0);
         }
     };
 
@@ -146,15 +179,45 @@ const DemoAudioLibrary = () => {
                                                         <Play className="w-4 h-4 ml-0.5" />
                                                     )}
                                                 </button>
-                                                <div>
+                                                <div className="flex-1 min-w-0">
                                                     <p className="font-extrabold text-slate-950 text-xs">
                                                         {item.name}
                                                     </p>
                                                     {isCurrentPlaying && (
-                                                        <span className="text-[10px] text-blue-700 font-bold flex items-center gap-1 mt-0.5 animate-pulse">
-                                                            <Volume2 className="w-3 h-3" />
-                                                            <span>Playing audio stream...</span>
-                                                        </span>
+                                                        <div className="flex items-center gap-2 mt-2 pt-1.5 border-t border-slate-200">
+                                                            <div className="flex items-center gap-0.5 text-blue-600 mr-0.5">
+                                                                <span className="w-0.5 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+                                                                <span className="w-0.5 h-3.5 bg-blue-600 rounded-full animate-pulse" style={{ animationDelay: '150ms' }}></span>
+                                                                <span className="w-0.5 h-2 bg-blue-600 rounded-full animate-pulse" style={{ animationDelay: '300ms' }}></span>
+                                                            </div>
+                                                            <span className="font-mono text-[10px] font-black text-slate-800 min-w-[24px]">
+                                                                {formatTime(currentTime)}
+                                                            </span>
+                                                            <input
+                                                                type="range"
+                                                                min="0"
+                                                                max={item.totalSec || 30}
+                                                                step="0.5"
+                                                                value={currentTime}
+                                                                onChange={(e) => setCurrentTime(Number(e.target.value))}
+                                                                className="w-20 sm:w-28 h-1.5 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none"
+                                                                title="Scrub timeline"
+                                                            />
+                                                            <span className="font-mono text-[10px] font-bold text-slate-500 min-w-[24px]">
+                                                                {formatTime(item.totalSec || 30)}
+                                                            </span>
+                                                            <button
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    const speeds = [1.0, 1.25, 1.5, 2.0];
+                                                                    setPlaybackSpeed((prev) => speeds[(speeds.indexOf(prev) + 1) % speeds.length]);
+                                                                }}
+                                                                className="px-1.5 py-0.5 rounded font-mono text-[10px] font-black bg-white text-slate-800 border border-slate-300 hover:border-blue-600 hover:text-blue-600 transition-colors cursor-pointer shadow-2xs"
+                                                                title="Playback Speed (Click to change)"
+                                                            >
+                                                                {playbackSpeed}x
+                                                            </button>
+                                                        </div>
                                                     )}
                                                 </div>
                                             </div>

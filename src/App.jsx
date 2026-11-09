@@ -38,10 +38,18 @@ function AppContent() {
   const location = useLocation();
   const isDemoApp = location.pathname.startsWith('/demo/app');
 
+  useEffect(() => {
+    if (isDemoApp) {
+      window.lenis?.stop();
+    } else {
+      window.lenis?.start();
+    }
+  }, [isDemoApp]);
+
   return (
-    <div className={`App min-h-screen ${isDemoApp ? 'bg-[#f8fafc] text-slate-900' : 'bg-[var(--canvas-dark)] text-gray-100'} selection:bg-blue-600/30 selection:text-white transition-canvas`}>
+    <div className={`App ${isDemoApp ? 'h-screen max-h-screen overflow-hidden' : 'min-h-screen'} ${isDemoApp ? 'bg-[#f8fafc] text-slate-900' : 'bg-[var(--canvas-dark)] text-gray-100'} selection:bg-blue-600/30 selection:text-white transition-canvas`}>
       {!isDemoApp && <Header />}
-      <main className={isDemoApp ? '' : 'overflow-x-hidden'}>
+      <main className={isDemoApp ? 'h-full overflow-hidden' : 'overflow-x-hidden'}>
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />

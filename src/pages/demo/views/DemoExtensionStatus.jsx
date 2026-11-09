@@ -138,7 +138,7 @@ const DemoExtensionStatus = () => {
                                 onClick={() => setShowSimulatedActive(false)}
                                 className="text-xs font-bold text-slate-600 hover:text-slate-900 cursor-pointer"
                             >
-                                Reset to Default View (0 Active)
+                                Reset to Default View (2 Active)
                             </button>
                         </div>
                     </div>
