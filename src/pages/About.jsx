@@ -188,7 +188,7 @@ const About = () => {
                 At Balatrix, we believe that enterprise-grade telecommunications should not be locked behind complex legacy systems or exorbitant pricing models.
               </p>
               <p>
-                Founded in 2021 by a team of SIP trunking experts and systems architects, our goal was simple: to construct a fully unified, cloud-native PBX network capable of sub-millisecond routing across North America, accessible via a single, intuitive interface.
+                Founded in 2015, by a team of SIP trunking experts and systems architects, our goal was simple: to construct a fully unified, cloud-native PBX network capable of sub-millisecond routing across North America, accessible via a single, intuitive interface.
               </p>
               <p className="text-white font-medium">
                 Today, we process millions of calls monthly, ensuring compliance, clarity, and continuity for businesses ranging from agile startups to expansive call centers. We don't just route calls; <span className="text-[var(--color-accent)]">we engineer connections.</span>

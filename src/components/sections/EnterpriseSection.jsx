@@ -50,7 +50,7 @@ const EnterpriseSection = () => {
 
             <ul className="space-y-6 pt-2">
               {[
-                { title: '100% Uptime SLA', desc: 'Financially backed SLA guarantee for absolute infrastructure durability.', icon: '🔒' },
+                { title: '99.99% Uptime SLA', desc: 'Financially backed SLA guarantee for absolute infrastructure durability.', icon: '🔒' },
                 { title: 'Active-Active Redundancy', desc: 'Distributed DID mapping across multiple redundant node centers.', icon: '⚡' },
                 { title: 'Dedicated Support Pods', desc: 'Real-time engineer escalations and direct Slack operations access.', icon: '🎯' }
               ].map((item, idx) => (
