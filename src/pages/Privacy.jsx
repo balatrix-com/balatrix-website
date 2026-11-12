@@ -4,9 +4,9 @@ import SEO from '../components/seo/SEO';
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-transparent">
-      <SEO 
-        title="Privacy Policy" 
-        description="Read the Balatrix Privacy Policy to understand how we collect, use, and protect your personal data." 
+      <SEO
+        title="Privacy Policy"
+        description="Read the Balatrix Privacy Policy to understand how we collect, use, and protect your personal data."
         canonicalUrl="https://balatrix.com/privacy"
       />
       {/* Hero Section */}
@@ -26,15 +26,15 @@ const Privacy = () => {
       </section>
 
       {/* Content Section */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="py-12 sm:py-16 lg:py-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <div className="space-y-8">
 
               {/* 1. Introduction */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">1. Introduction</h2>
+                <p className="text-gray-400">
                   This Privacy Policy describes how <strong>A2 Cloud Solutions</strong> ("we", "our", "us"), operating under the brand
                   <strong> Balatrix</strong>, collects, uses, and protects personal information of users who access our website or use our VoIP and PBX services.
                 </p>
@@ -42,11 +42,11 @@ const Privacy = () => {
 
               {/* 2. Information We Collect */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Information We Collect</h2>
-                <p className="text-gray-600 mb-4">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">2. Information We Collect</h2>
+                <p className="text-gray-400 mb-4">
                   We collect information that you provide directly and automatically when using our services, including:
                 </p>
-                <ul className="list-disc pl-6 text-gray-600 space-y-2">
+                <ul className="list-disc pl-6 text-gray-400 space-y-2">
                   <li>Name, business name, email address, phone number, and billing details.</li>
                   <li>Login credentials and account settings.</li>
                   <li>Call-related metadata (such as call duration, caller ID, timestamps) — not the audio content itself unless explicitly recorded by you.</li>
@@ -57,11 +57,11 @@ const Privacy = () => {
 
               {/* 3. How We Use the Information */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">3. How We Use Your Information</h2>
-                <p className="text-gray-600 mb-4">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">3. How We Use Your Information</h2>
+                <p className="text-gray-400 mb-4">
                   The information we collect is used strictly for legitimate business purposes, including:
                 </p>
-                <ul className="list-disc pl-6 text-gray-600 space-y-2">
+                <ul className="list-disc pl-6 text-gray-400 space-y-2">
                   <li>To provide and manage our VoIP and PBX communication services.</li>
                   <li>To process payments and manage billing, subscriptions, and wallet balances.</li>
                   <li>To provide technical support, troubleshoot issues, and improve service performance.</li>
@@ -72,8 +72,8 @@ const Privacy = () => {
 
               {/* 4. Data Security */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Data Security</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">4. Data Security</h2>
+                <p className="text-gray-400">
                   We use industry-standard security practices to safeguard your personal data, including encryption, restricted access,
                   and secure data storage. Payment information is processed only through PCI-DSS-compliant third-party gateways.
                   We do not store your card, bank account, or digital wallet credentials on our servers.
@@ -82,8 +82,8 @@ const Privacy = () => {
 
               {/* 5. Data Retention */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Data Retention</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">5. Data Retention</h2>
+                <p className="text-gray-400">
                   We retain user information for as long as necessary to provide our services, comply with legal obligations,
                   resolve disputes, and enforce agreements. Call records and logs may be stored as required under applicable telecom regulations.
                 </p>
@@ -91,11 +91,11 @@ const Privacy = () => {
 
               {/* 6. Sharing of Information */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Sharing of Information</h2>
-                <p className="text-gray-600 mb-4">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">6. Sharing of Information</h2>
+                <p className="text-gray-400 mb-4">
                   We do not sell or rent your personal information. We may share limited data with:
                 </p>
-                <ul className="list-disc pl-6 text-gray-600 space-y-2">
+                <ul className="list-disc pl-6 text-gray-400 space-y-2">
                   <li>Trusted service providers and telecom carriers who assist in delivering our services.</li>
                   <li>Payment gateway partners for secure payment processing.</li>
                   <li>Regulatory authorities, if required by law or to comply with lawful requests.</li>
@@ -104,18 +104,18 @@ const Privacy = () => {
 
               {/* 7. Cookies and Analytics */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Cookies and Analytics</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">7. Cookies and Analytics</h2>
+                <p className="text-gray-400">
                   Our website may use cookies to enhance user experience and gather analytics. You can manage cookie preferences
                   through your browser settings. For more information, please see our{' '}
-                  <a href="/cookie-policy" className="text-blue-600 hover:text-blue-700">Cookie Policy</a>.
+                  <a href="/cookie-policy" className="text-blue-400 hover:text-blue-700">Cookie Policy</a>.
                 </p>
               </div>
 
               {/* 8. Your Rights */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Your Rights</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">8. Your Rights</h2>
+                <p className="text-gray-400">
                   You have the right to access, correct, or delete your personal data stored with us.
                   You can also request limitation of processing or opt-out of promotional communications by contacting us directly.
                 </p>
@@ -123,8 +123,8 @@ const Privacy = () => {
 
               {/* 9. Links to Third-Party Websites */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Links to Third-Party Websites</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">9. Links to Third-Party Websites</h2>
+                <p className="text-gray-400">
                   Our platform may contain links to external websites. We are not responsible for the content or privacy practices of those sites.
                   Please review their policies separately.
                 </p>
@@ -132,8 +132,8 @@ const Privacy = () => {
 
               {/* 10. Updates to This Policy */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Updates to This Policy</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">10. Updates to This Policy</h2>
+                <p className="text-gray-400">
                   We may update this Privacy Policy periodically to reflect changes in technology, regulation, or business practices.
                   The latest version will always be available on our website.
                 </p>
@@ -141,19 +141,19 @@ const Privacy = () => {
 
               {/* 11. Contact Us */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">11. Contact Us</h2>
+                <p className="text-gray-400">
                   For any questions, requests, or concerns about this Privacy Policy, please contact:<br />
-                  📧 <a href="mailto:privacy@balatrix.com" className="text-blue-600 hover:text-blue-700">privacy@balatrix.com</a><br />
-                  🌐 <a href="https://www.balatrix.com" className="text-blue-600 hover:text-blue-700">www.balatrix.com</a><br />
+                  📧 <a href="mailto:privacy@balatrix.com" className="text-blue-400 hover:text-blue-700">privacy@balatrix.com</a><br />
+                  🌐 <a href="https://www.balatrix.com" className="text-blue-400 hover:text-blue-700">www.balatrix.com</a><br />
                   📍 Registered Office: A2 Cloud Solutions, Brampton, ON L7A 0B6, Canada.
                 </p>
               </div>
 
               {/* 12. Jurisdiction */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Jurisdiction</h2>
-                <p className="text-gray-600">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">12. Jurisdiction</h2>
+                <p className="text-gray-400">
                   This Privacy Policy shall be governed by and construed in accordance with applicable laws in the relevant service jurisdiction.
                   Any disputes shall fall under the exclusive jurisdiction of the competent courts in that jurisdiction.
                 </p>
