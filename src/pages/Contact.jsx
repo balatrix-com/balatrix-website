@@ -92,16 +92,14 @@ const Contact = () => {
       title: 'Sales & Support',
       description: 'Talk to our toll-free number experts',
       contact: '+1 (844) 225-2435',
-      subtext: 'Mon-Fri 8AM-8PM EST, 24/7 for existing customers',
-      action: 'Call Now'
+      subtext: 'Mon-Fri 8AM-8PM EST, 24/7 for existing customers'
     },
     {
       icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
       title: 'Live Chat Support',
       description: 'Instant help when you need it',
       contact: 'Chat with us now',
-      subtext: 'Available Mon-Fri 8AM-8PM EST',
-      action: 'Start Chat'
+      subtext: 'Available Mon-Fri 8AM-8PM EST'
     }
   ];
 
@@ -152,13 +150,13 @@ const Contact = () => {
       </div>
 
       {/* 1. Hero Section - Obsidian Dark */}
-      <section className="canvas-dark min-h-[75vh] flex items-center justify-center overflow-hidden relative pt-32 md:pt-40 pb-12 mt-6 md:mt-12">
+      <section className="canvas-dark flex items-center justify-center overflow-hidden relative pt-28 md:pt-36 pb-6 md:pb-8">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-[var(--color-accent)]/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-[10%] left-[10%] w-[350px] h-[350px] bg-[var(--color-accent-light)]/5 rounded-full blur-[100px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-20 text-center lg:text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-6 pb-6 md:pt-10 md:pb-10 text-center lg:text-left">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             <div className="space-y-8">
@@ -227,7 +225,7 @@ const Contact = () => {
       </section>
 
       {/* 2. Contact Methods Section - Cool Light */}
-      <section ref={sectionRef} className="canvas-dark py-24 pt-32 md:pt-40 mt-12 md:mt-20 relative border-t border-[var(--border-dark)]">
+      <section ref={sectionRef} className="canvas-dark py-12 md:py-16 relative border-t border-[var(--border-dark)]">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute top-[10%] left-[5%] w-[300px] h-[300px] bg-[var(--color-accent)]/5 rounded-full blur-[100px]" />
         </div>
@@ -261,7 +259,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="glass-card p-8 flex flex-col justify-between group border-[var(--border-dark)] hover:border-[var(--color-accent)]/50"
+                className="glass-card p-8 group border-[var(--border-dark)] hover:border-[var(--color-accent)]/50"
               >
                 <div>
                   <div className="w-12 h-12 bg-[var(--canvas-dark-elevated)] text-[var(--color-accent)] border border-[var(--border-dark)] rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform">
@@ -277,12 +275,6 @@ const Contact = () => {
                     <div className="text-xl font-bold text-[var(--text-dark-primary)]">{method.contact}</div>
                     <div className="text-[10px] text-[var(--text-dark-muted)] font-semibold">{method.subtext}</div>
                   </div>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-[var(--border-dark)]">
-                  <button className="w-full py-2.5 font-semibold text-sm text-center btn-pill-primary">
-                    {method.action}
-                  </button>
                 </div>
               </motion.div>
             ))}

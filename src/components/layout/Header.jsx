@@ -77,6 +77,11 @@ const Header = () => {
   }, []);
 
   const navigation = [
+    {
+      name: 'Want a Demo?',
+      href: '/demo',
+      highlight: true,
+    },
     { name: 'Solutions', href: '/solutions' },
     {
       name: 'Services',
@@ -104,11 +109,6 @@ const Header = () => {
     },
     { name: 'Pricing', href: '/pricing' },
     { name: 'About Us', href: '/about' },
-    {
-      name: 'Want a Demo?',
-      href: '/demo',
-      highlight: true,
-    },
   ];
 
   const openQuoteModal = () => {
@@ -154,11 +154,10 @@ const Header = () => {
                     <div key={item.name} className="relative">
                       <Link
                         to={item.href}
-                        className={`relative font-bold text-[14px] px-3.5 py-1.5 rounded-full transition-all duration-300 flex items-center gap-2 group/demo border ${
-                          isActive(item.href)
-                            ? 'bg-cyan-500/25 border-cyan-400 text-white shadow-[0_0_20px_rgba(34,211,238,0.45)]'
-                            : 'bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 border-cyan-400/40 hover:border-cyan-300 text-cyan-300 hover:text-white hover:bg-cyan-500/25 shadow-[0_0_14px_rgba(34,211,238,0.25)] hover:shadow-[0_0_22px_rgba(34,211,238,0.45)]'
-                        }`}
+                        className={`relative font-bold text-[14px] px-3.5 py-1.5 rounded-full transition-all duration-300 flex items-center gap-2 group/demo border ${isActive(item.href)
+                          ? 'bg-cyan-500/25 border-cyan-400 text-white shadow-[0_0_20px_rgba(34,211,238,0.45)]'
+                          : 'bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 border-cyan-400/40 hover:border-cyan-300 text-cyan-300 hover:text-white hover:bg-cyan-500/25 shadow-[0_0_14px_rgba(34,211,238,0.25)] hover:shadow-[0_0_22px_rgba(34,211,238,0.45)]'
+                          }`}
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.9)]" />
                         <span className="bg-gradient-to-r from-cyan-300 via-sky-200 to-cyan-300 bg-clip-text text-transparent font-extrabold tracking-wide group-hover/demo:text-white group-hover/demo:bg-none transition-colors">

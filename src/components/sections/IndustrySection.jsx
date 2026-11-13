@@ -15,7 +15,7 @@ const IndustrySection = () => {
     {
       id: 'callcenters',
       title: 'Call Centers',
-      description: 'Infinite concurrent call capacity. Ensure no call goes unanswered with advanced Ring Groups and Live Monitoring analytics.',
+      description: 'Scalable concurrent calling capacity based on your traffic requirements and infrastructure configuration. Ensure no call goes unanswered with advanced Ring Groups and Live Monitoring analytics.',
       image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=800',
       accent: 'rgba(6,182,212,0.2)',
       accentBorder: 'rgba(6,182,212,0.25)'

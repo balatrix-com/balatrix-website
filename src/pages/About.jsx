@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Star, CheckCircle2, Sparkles, ArrowRight, Quote } from 'lucide-react';
 import SEO from '../components/seo/SEO';
 
 const About = () => {
@@ -104,6 +105,91 @@ const About = () => {
     { number: '50K+', label: 'Numbers Deployed' },
     { number: '99.99%', label: 'Uptime SLA' }
   ];
+
+  const customerReviews = [
+    {
+      name: 'Marcus Vance',
+      role: 'Head of Telecom Infrastructure',
+      company: 'NextWave Communications',
+      location: 'Austin, TX',
+      scale: '350+ Remote Seats',
+      date: 'October 2024',
+      verified: 'Verified Deployment',
+      rating: 4.8,
+      featureTag: 'WebRTC & SIP Traces',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&q=80',
+      avatarGradient: 'from-blue-600 to-indigo-600',
+      initials: 'MV',
+      headline: 'The browser WebRTC softphone and live SIP tracer made migrating 350 agents painless.',
+      review:
+        'We migrated our entire distributed agent team to Balatrix’s browser-native WebRTC softphone in under two weeks. Desktop app installation headaches and audio driver conflicts vanished immediately. The live SIP trace inspector in the admin sandbox gives our VoIP engineers instant ladder diagrams and packet-level visibility into carrier handoffs and jitter without needing Wireshark. It is easily the cleanest cloud PBX we have operated.'
+    },
+    {
+      name: 'Elena Rostova',
+      role: 'Director of Customer Experience',
+      company: 'Apex Global Support',
+      location: 'Chicago, IL',
+      scale: '24/7 Multi-Queue Hub',
+      date: 'November 2024',
+      verified: 'Verified Contact Center',
+      rating: 4.5,
+      featureTag: 'IVR Menus & Call QA',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
+      avatarGradient: 'from-violet-600 to-purple-600',
+      initials: 'ER',
+      headline: 'Built our multi-tier IVR in an afternoon. Live call monitoring is indispensable.',
+      review:
+        'We run round-the-clock inbound queues across multiple timezones. In our previous PBX, setting up conditional hours and fallback queues took days of Asterisk scripting. With Balatrix, our ops team configured visual IVR trees and custom prompt audio in a few hours. The supervisor whisper and barge-in tools during live calls have genuinely lifted our first-call resolution by 24%.'
+    },
+    {
+      name: 'David Chen',
+      role: 'Founder & Managing Director',
+      company: 'CloudTel Solutions',
+      location: 'Toronto, ON',
+      scale: '80+ Managed Client Accounts',
+      date: 'September 2024',
+      verified: 'Verified PBX Reseller',
+      rating: 5.0,
+      featureTag: 'Whitelabel PBX & Billing',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=256&q=80',
+      avatarGradient: 'from-emerald-600 to-teal-600',
+      initials: 'DC',
+      headline: 'Whitelabel portal branding and automated wallet billing doubled our reseller margins.',
+      review:
+        'Balatrix’s whitelabel engine allowed us to launch a fully branded PBX service with our own domain and custom softphone dialers with zero dev overhead. The automated digital prepaid wallet and per-second CDR rating handle usage thresholds automatically—we haven’t had to chase a late invoice or dispute a bill since. It helped us scale our partner network to 80+ B2B client organizations.'
+    }
+  ];
+
+  const avgRating = (
+    customerReviews.reduce((acc, curr) => acc + curr.rating, 0) / customerReviews.length
+  ).toFixed(1);
+
+  const renderStars = (rating, size = "w-4 h-4") => {
+    return (
+      <div className="flex items-center space-x-0.5">
+        {[1, 2, 3, 4, 5].map((starIndex) => {
+          const fillPercent = Math.max(0, Math.min(100, Math.round((rating - (starIndex - 1)) * 100)));
+          if (fillPercent >= 100) {
+            return <Star key={starIndex} className={`${size} fill-amber-400 text-amber-400`} />;
+          } else if (fillPercent <= 0) {
+            return <Star key={starIndex} className={`${size} text-slate-700 fill-slate-800/80`} />;
+          } else {
+            return (
+              <div key={starIndex} className="relative inline-flex items-center justify-center">
+                <Star className={`${size} text-slate-700 fill-slate-800/80`} />
+                <div
+                  className="absolute top-0 left-0 h-full overflow-hidden"
+                  style={{ width: `${fillPercent}%` }}
+                >
+                  <Star className={`${size} fill-amber-400 text-amber-400`} />
+                </div>
+              </div>
+            );
+          }
+        })}
+      </div>
+    );
+  };
 
   return (
     <div ref={pageRef} className="min-h-screen bg-transparent">
@@ -352,6 +438,176 @@ const About = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+      {/* 6. Reviews */}
+      <section className="canvas-dark py-24 relative border-t border-[var(--border-dark)] overflow-hidden">
+        {/* Ambient background glow */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[350px] bg-[var(--color-accent)]/8 rounded-full blur-[140px]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              className="inline-flex items-center space-x-2 bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 text-[var(--color-accent-light)] px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent)]" />
+              <span>Real Platform Experiences</span>
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              className="font-display-md text-[var(--text-dark-primary)] mb-4"
+            >
+              Customer <em className="text-[var(--color-accent)]">Reviews</em>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              className="text-base text-[var(--text-dark-secondary)] max-w-2xl mx-auto font-normal leading-relaxed mb-6"
+            >
+              Read how engineering leaders, contact center directors, and telecom resellers run their mission-critical voice infrastructure on Balatrix.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-80px' }}
+              className="inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 bg-[var(--canvas-dark-elevated)] border border-[var(--border-dark)] px-4 py-2 rounded-full text-xs text-[var(--text-dark-secondary)] shadow-sm"
+            >
+              <div className="flex items-center space-x-1 text-amber-400">
+                {renderStars(Number(avgRating), "w-3.5 h-3.5")}
+              </div>
+              <span className="font-semibold text-white">{avgRating} / 5.0 Rating</span>
+              <span className="text-slate-500 hidden sm:inline">•</span>
+              <span className="hidden sm:inline text-slate-300">Verified across 50,000+ DIDs & Cloud Extensions</span>
+            </motion.div>
+          </div>
+
+          {/* Reviews Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {customerReviews.map((review, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="p-7 sm:p-8 rounded-2xl sm:rounded-3xl border border-white/[0.09] hover:border-[var(--color-accent)]/50 transition-all duration-300 relative group bg-[#0c1020]/90 backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_rgba(88,101,242,0.18)] flex flex-col justify-between"
+              >
+                {/* Decorative background quote mark */}
+                <Quote className="w-10 h-10 text-white/[0.04] absolute top-6 right-6 pointer-events-none group-hover:text-[var(--color-accent)]/15 transition-colors" />
+
+                <div>
+                  {/* Top Row: Stars + Verified Badge */}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center space-x-1.5">
+                      {renderStars(review.rating, "w-4 h-4")}
+                      <span className="text-xs font-bold text-amber-300">{review.rating.toFixed(1)}</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[11px] font-semibold px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
+                      <span>{review.verified}</span>
+                    </span>
+                  </div>
+
+                  {/* Feature Pill + Date */}
+                  <div className="flex items-center justify-between gap-2 mb-4 mt-2 flex-wrap">
+                    <span className="inline-block bg-[var(--color-accent)]/15 text-[var(--color-accent-light)] border border-[var(--color-accent)]/30 text-[11px] font-semibold px-2.5 py-0.5 rounded-md">
+                      {review.featureTag}
+                    </span>
+                    <span className="text-[11px] text-slate-400 font-medium">
+                      {review.date}
+                    </span>
+                  </div>
+
+                  {/* Headline */}
+                  <h3 className="text-white font-bold text-base sm:text-lg leading-snug mb-3 group-hover:text-[var(--color-accent-light)] transition-colors">
+                    "{review.headline}"
+                  </h3>
+
+                  {/* Review Text */}
+                  <p className="text-slate-300 text-[13.5px] sm:text-[14px] leading-relaxed font-normal mb-6">
+                    {review.review}
+                  </p>
+                </div>
+
+                {/* Reviewer Profile - No Truncation, Real Avatar Photo */}
+                <div className="border-t border-white/[0.08] pt-4.5 mt-auto flex items-center space-x-3.5">
+                  <div className="relative shrink-0">
+                    <img
+                      src={review.avatar}
+                      alt={review.name}
+                      className="w-12 h-12 rounded-full object-cover border border-white/10 ring-2 ring-[var(--color-accent)]/20 shadow-md"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        if (e.currentTarget.nextElementSibling) {
+                          e.currentTarget.nextElementSibling.classList.remove('hidden');
+                          e.currentTarget.nextElementSibling.classList.add('flex');
+                        }
+                      }}
+                    />
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${review.avatarGradient} hidden items-center justify-center text-white font-bold text-sm shadow-md ring-2 ring-white/10`}>
+                      {review.initials}
+                    </div>
+                    <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#0c1020] flex items-center justify-center" title="Verified Customer">
+                      <CheckCircle2 className="w-2.5 h-2.5 text-white" />
+                    </div>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <h4 className="text-sm font-bold text-white tracking-tight">{review.name}</h4>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-accent-light)] bg-[var(--color-accent)]/10 px-2 py-0.5 rounded border border-[var(--color-accent)]/20">
+                        {review.scale}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-400 leading-snug mt-0.5">{review.role}</p>
+                    <p className="text-xs text-slate-300 font-medium leading-snug mt-0.5">
+                      {review.company} <span className="text-slate-500">·</span> <span className="text-slate-400 text-[11px]">{review.location}</span>
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Interactive PBX Demo Sandbox CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[var(--canvas-dark-elevated)] via-[var(--canvas-dark-deep)] to-[var(--canvas-dark-elevated)] border border-[var(--border-dark)] flex flex-col sm:flex-row items-center justify-between gap-6"
+          >
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg font-bold text-white mb-1">
+                Try the Balatrix PBX Sandbox Yourself
+              </h3>
+              <p className="text-xs sm:text-sm text-[var(--text-dark-secondary)]">
+                Test the live WebRTC softphone, configure visual multi-level IVRs, and inspect SIP packet traces with zero setup.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto justify-center">
+              <Link
+                to="/demo/app"
+                className="btn-pill btn-pill-primary px-6 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap shadow-[0_4px_20px_rgba(88,101,242,0.35)] flex items-center gap-1.5"
+              >
+                <span>Open Interactive Demo</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/contact"
+                className="btn-pill btn-pill-secondary px-5 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

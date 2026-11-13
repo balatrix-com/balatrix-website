@@ -4,13 +4,23 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import SEO from '../components/seo/SEO';
 import { generateProductSchema, generateFAQSchema } from '../utils/schemaGenerator';
-import TiltCard from '../components/common/TiltCard';
+import EnterpriseQuoteModal from '../components/modals/EnterpriseQuoteModal';
 
 const Pricing = () => {
   const pageRef = useRef(null);
   const pricingContainerRef = useRef(null);
   const pricingRowRef = useRef(null);
-  const [billingCycle, setBillingCycle] = useState('monthly');
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const openModal = (plan = null) => {
+    setSelectedPlan(plan);
+    setIsQuoteModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsQuoteModalOpen(false);
+    setSelectedPlan(null);
+  };
 
   useEffect(() => {
     const context = gsap.context(() => {
@@ -48,13 +58,12 @@ const Pricing = () => {
     {
       name: 'Starter Plan',
       description: 'Perfect for small businesses and startups',
-      note: '(For Pricing Contact Support)',
-      monthlyPrice: 39.99,
-      yearlyPrice: 383.90,
-      savings: '20%',
+      monthlyPrice: 4.99,
+      period: '/Ext (min 5 ext)',
+      billingNote: 'Billed monthly',
       features: [
         'Free Built-in WebRTC Softphone',
-        '1 Toll-Free Number & 1 Extension',
+        '5 Extensions',
         'Visual Call Routing & Basic IVR',
         'Real-Time Analytics Dashboard',
         'Automated Billing & Digital Wallet',
@@ -65,13 +74,12 @@ const Pricing = () => {
     {
       name: 'Pro Plan',
       description: 'Ideal for growing businesses with higher volume needs',
-      note: '(For Pricing Contact Support)',
-      monthlyPrice: 79.99,
-      yearlyPrice: 767.90,
-      savings: '20%',
+      monthlyPrice: 44.99,
+      period: '/mo',
+      billingNote: 'Billed monthly',
       features: [
         'Free Built-in WebRTC Softphone',
-        '2 Toll-Free Numbers & 5 Extensions',
+        '10 Extensions',
         'Advanced Routing & Ring Groups',
         'Real-Time Analytics & CDR Logs',
         'Team Collaboration Features',
@@ -82,13 +90,12 @@ const Pricing = () => {
     {
       name: 'Enterprise Plan',
       description: 'For call centers and large organizations requiring scale',
-      note: '(For Pricing Contact Support)',
-      monthlyPrice: 149.99,
-      yearlyPrice: 1439.90,
-      savings: '20%',
+      monthlyPrice: 99.99,
+      period: '/mo',
+      billingNote: 'Billed monthly',
       features: [
         'Free Built-in WebRTC Softphone',
-        '5+ Toll-Free Numbers & Unlimited Exts',
+        'Unlimited Exts',
         'Enterprise-Grade Call Routing',
         'Complete Analytics & QA Metrics',
         'Advanced Queue & Agent Management',
@@ -100,10 +107,9 @@ const Pricing = () => {
     {
       name: 'Whitelabel Reseller',
       description: 'Ideal for resellers and entrepreneurs wanting to brand their own PBX',
-      note: '(For Pricing Contact Support)',
-      monthlyPrice: 299.99,
-      yearlyPrice: 2879.90,
-      savings: '20%',
+      monthlyPrice: 499.99,
+      period: '/ 6 months',
+      billingNote: 'Billed every 6 months',
       features: [
         'Everything in Enterprise Plan',
         '100% White-Label System (Resell as your own)',
@@ -119,25 +125,25 @@ const Pricing = () => {
 
   const addOns = [
     {
-      name: 'Additional TFN',
-      description: 'Extra toll-free numbers beyond your plan limit',
-      payAsYouGoPrice: '5.00',
-      oneTimePrice: '5.00',
-      unit: 'per month'
+      name: 'TFN',
+      description: 'Toll-free numbers beyond your plan limit',
+      price: '$5.00',
+      unit: '/month',
+      icon: '📞'
     },
     {
       name: 'Additional Extension',
       description: 'Extra extensions beyond your plan limit',
-      payAsYouGoPrice: '5.00',
-      oneTimePrice: '3.00',
-      unit: 'per month'
+      price: '$5.00',
+      unit: '/month',
+      icon: '👥'
     },
     {
       name: 'Per Minute Charge',
       description: 'Additional calling minutes when you exceed your plan',
-      payAsYouGoPrice: '0.015',
-      oneTimePrice: '—',
-      unit: 'per minute'
+      price: '$0.015',
+      unit: '/minute',
+      icon: '⏱️'
     }
   ];
 
@@ -227,48 +233,15 @@ const Pricing = () => {
             <div className="absolute top-[30%] left-[5%] w-[300px] h-[300px] bg-[var(--color-accent)]/5 rounded-full blur-[100px]" />
           </div>
 
-          <div className="relative z-10 w-full flex flex-col justify-center py-2 md:py-4">
-            {/* Billing Toggle */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col items-center justify-center space-y-3 mb-4 md:mb-6 shrink-0"
-            >
-              <div className="flex items-center bg-[var(--canvas-dark-elevated)] p-1.5 rounded-full border border-[var(--border-dark)] relative">
-                <button
-                  onClick={() => setBillingCycle('monthly')}
-                  className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${billingCycle === 'monthly' ? 'text-white' : 'text-[var(--text-dark-secondary)] hover:text-[var(--text-dark-primary)]'
-                    }`}
-                >
-                  Monthly Billing
-                </button>
-                <button
-                  onClick={() => setBillingCycle('annual')}
-                  className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${billingCycle === 'annual' ? 'text-white' : 'text-[var(--text-dark-secondary)] hover:text-[var(--text-dark-primary)]'
-                    }`}
-                >
-                  Annual Billing
-                </button>
-
-                <div
-                  className="absolute top-1.5 bottom-1.5 w-[calc(50%-0.375rem)] bg-[var(--color-accent)] rounded-full transition-transform duration-300 ease-in-out shadow-[0_0_15px_rgba(88,101,242,0.4)]"
-                  style={{ transform: billingCycle === 'annual' ? 'translateX(100%)' : 'translateX(0)' }}
-                />
-              </div>
-
-              <div className="bg-[var(--color-accent)]/20 text-[var(--color-accent-light)] text-xs font-bold px-3 py-1 rounded-full border border-[var(--color-accent)]/30 uppercase tracking-wider">
-                Save up to 20% with Annual Billing
-              </div>
-            </motion.div>
-
+          <div className="relative z-10 w-full flex flex-col justify-center py-2">
             {/* Horizontal Cards row */}
-            <div className="w-full overflow-hidden px-[10vw] py-10">
-              <div ref={pricingRowRef} className="pricing-cards-row flex flex-row gap-6 w-max py-4">
+            <div className="w-full overflow-hidden px-[8vw] sm:px-[10vw] py-4 md:py-6">
+              <div ref={pricingRowRef} className="pricing-cards-row flex flex-row gap-6 w-max py-2">
                 {pricingTiers.map((tier, index) => (
-                  <div key={index} className="w-[400px] sm:w-[500px] md:w-[550px] shrink-0">
-                    <TiltCard className={`premium-card rounded-2xl relative flex flex-col h-full ${tier.popular ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]/30' : ''
-                      }`}>
+                  <div key={index} className="w-[380px] sm:w-[480px] md:w-[540px] shrink-0">
+                    <div className={`premium-card rounded-2xl relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${
+                      tier.popular ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]/30' : ''
+                    }`}>
                       {tier.popular && (
                         <div className="absolute -top-4 left-0 right-0 flex justify-center z-10">
                           <span className="bg-[var(--color-accent)] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md">
@@ -277,21 +250,52 @@ const Pricing = () => {
                         </div>
                       )}
 
-                      <div className="p-8 border-b border-[var(--border-dark)]">
-                        <h3 className="text-xl font-bold text-[var(--text-dark-primary)] mb-2">{tier.name}</h3>
-                        <p className="text-[var(--text-dark-secondary)] text-xs font-normal mb-3">{tier.description}</p>
-                        {tier.note && (
-                          <div className="inline-flex items-center text-xs font-medium text-[var(--color-accent-light)] bg-[var(--color-accent)]/10 px-2.5 py-1 rounded-md border border-[var(--color-accent)]/20">
-                            {tier.note}
+                      <div className="p-7 sm:p-8 border-b border-[var(--border-dark)]">
+                        <div className="flex justify-between items-start mb-1.5">
+                          <h3 className="text-2xl font-bold text-[var(--text-dark-primary)]">{tier.name}</h3>
+                        </div>
+                        <p className="text-[var(--text-dark-secondary)] text-xs font-normal mb-3.5 min-h-[30px]">{tier.description}</p>
+
+                        {/* Price Display */}
+                        <div className="mt-3.5 pt-3.5 border-t border-[var(--border-dark)]/60">
+                          <div className="flex items-baseline gap-1.5 flex-wrap">
+                            <span className="text-4xl sm:text-[44px] font-black text-[var(--text-dark-primary)] tracking-tight">
+                              ${tier.monthlyPrice}
+                            </span>
+                            <span className="text-sm font-semibold text-[var(--text-dark-secondary)]">
+                              {tier.period || '/mo'}
+                            </span>
                           </div>
-                        )}
+
+                          <div className="mt-1 text-xs text-[var(--text-dark-muted)]">
+                            {tier.billingNote || 'Billed monthly'}
+                          </div>
+                        </div>
+
+                        <div className="mt-5">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              openModal(tier);
+                            }}
+                            className={`w-full py-3 px-6 rounded-xl text-center text-sm font-bold block transition-all duration-200 shadow-md cursor-pointer hover:scale-[1.01] active:scale-[0.98] ${
+                              tier.popular
+                                ? 'btn-pill-primary'
+                                : 'btn-pill-secondary'
+                            }`}
+                          >
+                            Get Started
+                          </button>
+                        </div>
                       </div>
 
-                      <div className="p-8 flex-grow bg-[var(--canvas-dark-deep)] rounded-b-2xl">
-                        <h4 className="font-bold text-[var(--text-dark-primary)] text-[10px] uppercase tracking-widest mb-4">
+                      <div className="p-7 sm:p-8 flex-grow bg-[var(--canvas-dark-deep)] rounded-b-2xl">
+                        <h4 className="font-bold text-[var(--text-dark-primary)] text-[10px] uppercase tracking-widest mb-3.5">
                           What's included:
                         </h4>
-                        <ul className="space-y-3.5">
+                        <ul className="space-y-3">
                           {tier.features.map((feature, fIndex) => (
                             <li key={fIndex} className="flex items-start">
                               <svg className="w-4 h-4 text-[var(--color-accent)] mr-3 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -302,7 +306,7 @@ const Pricing = () => {
                           ))}
                         </ul>
                       </div>
-                    </TiltCard>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -332,13 +336,15 @@ const Pricing = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {addOns.map((addon, index) => (
               <div key={index} className="glass-card p-6 rounded-xl border-[var(--border-dark)] flex items-start">
-                <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)] border border-[var(--color-accent)]/20 flex items-center justify-center text-xl mr-5 shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)] border border-[var(--color-accent)]/20 flex items-center justify-center text-2xl mr-5 shrink-0">
                   {addon.icon}
                 </div>
-                <div>
+                <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="font-bold text-[var(--text-dark-primary)] text-sm">{addon.name}</h3>
-                    <span className="text-[var(--text-dark-primary)] font-semibold text-sm">{addon.price}</span>
+                    <span className="text-[var(--text-dark-primary)] font-bold text-sm">
+                      {addon.price} <span className="text-xs text-[var(--text-dark-secondary)] font-normal">{addon.unit}</span>
+                    </span>
                   </div>
                   <p className="text-[var(--text-dark-secondary)] text-[11px] leading-relaxed font-normal">
                     {addon.description}
@@ -390,6 +396,13 @@ const Pricing = () => {
           </div>
         </div>
       </section>
+
+      {/* Consultation / Quote Modal */}
+      <EnterpriseQuoteModal
+        isOpen={isQuoteModalOpen}
+        onClose={closeModal}
+        selectedPlan={selectedPlan}
+      />
     </div>
   );
 };

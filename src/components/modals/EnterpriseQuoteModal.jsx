@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
-const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
+const EnterpriseQuoteModal = ({ isOpen, onClose, selectedPlan = null }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,15 +23,29 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
 
-      // Pre-fill useCase from URL query parameters if present
-      const params = new URLSearchParams(window.location.search);
-      const quoteType = params.get('quote');
-      if (quoteType === 'reseller') {
-        setFormData(prev => ({ ...prev, useCase: 'whitelabel' }));
-      } else if (quoteType === 'tollfree') {
-        setFormData(prev => ({ ...prev, useCase: 'tollfree' }));
-      } else if (quoteType === 'consultation') {
-        setFormData(prev => ({ ...prev, useCase: 'callcenter' }));
+      if (selectedPlan) {
+        let defaultUseCase = 'tollfree';
+        if (selectedPlan.name.toLowerCase().includes('whitelabel') || selectedPlan.name.toLowerCase().includes('reseller')) {
+          defaultUseCase = 'whitelabel';
+        } else if (selectedPlan.name.toLowerCase().includes('enterprise')) {
+          defaultUseCase = 'callcenter';
+        }
+        setFormData(prev => ({
+          ...prev,
+          useCase: defaultUseCase,
+          additionalRequirements: `Inquiry for ${selectedPlan.name} ($${selectedPlan.monthlyPrice}${selectedPlan.period || '/mo'})`
+        }));
+      } else {
+        // Pre-fill useCase from URL query parameters if present
+        const params = new URLSearchParams(window.location.search);
+        const quoteType = params.get('quote');
+        if (quoteType === 'reseller') {
+          setFormData(prev => ({ ...prev, useCase: 'whitelabel' }));
+        } else if (quoteType === 'tollfree') {
+          setFormData(prev => ({ ...prev, useCase: 'tollfree' }));
+        } else if (quoteType === 'consultation') {
+          setFormData(prev => ({ ...prev, useCase: 'callcenter' }));
+        }
       }
     } else {
       document.body.style.overflow = 'unset';
@@ -39,7 +54,7 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen]);
+  }, [isOpen, selectedPlan]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -102,7 +117,7 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
       {/* Backdrop with Blur */}
       <div
@@ -342,7 +357,8 @@ const EnterpriseQuoteModal = ({ isOpen, onClose }) => {
         </div>
 
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

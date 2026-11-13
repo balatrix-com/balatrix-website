@@ -21,6 +21,7 @@ const Footer = () => {
     {
       title: 'Services',
       links: [
+        { name: 'Services', href: '/services' },
         { name: 'PBX System', href: '/services/pbx' },
         { name: 'Wholesale Toll-Free DID', href: '/services/tollfree' },
         { name: 'PBX Whitelabel', href: '/services/pbx-whitelabel' }
