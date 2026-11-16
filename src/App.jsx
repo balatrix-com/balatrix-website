@@ -26,6 +26,8 @@ const WholesaleTollFreeDID = lazy(() => import('./pages/WholesaleTollFreeDID'));
 const PBXWhitelabel = lazy(() => import('./pages/PBXWhitelabel'));
 const PBXDemo = lazy(() => import('./pages/demo/PBXDemo'));
 const DemoOverview = lazy(() => import('./pages/demo/DemoOverview'));
+const Blogs = lazy(() => import('./pages/Blogs'));
+const BlogDetail = lazy(() => import('./pages/BlogDetail'));
 
 // Loading component
 const PageLoader = () => (
@@ -47,7 +49,7 @@ function AppContent() {
   }, [isDemoApp]);
 
   return (
-    <div className={`App ${isDemoApp ? 'h-screen max-h-screen overflow-hidden' : 'min-h-screen'} ${isDemoApp ? 'bg-[#f8fafc] text-slate-900' : 'bg-[var(--canvas-dark)] text-gray-100'} selection:bg-blue-600/30 selection:text-white transition-canvas`}>
+    <div className={`App ${isDemoApp ? 'h-screen max-h-screen overflow-hidden' : 'min-h-screen'} ${isDemoApp ? 'bg-[#f8fafc] dark:bg-[#070a13] text-slate-900 dark:text-gray-100' : 'bg-[var(--canvas-dark)] text-gray-100'} selection:bg-blue-600/30 selection:text-white transition-canvas`}>
       {!isDemoApp && <Header />}
       <main className={isDemoApp ? 'h-full overflow-hidden' : 'overflow-x-hidden'}>
         <Suspense fallback={<PageLoader />}>
@@ -60,6 +62,9 @@ function AppContent() {
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:slug" element={<BlogDetail />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

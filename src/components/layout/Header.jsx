@@ -78,7 +78,7 @@ const Header = () => {
 
   const navigation = [
     {
-      name: 'Want a Demo?',
+      name: 'Would you like a demo?',
       href: '/demo',
       highlight: true,
     },
@@ -109,6 +109,7 @@ const Header = () => {
     },
     { name: 'Pricing', href: '/pricing' },
     { name: 'About Us', href: '/about' },
+    { name: 'Insights & Blogs', href: '/blogs' },
   ];
 
   const openQuoteModal = () => {
@@ -120,7 +121,10 @@ const Header = () => {
     setIsQuoteModalOpen(false);
   };
 
-  const isActive = (path) => location.pathname === path || (path === '/demo' && location.pathname.startsWith('/demo'));
+  const isActive = (path) =>
+    location.pathname === path ||
+    (path === '/demo' && location.pathname.startsWith('/demo')) ||
+    (path === '/blogs' && (location.pathname.startsWith('/blogs') || location.pathname.startsWith('/blog')));
 
   return (
     <>

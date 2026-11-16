@@ -14,7 +14,7 @@ const Footer = () => {
     {
       title: 'Demo & Solutions',
       links: [
-        { name: 'Want a Demo', href: '/demo' },
+        { name: 'Would you like a demo?', href: '/demo' },
         { name: 'Business Solutions', href: '/solutions' }
       ]
     },
@@ -37,6 +37,7 @@ const Footer = () => {
       title: 'About',
       links: [
         { name: 'About Us', href: '/about' },
+        { name: 'Insights & Blogs', href: '/blogs' },
         { name: 'Contact', href: '/contact' }
       ]
     }

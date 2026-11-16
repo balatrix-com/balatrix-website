@@ -291,17 +291,17 @@ const Pricing = () => {
                         </div>
                       </div>
 
-                      <div className="p-7 sm:p-8 flex-grow bg-[var(--canvas-dark-deep)] rounded-b-2xl">
-                        <h4 className="font-bold text-[var(--text-dark-primary)] text-[10px] uppercase tracking-widest mb-3.5">
+                      <div className="p-7 sm:p-8 flex-grow bg-transparent rounded-b-2xl">
+                        <h4 className="font-bold text-[var(--text-dark-primary)] text-xs sm:text-[13px] uppercase tracking-wider mb-4">
                           What's included:
                         </h4>
-                        <ul className="space-y-3">
+                        <ul className="space-y-3.5">
                           {tier.features.map((feature, fIndex) => (
                             <li key={fIndex} className="flex items-start">
-                              <svg className="w-4 h-4 text-[var(--color-accent)] mr-3 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[var(--color-accent)] mr-3 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                               </svg>
-                              <span className="text-[13px] text-[var(--text-dark-secondary)] font-normal leading-snug">{feature}</span>
+                              <span className="text-[14.5px] sm:text-[15px] text-[var(--text-dark-secondary)] font-normal leading-relaxed">{feature}</span>
                             </li>
                           ))}
                         </ul>

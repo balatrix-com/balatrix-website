@@ -1,70 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://balatrix.com/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://balatrix.com/services</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://balatrix.com/services/pbx</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/services/tollfree</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/services/pbx-whitelabel</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://balatrix.com/solutions</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://balatrix.com/pricing</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://balatrix.com/about</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://balatrix.com/blogs</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://balatrix.com/demo</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://balatrix.com/contact</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://balatrix.com/privacy</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://balatrix.com/terms</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://balatrix.com/security</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://balatrix.com/refund</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/what-is-cloud-pbx</loc>
+    <lastmod>2024-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/sip-trunking-explained</loc>
+    <lastmod>2024-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/us-canada-toll-free-numbers-guide</loc>
+    <lastmod>November 08, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/start-voip-business-white-label-pbx</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/what-is-webrtc-softphone</loc>
+    <lastmod>2024-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/ivr-intelligent-call-routing-guide</loc>
+    <lastmod>October 30, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/call-center-metrics-to-monitor</loc>
+    <lastmod>October 25, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/voip-security-protecting-sip-attacks-toll-fraud</loc>
+    <lastmod>October 21, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/voip-billing-wallets-usage-cdrs</loc>
+    <lastmod>October 16, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/saas-voice-calling-telecom-api-integration</loc>
+    <lastmod>October 11, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/choose-cloud-telephony-provider-enterprise</loc>
+    <lastmod>October 05, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://balatrix.com/blogs/business-phone-number-porting-guide</loc>
+    <lastmod>September 28, 2024</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

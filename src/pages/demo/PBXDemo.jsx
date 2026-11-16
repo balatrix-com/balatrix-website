@@ -167,6 +167,18 @@ const PBXDemo = () => {
         });
     };
 
+    // Synchronize dark class on documentElement for tailwind dark: variants
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        return () => {
+            document.documentElement.classList.remove('dark');
+        };
+    }, [isDarkMode]);
+
     // Keep extensions accordion open if active tab is inside it, reset scroll to top
     useEffect(() => {
         if (activeTab === 'extensions' || activeTab === 'extension-status') {
@@ -242,7 +254,7 @@ const PBXDemo = () => {
     return (
         <div
             className={`pbx-demo ${isDarkMode ? 'dark' : ''
-                } h-screen max-h-screen overflow-hidden bg-[#f7f8fa] text-slate-700 flex flex-col font-sans select-none`}
+                } h-screen max-h-screen overflow-hidden bg-[#f7f8fa] dark:bg-[#070a13] text-slate-700 dark:text-slate-100 flex flex-col font-sans select-none`}
         >
             {/* Top Balatrix Return Banner - Permanently Fixed */}
             <div className="h-9 shrink-0 bg-[#1a1f4e] text-white px-4 py-2 flex items-center justify-between text-xs border-b border-[#2a2f5e] z-50 select-none">
@@ -522,40 +534,40 @@ const PBXDemo = () => {
                 )}
 
                 {/* Main View Area Column - Constrained and Non-Scrolling */}
-                <div className="flex-1 min-w-0 min-h-0 flex flex-col overflow-hidden bg-[#f7f8fa]">
+                <div className="flex-1 min-w-0 min-h-0 flex flex-col overflow-hidden bg-[#f7f8fa] dark:bg-[#070a13]">
                     {/* Top App Bar / Header Taskbar - Permanently Fixed at Top */}
-                    <header className="h-14 shrink-0 bg-white border-b border-slate-200 px-4 sm:px-5 flex items-center justify-between z-30 select-none">
+                    <header className="h-14 shrink-0 bg-white dark:bg-[#0c101d] border-b border-slate-200 dark:border-[#1a2234] px-4 sm:px-5 flex items-center justify-between z-30 select-none">
                         {/* Left Controls */}
                         <div className="flex items-center gap-2.5">
                             {/* Mobile menu hamburger */}
                             <button
                                 onClick={() => setIsMobileMenuOpen(true)}
-                                className="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+                                className="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                             >
                                 <Menu className="w-5 h-5" />
                             </button>
 
                             {/* User Badge */}
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-xs">
-                                <span className="font-semibold text-slate-800">Alex</span>
-                                <span className="bg-slate-800 text-white font-mono text-[10px] px-1.5 py-0.5 rounded">
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-[#17223b] rounded-lg text-xs">
+                                <span className="font-semibold text-slate-800 dark:text-slate-100">Alex</span>
+                                <span className="bg-slate-800 dark:bg-blue-600 text-white font-mono text-[10px] px-1.5 py-0.5 rounded">
                                     u1001
                                 </span>
                             </div>
 
                             {/* Telephony Status Pills */}
                             <div className="hidden md:flex items-center gap-2">
-                                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-medium text-slate-600">
+                                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#121a2f] border border-slate-200 dark:border-[#1a2234] text-xs font-medium text-slate-600 dark:text-slate-300">
                                     <span className="w-2 h-2 rounded-full bg-green-400"></span>
                                     <span>ACTIVE CALLS: 2</span>
                                 </div>
 
-                                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-medium text-slate-600">
+                                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white dark:bg-[#121a2f] border border-slate-200 dark:border-[#1a2234] text-xs font-medium text-slate-600 dark:text-slate-300">
                                     <Activity className="w-3 h-3 text-slate-400" />
                                     <span>QUEUE DEPTH: —</span>
                                 </div>
 
-                                <span className="px-2.5 py-1 rounded-lg bg-orange-50 text-orange-700 border border-orange-200 text-[11px] font-semibold">
+                                <span className="px-2.5 py-1 rounded-lg bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-900/50 text-[11px] font-semibold">
                                     IMP
                                 </span>
                             </div>
@@ -566,7 +578,7 @@ const PBXDemo = () => {
                             {/* Theme Toggle */}
                             <button
                                 onClick={handleToggleDarkMode}
-                                className="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+                                className="p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                                 title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                                 aria-label="Toggle theme"
                             >
@@ -580,7 +592,7 @@ const PBXDemo = () => {
                             {/* Exit Icon */}
                             <Link
                                 to="/"
-                                className="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+                                className="p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                                 title="Exit Demo"
                             >
                                 <LogOut className="w-4 h-4" />

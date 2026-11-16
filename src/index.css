@@ -254,21 +254,29 @@ body:has(.pbx-demo) {
   color: #111827 !important;
 }
 
-/* PBX Demo Dark Mode Overrides - Sleek Pure Pitch-Black & Charcoal Palette */
+/* PBX Demo Dark Mode Overrides - Sleek Deep Navy & Slate Theme */
 .pbx-demo.dark {
-  background-color: #000000 !important;
+  background-color: #070a13 !important;
   color: #f1f5f9 !important;
+}
+
+.pbx-demo.dark,
+.pbx-demo.dark .bg-\[\#f7f8fa\],
+.pbx-demo.dark .bg-\[\#f8fafc\],
+.pbx-demo.dark [class*="bg-[#f7f8fa]"],
+.pbx-demo.dark [class*="bg-[#f8fafc]"] {
+  background-color: #070a13 !important;
 }
 
 /* Sidebar and Header in Dark Mode - Soft, clean border alignment */
 .pbx-demo.dark aside {
-  background-color: #00000000 !important;
-  border-right-color: #14141600 !important;
+  background-color: #0c101d !important;
+  border-right-color: #1a2234 !important;
 }
 
 .pbx-demo.dark header {
-  background-color: #00000000 !important;
-  border-bottom-color: #14141600 !important;
+  background-color: #0c101d !important;
+  border-bottom-color: #1a2234 !important;
 }
 
 /* Sidebar navigation items */
@@ -278,8 +286,8 @@ body:has(.pbx-demo) {
   color: #9ca3af !important;
 }
 
-.pbx-demo.dark aside button:hover:not(.bg-\[\#1a68ff\]) {
-  background-color: #11111300 !important;
+.pbx-demo.dark aside button:hover:not(.bg-\[\#1a68ff\]):not(.bg-blue-600) {
+  background-color: #151e36 !important;
   color: #ffffff !important;
 }
 
@@ -289,17 +297,17 @@ body:has(.pbx-demo) {
 
 .pbx-demo.dark aside .border-b,
 .pbx-demo.dark aside .border-t {
-  border-color: #14141600 !important;
+  border-color: #1a2234 !important;
 }
 
 .pbx-demo.dark aside .bg-\[\#fafbfe\]\/80 {
-  background-color: #05050500 !important;
+  background-color: #0e1526 !important;
 }
 
-/* Cards & Surface Containers (Deep Black with subtle, less bright 1px border) */
+/* Cards & Surface Containers */
 .pbx-demo.dark .bg-white {
-  background-color: #07070900 !important;
-  border-color: #15151800 !important;
+  background-color: #0e1526 !important;
+  border-color: #1a2338 !important;
   color: #fafafa !important;
 }
 
@@ -310,15 +318,15 @@ body:has(.pbx-demo) {
 .pbx-demo.dark [class*="bg-gray-100"],
 .pbx-demo.dark .bg-\[\#fafbfe\],
 .pbx-demo.dark .bg-\[\#fbfcfe\] {
-  background-color: #0a0a0d00 !important;
-  border-color: #15151800 !important;
+  background-color: #121a2f !important;
+  border-color: #1a2338 !important;
   color: #f4f4f5 !important;
 }
 
 .pbx-demo.dark .bg-slate-200,
 .pbx-demo.dark [class*="bg-slate-200"] {
-  background-color: #14141800 !important;
-  border-color: #1e1e24 !important;
+  background-color: #1e2a47 !important;
+  border-color: #24324f !important;
 }
 
 /* Dim general borders in dark mode so lines are less bright */
@@ -326,7 +334,7 @@ body:has(.pbx-demo) {
 .pbx-demo.dark .border-slate-200,
 .pbx-demo.dark .border-slate-300,
 .pbx-demo.dark [class*="border-slate-200"] {
-  border-color: #15151800 !important;
+  border-color: #1a2338 !important;
 }
 
 /* Hover states across all surfaces */
@@ -334,7 +342,7 @@ body:has(.pbx-demo) {
 .pbx-demo.dark [class*="hover:bg-slate-100"]:hover,
 .pbx-demo.dark .hover\:bg-slate-50:hover,
 .pbx-demo.dark .hover\:bg-slate-100:hover {
-  background-color: #14141800 !important;
+  background-color: #151e36 !important;
   color: #ffffff !important;
 }
 
@@ -371,57 +379,57 @@ body:has(.pbx-demo) {
 
 /* Complete Table Overhauls in Dark Mode - Fix Hover Flashing & Backgrounds */
 .pbx-demo.dark table {
-  background-color: #070709 !important;
+  background-color: #0e1526 !important;
 }
 
 .pbx-demo.dark table thead,
 .pbx-demo.dark table thead tr,
 .pbx-demo.dark table thead th {
-  background-color: #0c0c0f !important;
+  background-color: #121a2f !important;
   color: #a1a1aa !important;
-  border-color: #151518 !important;
+  border-color: #1a2338 !important;
 }
 
 .pbx-demo.dark table tbody tr {
-  background-color: #070709 !important;
+  background-color: #0e1526 !important;
   transition: background-color 0.15s ease !important;
 }
 
 .pbx-demo.dark table tbody tr td {
-  background-color: #070709 !important;
-  border-color: #121215 !important;
+  background-color: #0e1526 !important;
+  border-color: #1a2338 !important;
   color: #f4f4f5 !important;
 }
 
-/* When hovered, row smoothly highlights to #131317 without brightening or flashing */
+/* When hovered, row smoothly highlights */
 .pbx-demo.dark table tbody tr:hover,
 .pbx-demo.dark table tbody tr:hover td {
-  background-color: #131317 !important;
+  background-color: #151e36 !important;
 }
 
 /* Card Headers above tables (e.g., Billing & Transaction History) */
 .pbx-demo.dark .border-b {
-  border-color: #151518 !important;
+  border-color: #1a2338 !important;
 }
 
 .pbx-demo.dark .divide-slate-100> :not([hidden])~ :not([hidden]),
 .pbx-demo.dark .divide-slate-200> :not([hidden])~ :not([hidden]) {
-  border-color: #121215 !important;
+  border-color: #1a2338 !important;
 }
 
 /* Inputs, Selects & Form Controls with dimmer border */
 .pbx-demo.dark input,
 .pbx-demo.dark select,
 .pbx-demo.dark textarea {
-  background-color: #070709 !important;
-  border-color: #1c1c20 !important;
+  background-color: #090e1a !important;
+  border-color: #1e293b !important;
   color: #ffffff !important;
 }
 
 .pbx-demo.dark input:focus,
 .pbx-demo.dark select:focus {
   border-color: #2563eb !important;
-  background-color: #070709 !important;
+  background-color: #090e1a !important;
 }
 
 .pbx-demo.dark input::placeholder {
@@ -654,12 +662,12 @@ h3 em,
 
 .premium-card ul li,
 .premium-card li {
-  font-size: 0.875rem !important;
+  font-size: 0.9375rem;
 }
 
 .premium-card li svg {
-  width: 1rem !important;
-  height: 1rem !important;
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 /* ── Glassmorphic Alternative ── */
