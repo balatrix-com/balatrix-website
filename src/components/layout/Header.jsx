@@ -78,7 +78,7 @@ const Header = () => {
 
   const navigation = [
     {
-      name: 'Would you like a demo?',
+      name: 'Live Demo',
       href: '/demo',
       highlight: true,
     },
@@ -158,13 +158,13 @@ const Header = () => {
                     <div key={item.name} className="relative">
                       <Link
                         to={item.href}
-                        className={`relative font-bold text-[14px] px-3.5 py-1.5 rounded-full transition-all duration-300 flex items-center gap-2 group/demo border ${isActive(item.href)
-                          ? 'bg-cyan-500/25 border-cyan-400 text-white shadow-[0_0_20px_rgba(34,211,238,0.45)]'
-                          : 'bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 border-cyan-400/40 hover:border-cyan-300 text-cyan-300 hover:text-white hover:bg-cyan-500/25 shadow-[0_0_14px_rgba(34,211,238,0.25)] hover:shadow-[0_0_22px_rgba(34,211,238,0.45)]'
+                        className={`relative font-semibold text-[13.5px] px-3.5 py-1.5 rounded-full transition-all duration-200 flex items-center gap-2 group/demo border ${isActive(item.href)
+                          ? 'bg-blue-600/20 border-blue-500/50 text-white shadow-sm'
+                          : 'bg-white/[0.04] border-white/10 hover:border-blue-400/40 text-slate-200 hover:text-white hover:bg-white/[0.08]'
                           }`}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.9)]" />
-                        <span className="bg-gradient-to-r from-cyan-300 via-sky-200 to-cyan-300 bg-clip-text text-transparent font-extrabold tracking-wide group-hover/demo:text-white group-hover/demo:bg-none transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                        <span className="tracking-normal font-medium">
                           {item.name}
                         </span>
                       </Link>
@@ -288,10 +288,10 @@ const Header = () => {
                       <div key={index} className="flex flex-col items-center py-2">
                         <Link
                           to={item.href}
-                          className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-cyan-500/15 border border-cyan-400/50 text-cyan-300 hover:text-white font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all"
+                          className="inline-flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-full bg-white/[0.05] border border-white/10 text-slate-200 hover:text-white font-medium text-base transition-all"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.9)]" />
+                          <span className="w-2 h-2 rounded-full bg-blue-400" />
                           <span>{item.name}</span>
                         </Link>
                       </div>

@@ -14,7 +14,7 @@ const Footer = () => {
     {
       title: 'Demo & Solutions',
       links: [
-        { name: 'Would you like a demo?', href: '/demo' },
+        { name: 'Live Demo', href: '/demo' },
         { name: 'Business Solutions', href: '/solutions' }
       ]
     },

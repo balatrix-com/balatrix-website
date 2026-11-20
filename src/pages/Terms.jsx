@@ -104,7 +104,7 @@ const Terms = () => {
               <div>
                 <h2 className="text-2xl font-bold text-blue-900 mb-4">6. Service Availability</h2>
                 <p className="text-gray-400">
-                  We aim to provide 99.9% uptime. However, temporary interruptions may occur due to maintenance,
+                  We aim to provide 99.99% uptime. However, temporary interruptions may occur due to maintenance,
                   updates, or network conditions beyond our control. Balatrix shall not be liable for any indirect
                   or consequential losses resulting from such downtime.
                 </p>

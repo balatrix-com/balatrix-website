@@ -59,7 +59,7 @@ const Pricing = () => {
       name: 'Starter Plan',
       description: 'Perfect for small businesses and startups',
       monthlyPrice: 4.99,
-      period: '/Ext (min 5 ext)',
+      period: '/Ext (min 5 ext) for per month',
       billingNote: 'Billed monthly',
       features: [
         'Free Built-in WebRTC Softphone',
@@ -78,7 +78,7 @@ const Pricing = () => {
       period: '/mo',
       billingNote: 'Billed monthly',
       features: [
-        'Free Built-in WebRTC Softphone',
+        'Everyting from Starter Plan',
         '10 Extensions',
         'Advanced Routing & Ring Groups',
         'Real-Time Analytics & CDR Logs',
@@ -94,6 +94,7 @@ const Pricing = () => {
       period: '/mo',
       billingNote: 'Billed monthly',
       features: [
+        'Everyting from Pro Plan',
         'Free Built-in WebRTC Softphone',
         'Unlimited Exts',
         'Enterprise-Grade Call Routing',
@@ -239,9 +240,8 @@ const Pricing = () => {
               <div ref={pricingRowRef} className="pricing-cards-row flex flex-row gap-6 w-max py-2">
                 {pricingTiers.map((tier, index) => (
                   <div key={index} className="w-[380px] sm:w-[480px] md:w-[540px] shrink-0">
-                    <div className={`premium-card rounded-2xl relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${
-                      tier.popular ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]/30' : ''
-                    }`}>
+                    <div className={`premium-card rounded-2xl relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${tier.popular ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]/30' : ''
+                      }`}>
                       {tier.popular && (
                         <div className="absolute -top-4 left-0 right-0 flex justify-center z-10">
                           <span className="bg-[var(--color-accent)] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md">
@@ -280,11 +280,10 @@ const Pricing = () => {
                               e.stopPropagation();
                               openModal(tier);
                             }}
-                            className={`w-full py-3 px-6 rounded-xl text-center text-sm font-bold block transition-all duration-200 shadow-md cursor-pointer hover:scale-[1.01] active:scale-[0.98] ${
-                              tier.popular
-                                ? 'btn-pill-primary'
-                                : 'btn-pill-secondary'
-                            }`}
+                            className={`w-full py-3 px-6 rounded-xl text-center text-sm font-bold block transition-all duration-200 shadow-md cursor-pointer hover:scale-[1.01] active:scale-[0.98] ${tier.popular
+                              ? 'btn-pill-primary'
+                              : 'btn-pill-secondary'
+                              }`}
                           >
                             Get Started
                           </button>
