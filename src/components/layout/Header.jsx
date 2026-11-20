@@ -109,7 +109,6 @@ const Header = () => {
     },
     { name: 'Pricing', href: '/pricing' },
     { name: 'About Us', href: '/about' },
-    { name: 'Insights & Blogs', href: '/blogs' },
   ];
 
   const openQuoteModal = () => {
@@ -158,13 +157,13 @@ const Header = () => {
                     <div key={item.name} className="relative">
                       <Link
                         to={item.href}
-                        className={`relative font-semibold text-[13.5px] px-3.5 py-1.5 rounded-full transition-all duration-200 flex items-center gap-2 group/demo border ${isActive(item.href)
-                          ? 'bg-blue-600/20 border-blue-500/50 text-white shadow-sm'
-                          : 'bg-white/[0.04] border-white/10 hover:border-blue-400/40 text-slate-200 hover:text-white hover:bg-white/[0.08]'
+                        className={`relative text-[13px] font-medium px-3.5 py-1.5 rounded-full transition-all duration-200 flex items-center gap-2 group/demo backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] border ${isActive(item.href)
+                          ? 'bg-white/[0.1] border-white/25 text-white'
+                          : 'bg-white/[0.06] border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.1] hover:border-white/25'
                           }`}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                        <span className="tracking-normal font-medium">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+                        <span className="tracking-wide">
                           {item.name}
                         </span>
                       </Link>
@@ -288,10 +287,10 @@ const Header = () => {
                       <div key={index} className="flex flex-col items-center py-2">
                         <Link
                           to={item.href}
-                          className="inline-flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-full bg-white/[0.05] border border-white/10 text-slate-200 hover:text-white font-medium text-base transition-all"
+                          className="inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full bg-white/[0.06] border border-white/15 text-slate-200 hover:text-white font-medium text-base shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition-all"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <span className="w-2 h-2 rounded-full bg-blue-400" />
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
                           <span>{item.name}</span>
                         </Link>
                       </div>
