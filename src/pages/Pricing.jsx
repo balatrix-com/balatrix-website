@@ -237,9 +237,9 @@ const Pricing = () => {
           <div className="relative z-10 w-full flex flex-col justify-center py-2">
             {/* Horizontal Cards row */}
             <div className="w-full overflow-hidden px-[8vw] sm:px-[10vw] py-4 md:py-6">
-              <div ref={pricingRowRef} className="pricing-cards-row flex flex-row gap-6 w-max py-2">
+              <div ref={pricingRowRef} className="pricing-cards-row flex flex-row gap-4 sm:gap-6 w-max py-2">
                 {pricingTiers.map((tier, index) => (
-                  <div key={index} className="w-[380px] sm:w-[480px] md:w-[540px] shrink-0">
+                  <div key={index} className="w-[84vw] max-w-[380px] sm:w-[460px] md:w-[520px] shrink-0">
                     <div className={`premium-card rounded-2xl relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${tier.popular ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]/30' : ''
                       }`}>
                       {tier.popular && (

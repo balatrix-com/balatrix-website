@@ -17,6 +17,7 @@ export default defineConfig({
       staticDir: path.join(__dirname, 'dist'),
       routes: [
         '/', 
+        '/demo',
         '/services', 
         '/solutions', 
         '/pricing', 

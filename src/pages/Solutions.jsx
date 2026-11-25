@@ -285,9 +285,9 @@ const Solutions = () => {
 
             {/* Horizontal Cards row */}
             <div className="w-full overflow-hidden px-[10vw]">
-              <div ref={solutionsRowRef} className="solutions-cards-row flex flex-row gap-8 w-max">
+              <div ref={solutionsRowRef} className="solutions-cards-row flex flex-row gap-4 sm:gap-8 w-max">
                 {solutions.map((solution, idx) => (
-                  <div key={solution.id} className="w-[400px] sm:w-[600px] md:w-[640px] shrink-0">
+                  <div key={solution.id} className="w-[84vw] max-w-[400px] sm:w-[580px] md:w-[640px] shrink-0">
                     <TiltCard
                       className="premium-card flex flex-col justify-between h-full group relative"
                     >

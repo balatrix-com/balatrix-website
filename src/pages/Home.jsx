@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import SEO from '../components/seo/SEO';
 import { generateSiteNavigationSchema } from '../utils/schemaGenerator';
 import Hero from '../components/sections/Hero';
+import LiveDemoSection from '../components/sections/LiveDemoSection';
 import TrustSection from '../components/sections/TrustSection';
 import ProductVisuals from '../components/sections/ProductVisuals';
 import FeaturesSection from '../components/sections/FeaturesSection';
@@ -26,6 +27,7 @@ const Home = () => {
         <SIPCommunicationVisualization background scrollTarget={pageRef} />
       </div>
       <Hero />
+      <LiveDemoSection />
       <TrustSection />
       <ProductVisuals />
       <FeaturesSection />

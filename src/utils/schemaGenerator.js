@@ -109,8 +109,8 @@ export const generateSiteNavigationSchema = () => {
           {
             "@type": "SiteNavigationElement",
             "position": 1,
-            "name": "Want a Demo?",
-            "description": "Experience our live interactive Cloud PBX sandbox, visual IVR builder, and call monitoring.",
+            "name": "Live Demo - Cloud PBX System",
+            "description": "Test-drive our interactive Cloud PBX sandbox: visual IVR menus, real-time SIP traces, TFNs, DID routing, and supervisor call monitoring.",
             "url": "https://balatrix.com/demo"
           },
           {

@@ -26,7 +26,8 @@ import {
     BarChart3,
     Check,
     Layers,
-    Globe
+    Globe,
+    PhoneForwarded
 } from 'lucide-react';
 import SEO from '../../components/seo/SEO';
 
@@ -71,21 +72,21 @@ const DemoOverview = () => {
             ]
         },
         {
-            id: 'softphone',
-            label: 'WebSoftphone & Devices',
-            icon: Headphones,
-            title: 'Zero-Hardware Browser WebSoftphone & SIP Endpoints',
-            desc: 'Make and receive HD calls from any browser or smartphone without installing extra desktop hardware or proprietary SIP desk phones.',
+            id: 'dids-endpoints',
+            label: 'TFNs, DIDs & Endpoints',
+            icon: PhoneForwarded,
+            title: 'Toll-Free Numbers (TFN), DID Routing & SIP Endpoints',
+            desc: 'Provision virtual toll-free and local numbers across 60+ countries, configure automated DID forwarding trees, and connect standard IP deskphones.',
             highlights: [
-                'Integrated WebRTC voice engine powered by Opus HD audio codec',
-                'One-click dialer with contact sync and active call transfer capabilities',
-                'Cross-platform compatibility: Chrome, Firefox, Safari, Edge, and Mobile browsers',
-                'Standard SIP interoperability: Connect Polycom, Yealink, Grandstream, or Cisco IP phones'
+                'Instant provisioning for US/Intl Toll-Free (800, 888, 877) and local DID geographic numbers',
+                'Flexible DID forwarding rules: Route to IVR menus, Ring Groups, external PSTN, or extensions',
+                'Standard SIP trunking interoperability: Register Yealink, Grandstream, Polycom, or Cisco hardware',
+                'Live caller ID (CLI) manipulation, CNAM lookup, and failover disaster recovery routes'
             ],
             metrics: [
-                { label: 'Hardware Cost', value: '$0 Required' },
-                { label: 'Audio Quality', value: 'HD Voice (Opus)' },
-                { label: 'Setup Time', value: '< 2 Minutes' }
+                { label: 'Global Coverage', value: '60+ Countries' },
+                { label: 'DID Provisioning', value: 'Instant API' },
+                { label: 'SIP Protocol', value: 'RFC 3261 TLS/SRTP' }
             ]
         },
         {
@@ -120,9 +121,29 @@ const DemoOverview = () => {
     return (
         <>
             <SEO
-                title="Interactive Cloud PBX Demo & Admin Sandbox | Balatrix"
-                description="Experience Balatrix Cloud PBX firsthand. Explore our live admin portal sandbox with IVR visual builders, active call monitoring, wallet billing, and tenant management."
-                keywords={['PBX Demo', 'Cloud PBX Test Drive', 'Telecom Admin Console', 'PBX Sandbox', 'Live IVR Builder']}
+                title="Live Cloud PBX Demo - Interactive Sandbox"
+                description="Experience Balatrix Cloud PBX firsthand. Explore our live admin portal sandbox with IVR visual builders, SIP packet traces, TFNs, DID routing, CDRs, and supervisor call monitoring."
+                canonicalUrl="https://balatrix.com/demo"
+                keywords={['PBX Demo', 'Cloud PBX Test Drive', 'Telecom Admin Console', 'PBX Sandbox', 'Live IVR Builder', 'SIP Traces', 'DID Routing', 'Call Monitoring']}
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "WebApplication",
+                    "name": "Balatrix Cloud PBX Live Demo",
+                    "url": "https://balatrix.com/demo",
+                    "applicationCategory": "BusinessApplication",
+                    "operatingSystem": "All modern web browsers",
+                    "description": "Interactive carrier-grade Cloud PBX admin console featuring visual IVR flow builders, live packet-level SIP tracing, toll-free number management, and call monitoring.",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    },
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "Balatrix",
+                        "url": "https://balatrix.com"
+                    }
+                }}
             />
 
             <motion.div
@@ -427,7 +448,7 @@ const DemoOverview = () => {
                                             ))}
                                             <div className="pt-2 border-t border-white/10">
                                                 <Link
-                                                    to={`/demo/app?tab=${tab.id === 'ivr' ? 'ivr-menus' : tab.id === 'analytics' ? 'analytics' : tab.id === 'routing' ? 'ring-groups' : 'dashboard'}`}
+                                                    to={`/demo/app?tab=${tab.id === 'ivr' ? 'ivr-menus' : tab.id === 'analytics' ? 'analytics' : tab.id === 'routing' ? 'ring-groups' : tab.id === 'dids-endpoints' ? 'phone-numbers' : 'dashboard'}`}
                                                     className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-blue-600/80 hover:bg-blue-600 text-white font-bold text-xs transition-colors"
                                                 >
                                                     <span>Open {tab.label.split(' ')[0]} in Sandbox</span>

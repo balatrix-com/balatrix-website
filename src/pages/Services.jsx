@@ -232,9 +232,9 @@ const Services = () => {
 
             {/* Horizontal Cards row */}
             <div className="w-full overflow-hidden px-[10vw]">
-              <div ref={servicesRowRef} className="services-cards-row flex flex-row gap-8 w-max">
+              <div ref={servicesRowRef} className="services-cards-row flex flex-row gap-4 sm:gap-8 w-max">
                 {services.map((service, idx) => (
-                  <div key={service.id} className="w-[400px] sm:w-[500px] md:w-[600px] shrink-0">
+                  <div key={service.id} className="w-[84vw] max-w-[400px] sm:w-[500px] md:w-[600px] shrink-0">
                     <TiltCard
                       className="premium-card p-8 flex flex-col h-full group relative"
                     >

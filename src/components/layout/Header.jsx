@@ -154,18 +154,46 @@ const Header = () => {
               {navigation.map((item) => {
                 if (item.highlight) {
                   return (
-                    <div key={item.name} className="relative">
+                    <div key={item.name} className="relative group/demo">
+                      {/* Ambient Rotating Conic Border Light Effect */}
+                      <div className="absolute -inset-[1.5px] rounded-full overflow-hidden pointer-events-none p-[1.5px]">
+                        <div className="w-[300%] h-[300%] -translate-x-1/3 -translate-y-1/3 animate-border-beam bg-[conic-gradient(from_0deg,transparent_0_300deg,rgba(16,185,129,0.85)_340deg,transparent_360deg)] opacity-90 group-hover/demo:opacity-100" />
+                      </div>
+
+                      {/* Soft underlying glow halo */}
+                      <div className="absolute -inset-1 rounded-full bg-emerald-500/25 blur-md opacity-60 group-hover/demo:opacity-100 group-hover/demo:blur-lg transition-all duration-300 pointer-events-none" />
+
                       <Link
                         to={item.href}
-                        className={`relative text-[13px] font-medium px-3.5 py-1.5 rounded-full transition-all duration-200 flex items-center gap-2 group/demo backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] border ${isActive(item.href)
-                          ? 'bg-white/[0.1] border-white/25 text-white'
-                          : 'bg-white/[0.06] border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.1] hover:border-white/25'
+                        className={`relative text-[13px] font-semibold px-4 py-1.5 rounded-full transition-all duration-300 flex items-center gap-2.5 backdrop-blur-xl overflow-hidden border ${isActive(item.href)
+                          ? 'bg-[#06111f] border-emerald-400 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)]'
+                          : 'bg-[#060c18] border-emerald-500/40 text-white hover:border-emerald-400 shadow-[0_4px_16px_rgba(0,0,0,0.6),0_0_14px_rgba(16,185,129,0.2)] hover:shadow-[0_6px_25px_rgba(16,185,129,0.45)] hover:scale-[1.03] active:scale-[0.98]'
                           }`}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
-                        <span className="tracking-wide">
+                        {/* Shimmer sweep light streak across the pill */}
+                        <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-full">
+                          <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer-sweep" />
+                        </div>
+
+                        {/* Live Radar Beacon Indicator */}
+                        <span className="relative flex h-2.5 w-2.5 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80 duration-1000" />
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_10px_#34d399]" />
+                        </span>
+
+                        <span className="tracking-wide text-white font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                           {item.name}
                         </span>
+
+                        {/* Interactive forward arrow */}
+                        <svg
+                          className="w-3.5 h-3.5 text-emerald-400 group-hover/demo:translate-x-1 transition-transform duration-200 shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                        </svg>
                       </Link>
                     </div>
                   );
@@ -279,19 +307,33 @@ const Header = () => {
 
           {/* Mobile Navigation Drawer */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden absolute top-0 left-0 w-full min-h-screen bg-[var(--canvas-dark-deep)]/98 backdrop-blur-xl border-b border-white/5 shadow-2xl z-40 flex flex-col justify-center px-6">
-              <nav className="flex flex-col space-y-6 text-center">
+            <div className="lg:hidden fixed inset-0 w-full h-[100dvh] bg-[var(--canvas-dark-deep)]/98 backdrop-blur-2xl border-b border-white/5 shadow-2xl z-40 flex flex-col overflow-y-auto px-6 pt-24 pb-12">
+              <nav className="flex flex-col space-y-6 text-center my-auto">
                 {navigation.map((item, index) => {
                   if (item.highlight) {
                     return (
-                      <div key={index} className="flex flex-col items-center py-2">
+                      <div key={index} className="flex flex-col items-center py-2 relative group/demo">
                         <Link
                           to={item.href}
-                          className="inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full bg-white/[0.06] border border-white/15 text-slate-200 hover:text-white font-medium text-base shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition-all"
+                          className="relative inline-flex items-center justify-center gap-2.5 px-6 py-2.5 rounded-full bg-[#060c18] border border-emerald-400 text-white font-bold text-base shadow-[0_0_20px_rgba(16,185,129,0.35)] overflow-hidden transition-all active:scale-95"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+                          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-full">
+                            <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer-sweep" />
+                          </div>
+                          <span className="relative flex h-2.5 w-2.5 shrink-0">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80" />
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                          </span>
                           <span>{item.name}</span>
+                          <svg
+                            className="w-4 h-4 text-emerald-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                          </svg>
                         </Link>
                       </div>
                     );
