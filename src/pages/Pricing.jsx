@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
+import { Sparkles, Zap, Shield, Globe } from 'lucide-react';
 import SEO from '../components/seo/SEO';
 import { generateProductSchema, generateFAQSchema } from '../utils/schemaGenerator';
 import EnterpriseQuoteModal from '../components/modals/EnterpriseQuoteModal';
@@ -23,6 +24,10 @@ const Pricing = () => {
   };
 
   useEffect(() => {
+    // Only run GSAP horizontal pin scroll on desktop (screens wider than 1024px)
+    // On smaller/medium screens, allow natural touch/trackpad horizontal swipe so cards are never clipped vertically
+    if (window.innerWidth < 1024) return;
+
     const context = gsap.context(() => {
       const row = pricingRowRef.current;
       const container = pricingContainerRef.current;
@@ -57,6 +62,7 @@ const Pricing = () => {
   const pricingTiers = [
     {
       name: 'Starter Plan',
+      icon: Zap,
       description: 'Perfect for small businesses and startups',
       monthlyPrice: 4.99,
       period: '/Ext (min 5 ext) for per month',
@@ -73,12 +79,13 @@ const Pricing = () => {
     },
     {
       name: 'Pro Plan',
+      icon: Sparkles,
       description: 'Ideal for growing businesses with higher volume needs',
       monthlyPrice: 44.99,
       period: '/mo',
       billingNote: 'Billed monthly',
       features: [
-        'Everyting from Starter Plan',
+        'Everything from Starter Plan',
         '10 Extensions',
         'Advanced Routing & Ring Groups',
         'Real-Time Analytics & CDR Logs',
@@ -89,12 +96,13 @@ const Pricing = () => {
     },
     {
       name: 'Enterprise Plan',
+      icon: Shield,
       description: 'For call centers and large organizations requiring scale',
       monthlyPrice: 99.99,
       period: '/mo',
       billingNote: 'Billed monthly',
       features: [
-        'Everyting from Pro Plan',
+        'Everything from Pro Plan',
         'Free Built-in WebRTC Softphone',
         'Unlimited Exts',
         'Enterprise-Grade Call Routing',
@@ -107,6 +115,7 @@ const Pricing = () => {
     },
     {
       name: 'Whitelabel Reseller',
+      icon: Globe,
       description: 'Ideal for resellers and entrepreneurs wanting to brand their own PBX',
       monthlyPrice: 499.99,
       period: '/ 6 months',
@@ -228,86 +237,98 @@ const Pricing = () => {
       </section>
 
       {/* 2. Pricing Cards - Cool Light */}
-      <section ref={pricingContainerRef} id="pricing-tiers" className="pricing-scroll-section relative bg-transparent border-t border-[var(--border-dark)] h-[185vh]">
-        <div className="pricing-sticky-wrapper sticky top-0 h-screen flex flex-col justify-center overflow-hidden w-full">
+      <section ref={pricingContainerRef} id="pricing-tiers" className="pricing-scroll-section relative bg-transparent border-t border-[var(--border-dark)] min-h-screen lg:h-[185vh] py-12 lg:py-0">
+        <div className="pricing-sticky-wrapper lg:sticky lg:top-0 min-h-screen lg:h-screen flex flex-col justify-center w-full">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-[30%] left-[5%] w-[300px] h-[300px] bg-[var(--color-accent)]/5 rounded-full blur-[100px]" />
           </div>
 
-          <div className="relative z-10 w-full flex flex-col justify-center py-2">
+          <div className="relative z-10 w-full flex flex-col justify-center py-4">
             {/* Horizontal Cards row */}
-            <div className="w-full overflow-hidden px-[8vw] sm:px-[10vw] py-4 md:py-6">
-              <div ref={pricingRowRef} className="pricing-cards-row flex flex-row gap-4 sm:gap-6 w-max py-2">
-                {pricingTiers.map((tier, index) => (
-                  <div key={index} className="w-[84vw] max-w-[380px] sm:w-[460px] md:w-[520px] shrink-0">
-                    <div className={`premium-card rounded-2xl relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${tier.popular ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]/30' : ''
-                      }`}>
-                      {tier.popular && (
-                        <div className="absolute -top-4 left-0 right-0 flex justify-center z-10">
-                          <span className="bg-[var(--color-accent)] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md">
-                            Most Popular
-                          </span>
-                        </div>
-                      )}
-
-                      <div className="p-7 sm:p-8 border-b border-[var(--border-dark)]">
-                        <div className="flex justify-between items-start mb-1.5">
-                          <h3 className="text-2xl font-bold text-[var(--text-dark-primary)]">{tier.name}</h3>
-                        </div>
-                        <p className="text-[var(--text-dark-secondary)] text-xs font-normal mb-3.5 min-h-[30px]">{tier.description}</p>
-
-                        {/* Price Display */}
-                        <div className="mt-3.5 pt-3.5 border-t border-[var(--border-dark)]/60">
-                          <div className="flex items-baseline gap-1.5 flex-wrap">
-                            <span className="text-4xl sm:text-[44px] font-black text-[var(--text-dark-primary)] tracking-tight">
-                              ${tier.monthlyPrice}
-                            </span>
-                            <span className="text-sm font-semibold text-[var(--text-dark-secondary)]">
-                              {tier.period || '/mo'}
+            <div className="w-full overflow-x-auto lg:overflow-hidden px-[5vw] sm:px-[8vw] md:px-[10vw] py-6 scrollbar-none">
+              <div ref={pricingRowRef} className="pricing-cards-row flex flex-row items-stretch gap-6 sm:gap-7 w-max py-4">
+                {pricingTiers.map((tier, index) => {
+                  const IconComp = tier.icon;
+                  return (
+                    <div key={index} className="w-[85vw] max-w-[360px] sm:w-[420px] md:w-[460px] shrink-0 flex flex-col">
+                      <div className={`rounded-3xl relative flex flex-col h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-[#0b1021]/80 backdrop-blur-2xl border ${tier.popular
+                        ? 'border-indigo-500/80 ring-1 ring-indigo-500/50 shadow-[0_12px_40px_rgba(99,102,241,0.25)]'
+                        : 'border-white/10 shadow-[0_12px_35px_rgba(0,0,0,0.5)] hover:border-white/25'
+                        }`}>
+                        {tier.popular && (
+                          <div className="absolute -top-3.5 left-0 right-0 flex justify-center z-10">
+                            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg border border-white/20">
+                              Most Popular
                             </span>
                           </div>
+                        )}
 
-                          <div className="mt-1 text-xs text-[var(--text-dark-muted)]">
-                            {tier.billingNote || 'Billed monthly'}
+                        <div className="p-7 sm:p-8 border-b border-white/10">
+                          {/* Plan Icon Box matching reference image */}
+                          {IconComp && (
+                            <div className="w-12 h-12 rounded-xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 flex items-center justify-center mb-5 shadow-inner">
+                              <IconComp className="w-5 h-5" />
+                            </div>
+                          )}
+
+                          <div className="flex justify-between items-start mb-2">
+                            <h3 className="text-2xl font-black text-white tracking-tight">{tier.name}</h3>
+                          </div>
+                          <p className="text-slate-300 text-xs sm:text-[13px] font-normal mb-5 min-h-[34px] leading-relaxed">{tier.description}</p>
+
+                          {/* Price Display */}
+                          <div className="pt-4 border-t border-white/10">
+                            <div className="flex items-baseline gap-1.5 flex-wrap">
+                              <span className="text-4xl sm:text-[44px] font-black text-white tracking-tight">
+                                ${tier.monthlyPrice}
+                              </span>
+                              <span className="text-sm font-semibold text-slate-300">
+                                {tier.period || '/mo'}
+                              </span>
+                            </div>
+
+                            <div className="mt-1 text-xs text-slate-400">
+                              {tier.billingNote || 'Billed monthly'}
+                            </div>
+                          </div>
+
+                          <div className="mt-6">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                openModal(tier);
+                              }}
+                              className={`w-full py-3.5 px-6 rounded-xl text-center text-sm font-bold block transition-all duration-200 shadow-md cursor-pointer hover:scale-[1.01] active:scale-[0.98] ${tier.popular
+                                ? 'btn-pill-primary'
+                                : 'btn-pill-secondary'
+                                }`}
+                            >
+                              Get Started
+                            </button>
                           </div>
                         </div>
 
-                        <div className="mt-5">
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              openModal(tier);
-                            }}
-                            className={`w-full py-3 px-6 rounded-xl text-center text-sm font-bold block transition-all duration-200 shadow-md cursor-pointer hover:scale-[1.01] active:scale-[0.98] ${tier.popular
-                              ? 'btn-pill-primary'
-                              : 'btn-pill-secondary'
-                              }`}
-                          >
-                            Get Started
-                          </button>
+                        <div className="p-7 sm:p-8 flex-grow bg-transparent rounded-b-3xl">
+                          <h4 className="font-bold text-white text-xs sm:text-[13px] uppercase tracking-wider mb-4">
+                            What's included:
+                          </h4>
+                          <ul className="space-y-3.5">
+                            {tier.features.map((feature, fIndex) => (
+                              <li key={fIndex} className="flex items-start">
+                                <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-indigo-400 mr-3 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span className="text-[14.5px] sm:text-[15px] text-slate-200 font-normal leading-relaxed">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      </div>
-
-                      <div className="p-7 sm:p-8 flex-grow bg-transparent rounded-b-2xl">
-                        <h4 className="font-bold text-[var(--text-dark-primary)] text-xs sm:text-[13px] uppercase tracking-wider mb-4">
-                          What's included:
-                        </h4>
-                        <ul className="space-y-3.5">
-                          {tier.features.map((feature, fIndex) => (
-                            <li key={fIndex} className="flex items-start">
-                              <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[var(--color-accent)] mr-3 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                              </svg>
-                              <span className="text-[14.5px] sm:text-[15px] text-[var(--text-dark-secondary)] font-normal leading-relaxed">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
